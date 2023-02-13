@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 const StyledFoodContainer = styled.div`
   background-color: brown;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  justify-content: space-evenly;
   width: 100%;
   /* max-width: 1000px; */
   height: fit-content;
@@ -16,7 +18,9 @@ const StyledFoodContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 1rem 10px;
-    width: 300px;
+    margin: 1rem auto;
+    max-width: 350px;
+    width: 100%;
     height: fit-content;
     border-radius: 20px 0 0;
     box-shadow: 0 0 10px #222;
