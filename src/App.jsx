@@ -1,4 +1,5 @@
 import './App.css';
+import FoodContainer from './components/FoodContainer';
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       </h1>
 
       <p className="below-are">Below are a minor compilation of food recipes</p>
+
+      <FoodContainer />
     </div>
   );
 }

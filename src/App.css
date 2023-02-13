@@ -3,5 +3,31 @@
 }
 
 .App {
-  text-align: center;
+  background-color: #ffc145;
+  background-color: #6ee374;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 97vw;
+  max-width: 1224px;
+  height: fit-content;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  border-radius: 0 70px 0 0;
+}
+
+.App-header {
+  margin: 1rem auto;
+  color: #ec5766;
+}
+
+.App-header .span1 {
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.App-header .span2 {
+  font-size: 2.3rem;
+  border-bottom: 1px solid #ec5766;
+  padding-bottom: 4px;
 }
