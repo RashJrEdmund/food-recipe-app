@@ -1,32 +1,47 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import garri from '../data/garri.png';
 import StyledFoodContainer from '../styles/StyledFoodContainer';
 import MyFoodContext from '../context/MyContext';
 
 export default function FoodContainer() {
-  const { foodData } = React.useContext(MyFoodContext);
-  const [showRecipe, setShowRecipe] = React.useState(false);
+  const { foodData, setFoodData } = React.useContext(MyFoodContext);
 
-  const handleShowRecipe = () => {
-    setShowRecipe((prev) => !prev);
+  const handleShowRecipe = (id) => {
+    const holder = foodData;
+    holder[id].showRecipe = !holder[id].showRecipe;
+    setFoodData([...holder]);
+  };
+
+  const handleFavorite = (id) => {
+    const holder = foodData;
+    holder[id].fav = !holder[id].fav;
+    setFoodData([...holder]);
+  };
+
+  const handleDeleteFood = (ID) => {
+    const holder = foodData;
+    const newHolder = holder.filter(({ id }) => id !== ID);
+    setFoodData([...newHolder]);
   };
 
   return (
     <StyledFoodContainer>
-      {foodData.map((piece) => {
+      {foodData.map((piece, index) => {
         return (
-          <div className="food-div">
+          <div className="food-div" key={index}>
             <div
               className={
-                showRecipe ? 'food-recipe active-food-recipe' : 'food-recipe'
+                piece.showRecipe
+                  ? 'food-recipe active-food-recipe'
+                  : 'food-recipe'
               }
             >
               <h1>How to prepare {piece.name} </h1>
               <ol>
-                <li>step 1</li>
-                <li>step 2</li>
-                <li>step 3</li>
-                <li>...step n</li>
+                {piece.recipe.map((rec, ind) => (
+                  <li key={ind}>{rec}</li>
+                ))}
               </ol>
 
               <button className="update-recipe-btn" type="button">
@@ -34,24 +49,35 @@ export default function FoodContainer() {
               </button>
             </div>
 
-            <h className="food-title">Example Food Title</h>
+            <h2 className="food-title">{piece.name}</h2>
             <img src={garri} alt="food_image" className="food-image" />
 
             <div className="action-btns">
-              <button type="button" className="add-btn">
-                AddToFav
+              <button
+                type="button"
+                className="add-btn"
+                name={index}
+                onClick={(e) => handleFavorite(e.target.name)}
+              >
+                {!piece.fav ? '+ to Favorite' : 'remove from favorite'}
               </button>
-              <button type="button" className="del-btn">
-                DeleRecipe
+              <button
+                type="button"
+                className="del-btn"
+                name={piece.id}
+                onClick={(e) => handleDeleteFood(+e.target.name)}
+              >
+                DeleFood
               </button>
             </div>
 
             <button
-              className="see-recipe"
+              className="see-recipe-btn"
               type="button"
-              onClick={handleShowRecipe}
+              name={index}
+              onClick={(e) => handleShowRecipe(e.target.name)}
             >
-              See Recipe
+              {!piece.showRecipe ? 'see Recipe' : 'close Recipe'}
             </button>
           </div>
         );
