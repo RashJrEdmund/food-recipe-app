@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const StyledFoodContainer = styled.div`
-  background-color: brown;
+  /* background-color: brown; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-  /* max-width: 1000px; */
   height: fit-content;
+  min-height: 500px;
   margin: 2rem auto;
 
   .food-div {
@@ -24,7 +24,7 @@ const StyledFoodContainer = styled.div`
     height: fit-content;
     border-radius: 20px 0 0;
     box-shadow: 0 0 10px #222;
-    z-index: 1;
+    z-index: 0;
 
     .food-recipe {
       background-color: #f0b843;
@@ -43,7 +43,7 @@ const StyledFoodContainer = styled.div`
       &.active-food-recipe {
         right: -90%;
         opacity: 1;
-        z-index: 2;
+        z-index: 3;
       }
 
       h1 {
@@ -73,9 +73,6 @@ const StyledFoodContainer = styled.div`
       .update-recipe-btn {
         background-color: #a5a5a5;
         font-weight: 650;
-        border: none;
-        width: fit-content;
-        height: fit-content;
         padding: 10px;
         border-radius: 10px;
         align-self: flex-end;
@@ -92,11 +89,24 @@ const StyledFoodContainer = styled.div`
       font-size: 1.2rem;
       border-bottom: 1px solid grey;
       margin: 0 0 10px;
+      transition: 0.5s;
+      cursor: default;
+
+      &:hover {
+        color: #ec5766;
+        transform: scale(1.08);
+      }
     }
 
     .food-image {
       width: 100%;
       min-height: 245px;
+      transition: 0.5s;
+      z-index: 1;
+
+      &:hover {
+        transform: scale(1.03);
+      }
     }
 
     .action-btns {
@@ -107,9 +117,6 @@ const StyledFoodContainer = styled.div`
       margin: 1.5rem auto 0;
 
       button {
-        border: none;
-        width: fit-content;
-        height: fit-content;
         padding: 5px 10px;
         border-radius: 5px;
         font-weight: 600;
@@ -130,10 +137,7 @@ const StyledFoodContainer = styled.div`
       }
     }
 
-    .see-recipe {
-      border: none;
-      width: fit-content;
-      height: fit-content;
+    .see-recipe-btn {
       padding: 5px 10px;
       margin: 2.5rem auto 0.5rem;
       border-radius: 5px;
@@ -147,8 +151,28 @@ const StyledFoodContainer = styled.div`
     }
   }
 
-  @media only screen and(max-width: 768px) {
-    background-color: gray;
+  @media only screen and (max-width: 768px) {
+    gap: 0 1rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    .food-div {
+      .food-image {
+        &:hover {
+          transform: scale(1);
+        }
+      }
+
+      .food-title {
+        &:hover {
+          color: #000;
+          transform: scale(0;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
   }
 `;
 
