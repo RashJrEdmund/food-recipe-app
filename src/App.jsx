@@ -9,7 +9,7 @@ function App() {
   const [foodData, setFoodData] = React.useState([
     {
       name: 'Garri',
-      img: 'src',
+      img: 'https://i0.wp.com/humblevege.com/wp-content/uploads/2022/02/gari-soaking-garri-snack_humblevege.jpg?fit=1536%2C2048&ssl=1',
       recipe: [
         `pour required quantity in clean pan, taking note that "it's rising bad"`,
         `add enough water (enough to completely conver the golden poder)`,
@@ -23,10 +23,10 @@ function App() {
     },
     {
       name: 'Khahti Khahti',
-      img: 'src',
+      img: 'https://africanbites.com/wp-content/uploads/2014/08/IMG_4973.jpg',
       recipe: [
         `kill and skin a fowl (cocks make more sense)`,
-        `clean the innerParts and chop in different sizes`,
+        `clean the innerParts and chop in different sieves`,
         `roast over enough heat (not neccessarily blazing fire)`,
         'while roasting, sieze and prepare corn fufu',
         `prepare sauce (enough of it): add maggi and salt to clean dry red oil and mix till finnesse`,
@@ -40,7 +40,7 @@ function App() {
     },
     {
       name: 'Ndole',
-      img: 'src',
+      img: 'https://i.pinimg.com/originals/6d/e7/9c/6de79cb3e00b1eba9e36b945f8fc91b1.jpg',
       recipe: [`boil bitter leaf`, `i dont yet know the wosup 😹`],
       showRecipe: false,
       fav: false,
@@ -48,7 +48,7 @@ function App() {
     },
     {
       name: 'water Fufu & Erru',
-      img: 'src',
+      img: 'https://www.africanbites.com/wp-content/uploads/2022/02/Cassava-Fufu.jpg',
       recipe: [`cook water fufu`, `i dont still know the wosup 😹`],
       showRecipe: false,
       fav: false,
@@ -56,7 +56,7 @@ function App() {
     },
     {
       name: 'Koki',
-      img: 'src',
+      img: 'https://sawagrill.com/wp-content/uploads/2022/06/rdd-07-scaled.webp',
       recipe: [
         `harvest and warm (to clean and make ready) plantain leaves`,
         `these things can be hard erh 😹`,
@@ -67,12 +67,12 @@ function App() {
     },
   ]);
 
-  const [addFood, setAddFood] = React.useState(true);
+  const [showFoodForm, setShowFoodForm] = React.useState(false);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <MyFoodContext.Provider value={{ foodData, setFoodData, setAddFood }}>
-      {addFood && <AddFoodForm />}
+    <MyFoodContext.Provider value={{ foodData, setFoodData, setShowFoodForm }}>
+      {showFoodForm && <AddFoodForm />}
 
       <div className="App" id="App">
         <h1 className="App-header">
@@ -80,10 +80,22 @@ function App() {
           <span className="span2">Food Recipe App</span>
         </h1>
 
+        <div className="search-section">
+          <form
+            className="search-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <input type="text" placeholder="searchFood" />
+            <button type="submit">search</button>
+          </form>
+        </div>
+
         <button
           className="add-food-btn"
           type="button"
-          onClick={() => setAddFood((prev) => !prev)}
+          onClick={() => setShowFoodForm((prev) => !prev)}
         >
           + AddFood
         </button>

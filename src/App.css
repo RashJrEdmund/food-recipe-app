@@ -34,10 +34,12 @@
   padding-bottom: 4px;
 }
 
-.below-are {
+.search-section {
+  background-color: green;
   width: fit-content;
-  margin: 1rem auto;
-  cursor: default;
+  height: fit-content;
+  padding: 10px;
+  margin: 1rem auto 0;
 }
 
 .add-food-btn {
@@ -56,12 +58,18 @@
   box-shadow: 0 0 10px #222;
 }
 
+.below-are {
+  width: fit-content;
+  margin: 1rem auto;
+  cursor: default;
+}
+
 .app-buttons {
   background-color: gold;
   height: fit-content;
   width: fit-content;
   padding: 10px;
-  margin:  0.7rem auto;
+  margin: 0.7rem auto;
 }
 
 .app-buttons button {
