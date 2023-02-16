@@ -99,8 +99,11 @@ const StyledFoodContainer = styled.div`
     }
 
     .food-image {
+      background-size: cover;
+      background-position: center;
       width: 100%;
       min-height: 245px;
+      max-height: 300px;
       transition: 0.5s;
       z-index: 1;
 
