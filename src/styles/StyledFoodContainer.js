@@ -117,7 +117,7 @@ const StyledFoodContainer = styled.div`
       height: fit-content;
       display: flex;
       justify-content: space-between;
-      margin: 1.5rem auto 0;
+      margin: 2.2rem auto 0;
 
       button {
         padding: 5px 10px;

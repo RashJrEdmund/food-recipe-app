@@ -22,25 +22,38 @@ export default function AddFoodForm() {
   });
 
   const [foodNom, setFoodNom] = React.useState('');
-  const [recipeSteps, setRecipeSteps] = React.useState(['step1', 'step2']);
+  const [recipeSteps, setRecipeSteps] = React.useState(['step 1', 'step 2']);
 
-  // const handleAddRecipe = (nextStep) => {
-  //   setRecipeSteps((prev) => prev.push(nextStep));
-  //   const holder = newRecipe;
-  //   holder.name = foodNom;
-  //   holder.recipe = recipeSteps;
-  //   setNewRecipe(holder);
-  // };
-
-  const handleSaveFood = () => {
-    // if (newRecipe.recipe.length < 1 || newRecipe.name === '') {
-    //   if (newRecipe.name === '') {
-    //     alert('new food Must have a name');
-    //   } else {
-    //     alert('you should add preparation steps');
-    //   }
+  const handleAddStep = (nextStep) => {
+    console.clear();
+    console.log('form submitted, submit entered');
+    // if (nextStep === '') {
     //   return;
     // }
+
+    // const HOLDER = recipeSteps;
+    // HOLDER.push(nextStep);
+    // setRecipeSteps(HOLDER);
+
+    setRecipeSteps((prev) => [...prev, nextStep]);
+    console.log('this recipe, steps', recipeSteps);
+  };
+
+  const handleSaveFood = () => {
+    // if (newRecipe.recipe.length <= 0) {
+    //   return;
+    // }
+
+    // setNewRecipe((prev) => {
+    //   return {
+    //     ...prev,
+    //     name: foodNom,
+    //     recipe: recipeSteps,
+    //     id: foodData[foodData.length - 1].id + 1,
+    //   };
+    // });
+
+    // console.log('this newwRecipe', newRecipe);
 
     setFoodData((prev) => [
       ...prev,
@@ -51,7 +64,6 @@ export default function AddFoodForm() {
         id: foodData[foodData.length - 1].id + 1,
       },
     ]);
-    console.log('this new foodData', foodData);
     setShowFoodForm((prev) => !prev);
   };
 
@@ -62,18 +74,8 @@ export default function AddFoodForm() {
           className="add-food-form"
           onSubmit={(e) => {
             e.preventDefault();
-            // handleAddRecipe(e.target.elements.next_step.value);
-            console.clear();
-            if (e.target.elements.next_step.value === '') {
-              return;
-            }
-
-            const HOLDER = recipeSteps;
-            HOLDER.push(e.target.elements.next_step.value);
-            setRecipeSteps(HOLDER);
-            console.log('this recipe, steps', recipeSteps);
+            handleAddStep(e.target.elements.next_step.value);
             e.target.elements.next_step.value = '';
-            // setShowFoodForm((prev) => !prev);
           }}
         >
           <button
@@ -81,7 +83,7 @@ export default function AddFoodForm() {
             type="button"
             onClick={handleSaveFood}
           >
-            {newRecipe.recipe.length >= 1 ? 'save newFood' : 'closeForm'}
+            {recipeSteps.length >= 1 ? 'save newFood' : 'closeForm'}
           </button>
 
           <h2>Add Food</h2>
@@ -103,7 +105,7 @@ export default function AddFoodForm() {
                 type="text"
                 id="next_step"
                 placeholder={
-                  newRecipe.recipe.length > 1
+                  recipeSteps.length > 1
                     ? 'Input next step'
                     : 'Input first step'
                 }
@@ -129,7 +131,7 @@ export default function AddFoodForm() {
           {recipeSteps.map((stage, ind) => (
             <li key={ind}>
               {stage}
-              <img
+              {/* <img
                 src={closeIcon}
                 id={ind}
                 alt="delete_food_icon"
@@ -142,7 +144,7 @@ export default function AddFoodForm() {
 
                   setRecipeSteps([...newHolder]);
                 }}
-              />
+              /> */}
             </li>
           ))}
         </ol>
