@@ -1,6 +1,5 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import garri from '../data/garri.png';
 import StyledFoodContainer from '../styles/StyledFoodContainer';
 import MyFoodContext from '../context/MyContext';
 
@@ -63,7 +62,7 @@ export default function FoodContainer() {
                 name={index}
                 onClick={(e) => handleFavorite(e.target.name)}
               >
-                {!piece.fav ? '+ to Favorite' : 'remove from favorite'}
+                {piece.fav ? 'remove from favorite' : '+ to Favorite'}
               </button>
               <button
                 type="button"
@@ -81,7 +80,7 @@ export default function FoodContainer() {
               name={index}
               onClick={(e) => handleShowRecipe(e.target.name)}
             >
-              {!piece.showRecipe ? 'see Recipe' : 'close Recipe'}
+              {piece.showRecipe ? 'close Recipe' : 'see Recipe'}
             </button>
           </div>
         );

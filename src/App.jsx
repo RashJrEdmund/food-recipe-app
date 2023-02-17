@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/jsx-pascal-case */
 import './App.css';
 import React from 'react';
 import MyFoodContext from './context/MyContext';
 import FoodContainer from './components/FoodContainer';
 import AddFoodForm from './components/AddFoodForm';
+import SearchForm from './components/SearchForm';
 
 function App() {
   const [foodData, setFoodData] = React.useState([
@@ -81,15 +83,7 @@ function App() {
         </h1>
 
         <div className="search-section">
-          <form
-            className="search-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <input type="text" placeholder="searchFood" />
-            <button type="submit">search</button>
-          </form>
+          <SearchForm />
         </div>
 
         <button
