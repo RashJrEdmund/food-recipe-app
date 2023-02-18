@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 const StyledForm = styled.form`
   background-color: gold;
+  background-color: #ec5766;
+  background-color: #6ee374;
   padding: 10px;
 
   input {
