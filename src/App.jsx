@@ -7,6 +7,7 @@ import MyFoodContext from './context/MyContext';
 import FoodContainer from './components/FoodContainer';
 import AddFoodForm from './components/AddFoodForm';
 import SearchForm from './components/SearchForm';
+import Hero from './components/Hero';
 
 function App() {
   const [foodData, setFoodData] = React.useState([
@@ -95,14 +96,11 @@ function App() {
         setPickFoodToUpdate,
       }}
     >
+      <Hero />
+
       {showFoodForm && <AddFoodForm />}
 
       <div className="App" id="App">
-        <h1 className="App-header">
-          <span className="span1">The</span>
-          <span className="span2">Food Recipe App</span>
-        </h1>
-
         <div className="search-section">
           <SearchForm />
         </div>
