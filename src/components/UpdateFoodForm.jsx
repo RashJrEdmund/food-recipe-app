@@ -11,11 +11,18 @@ export default function UpdateFoodForm() {
   const {
     /* setShowFoodForm, foodData, setFoodData,  */ setShowUpdateForm,
     pickedFoodToUpdate,
+    setPickFoodToUpdate,
   } = React.useContext(MyFoodContext);
 
   const handleUpdateFood = (ID) => {
     console.log('handleUpdate entered', ID);
     // setShowUpdateForm((prev) => !prev);
+  };
+
+  const handleModifyPickedFoodName = (newNom) => {
+    const holder = pickedFoodToUpdate;
+    holder.name = newNom;
+    setPickFoodToUpdate(holder);
   };
 
   return (
@@ -48,7 +55,8 @@ export default function UpdateFoodForm() {
               placeholder="Input Food Name here"
               defaultValue={pickedFoodToUpdate.name}
               required
-              // onChange={(e) => setFoodNom(e.target.value)}
+              // onChange={(e) => handleModifyPickedFoodName(e.target.value)}
+              onChange={(e) => handleModifyPickedFoodName(e.target.value)}
             />
           </div>
 
@@ -58,11 +66,7 @@ export default function UpdateFoodForm() {
               <input
                 type="text"
                 id="next_step"
-                // placeholder={
-                //   recipeSteps.length > 1
-                //     ? 'Input next step'
-                //     : 'Input first step'
-                // }
+                placeholder="input Step to Add"
               />
               <button className="add-step-btn" type="submit">
                 + Add

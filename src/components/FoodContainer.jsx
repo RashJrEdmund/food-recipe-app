@@ -74,11 +74,11 @@ export default function FoodContainer() {
             </div>
 
             <h2 className="food-title">{piece.name}</h2>
-            <img src={piece.img} alt="food_image" className="food-image" />
-            {/* <div
+            {/* <img src={piece.img} alt="food_image" className="food-image" /> */}
+            <div
               style={{ backgroundImage: `URL(${piece.img})` }}
               className="food-image"
-            /> */}
+            />
 
             <div className="action-btns">
               <button

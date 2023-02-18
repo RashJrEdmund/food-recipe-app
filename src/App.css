@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -12,26 +14,8 @@
   max-width: 1224px;
   height: fit-content;
   margin: 2rem auto;
-  padding: 2rem 1rem;
+  padding: 0 2rem 1rem;
   border-radius: 0 70px 0 0;
-}
-
-.App-header {
-  margin: 1rem auto;
-  color: #ec5766;
-  cursor: alias;
-  cursor: default;
-}
-
-.App-header .span1 {
-  font-size: 1.3rem;
-  margin-right: 10px;
-}
-
-.App-header .span2 {
-  font-size: 2.3rem;
-  border-bottom: 1px solid #ec5766;
-  padding-bottom: 4px;
 }
 
 .search-section {
