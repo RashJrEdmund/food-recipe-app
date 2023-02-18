@@ -27,7 +27,6 @@
   from {
     top: -130%;
   }
-
   to {
     top: 0;
   }
@@ -141,7 +140,7 @@
 }
 
 .display-steps-section li {
-  background-color: green;
+  background-color: #747474b2;
   position: relative;
   width: 100%;
   word-wrap: normal;
@@ -149,7 +148,9 @@
   height: fit-content;
   font-style: italic;
   padding: 10px;
-  margin: 4px 0;
+  margin: 10px 0;
+  border-radius: 15px 0px;
+  cursor: default;
 }
 
 .display-steps-section li img {
@@ -162,4 +163,5 @@
   margin: 0;
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }

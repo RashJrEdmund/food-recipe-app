@@ -51,7 +51,11 @@ function App() {
     {
       name: 'water Fufu & Erru',
       img: 'https://www.africanbites.com/wp-content/uploads/2022/02/Cassava-Fufu.jpg',
-      recipe: [`cook water fufu`, `i dont still know the wosup 😹`],
+      recipe: [
+        `cook water fufu`,
+        'do some other things laat',
+        'do another thing',
+      ],
       showRecipe: false,
       fav: false,
       id: 3,
@@ -61,7 +65,9 @@ function App() {
       img: 'https://sawagrill.com/wp-content/uploads/2022/06/rdd-07-scaled.webp',
       recipe: [
         `harvest and warm (to clean and make ready) plantain leaves`,
-        `these things can be hard erh 😹`,
+        `do something`,
+        'do another thing',
+        'take on something',
       ],
       showRecipe: false,
       fav: false,

@@ -2,6 +2,7 @@
 import React from 'react';
 import StyledFoodContainer from '../styles/StyledFoodContainer';
 import MyFoodContext from '../context/MyContext';
+import UpdateFoodForm from './UpdateFoodForm';
 
 export default function FoodContainer() {
   const { foodData, setFoodData } = React.useContext(MyFoodContext);
@@ -26,9 +27,10 @@ export default function FoodContainer() {
 
   return (
     <StyledFoodContainer>
+      <UpdateFoodForm />
       {foodData.map((piece, index) => {
         return (
-          <div className="food-div" key={index}>
+          <div className="food-div" key={piece.id}>
             <div
               className={
                 piece.showRecipe
@@ -43,7 +45,7 @@ export default function FoodContainer() {
                 ))}
               </ol>
 
-              <button className="update-recipe-btn" type="button">
+              <button className="update-recipe-btn" type="button" id={piece.id}>
                 UpdateRecipe
               </button>
             </div>
@@ -59,7 +61,7 @@ export default function FoodContainer() {
               <button
                 type="button"
                 className="add-btn"
-                name={index}
+                name={piece.id}
                 onClick={(e) => handleFavorite(e.target.name)}
               >
                 {piece.fav ? 'remove from favorite' : '+ to Favorite'}
