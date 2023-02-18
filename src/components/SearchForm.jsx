@@ -9,6 +9,7 @@ const StyledForm = styled.form`
 
   input {
     background-color: #f0b843;
+    width: 55vw;
     min-width: 300px;
     padding: 10px;
     margin: 0;
