@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/jsx-pascal-case */
 import './App.css';
@@ -76,10 +77,24 @@ function App() {
   ]);
 
   const [showFoodForm, setShowFoodForm] = React.useState(false);
+  const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
+  const [pickedFoodToUpdate, setPickFoodToUpdate] = React.useState({});
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <MyFoodContext.Provider value={{ foodData, setFoodData, setShowFoodForm }}>
+    <MyFoodContext.Provider
+      value={{
+        foodData,
+        setFoodData,
+
+        setShowFoodForm,
+
+        showUpdateFrom,
+        setShowUpdateForm,
+
+        pickedFoodToUpdate,
+        setPickFoodToUpdate,
+      }}
+    >
       {showFoodForm && <AddFoodForm />}
 
       <div className="App" id="App">

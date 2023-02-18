@@ -3,7 +3,7 @@
 }
 
 .update-overlay {
-  background-color: #cccccc;
+  background-color: #cccccc62;
   position: fixed;
   inset: 0;
   width: 100vw;

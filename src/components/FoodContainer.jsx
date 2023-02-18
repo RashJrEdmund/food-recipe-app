@@ -5,7 +5,15 @@ import MyFoodContext from '../context/MyContext';
 import UpdateFoodForm from './UpdateFoodForm';
 
 export default function FoodContainer() {
-  const { foodData, setFoodData } = React.useContext(MyFoodContext);
+  const {
+    foodData,
+    setFoodData,
+
+    showUpdateFrom,
+    setShowUpdateForm,
+
+    setPickFoodToUpdate,
+  } = React.useContext(MyFoodContext);
 
   const handleShowRecipe = (id) => {
     const holder = foodData;
@@ -25,9 +33,16 @@ export default function FoodContainer() {
     setFoodData([...newHolder]);
   };
 
+  const chooseFoodToUpdate = (ID) => {
+    const holder = foodData;
+    const newHolder = holder.filter((food) => food.id === ID);
+    setPickFoodToUpdate(...newHolder);
+  };
+
   return (
     <StyledFoodContainer>
-      <UpdateFoodForm />
+      {showUpdateFrom && <UpdateFoodForm />}
+
       {foodData.map((piece, index) => {
         return (
           <div className="food-div" key={piece.id}>
@@ -45,7 +60,15 @@ export default function FoodContainer() {
                 ))}
               </ol>
 
-              <button className="update-recipe-btn" type="button" id={piece.id}>
+              <button
+                className="update-recipe-btn"
+                type="button"
+                id={piece.id}
+                onClick={(e) => {
+                  chooseFoodToUpdate(+e.target.id);
+                  setShowUpdateForm((prev) => !prev);
+                }}
+              >
                 UpdateRecipe
               </button>
             </div>

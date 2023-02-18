@@ -1,14 +1,22 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import '../styles/updateForm.css';
-// import MyFoodContext from '../context/MyContext';
+import MyFoodContext from '../context/MyContext';
 import closeIcon from '../images/close menu icon.png';
 
 export default function UpdateFoodForm() {
-  // const { setShowFoodForm, foodData, setFoodData } =
-  //   React.useContext(MyFoodContext);
+  const {
+    /* setShowFoodForm, foodData, setFoodData,  */ setShowUpdateForm,
+    pickedFoodToUpdate,
+  } = React.useContext(MyFoodContext);
+
+  const handleUpdateFood = (ID) => {
+    console.log('handleUpdate entered', ID);
+    // setShowUpdateForm((prev) => !prev);
+  };
 
   return (
     <div className="update-overlay">
@@ -17,26 +25,28 @@ export default function UpdateFoodForm() {
           className="update-food-form"
           onSubmit={(e) => {
             e.preventDefault();
-            // handleAddStep(e.target.elements.next_step.value);
-            // e.target.elements.next_step.value = '';
+            handleUpdateFood();
           }}
         >
           <button
             className="close-form-btn"
             type="button"
-            // onClick={handleSaveFood}
+            onClick={() => {
+              // handleSaveFood();
+              setShowUpdateForm((prev) => !prev);
+            }}
           >
-            {/* {recipeSteps.length >= 1 ? 'save newFood' : 'closeForm'} */}
             updateFood
           </button>
 
-          <h2>Add Food</h2>
+          <h2>updateFood</h2>
           <div className="naming-section">
             <label htmlFor="food_name">Input Food Name</label>
             <input
               type="text"
               id="food_name"
               placeholder="Input Food Name here"
+              defaultValue={pickedFoodToUpdate.name}
               required
               // onChange={(e) => setFoodNom(e.target.value)}
             />
@@ -62,10 +72,10 @@ export default function UpdateFoodForm() {
         </form>
 
         <h3 className="form-food-name">
-          Name: <span>{/* {foodNom} */} foodName</span>
+          Name: <span>{pickedFoodToUpdate.name}</span>
         </h3>
         <ol className="display-steps-section">
-          {/* {recipeSteps.map((stage, ind) => (
+          {pickedFoodToUpdate.recipe.map((stage, ind) => (
             <li key={ind}>
               {stage}
               <img
@@ -77,7 +87,7 @@ export default function UpdateFoodForm() {
                 // }}
               />
             </li>
-          ))} */}
+          ))}
         </ol>
       </div>
     </div>
