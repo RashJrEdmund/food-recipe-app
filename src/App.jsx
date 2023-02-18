@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/jsx-pascal-case */
-import './App.css';
+import './styles/App.css';
 import React from 'react';
 import MyFoodContext from './context/MyContext';
 import FoodContainer from './components/FoodContainer';
 import AddFoodForm from './components/AddFoodForm';
-import SearchForm from './components/SearchForm';
 import Hero from './components/Hero';
+import Footer from './components/Footer';
 
 function App() {
   const [foodData, setFoodData] = React.useState([
@@ -101,10 +101,6 @@ function App() {
       {showFoodForm && <AddFoodForm />}
 
       <div className="App" id="App">
-        <div className="search-section">
-          <SearchForm />
-        </div>
-
         <button
           className="add-food-btn"
           type="button"
@@ -135,6 +131,7 @@ function App() {
           </button>
         </div>
       </div>
+      <Footer />
     </MyFoodContext.Provider>
   );
 }

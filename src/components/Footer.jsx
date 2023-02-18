@@ -1,17 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyleFooter = styled.div`
-  background-color: brown;
-  width: 100%;
-  height: fit-content;
-`;
+import '../styles/footer.css';
 
 export default function Footer() {
   return (
-    <StyleFooter>
-      <div>go home</div>
-      <div>come home</div>
-    </StyleFooter>
+    <div id="footer">
+      <div className="footer-food" />
+      <a href="#hero-section">
+        <button className="got-to-top" type="button">
+          TOP
+        </button>
+      </a>
+    </div>
   );
 }
