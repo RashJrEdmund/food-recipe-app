@@ -5,6 +5,7 @@
 }
 
 #hero-section {
+  position: relative;
   background: linear-gradient(to bottom, #0000007c, #0000007c, #0000007c), url('../images/banner.png');
   color: #ffd700;
   background-size: cover;
@@ -12,11 +13,44 @@
   width: 100%;
   height: 97vh;
   margin: 0;
-  padding: 1rem 0;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.nav-bar {
+  /* background-color: green; */
+  background: linear-gradient(to bottom, #0000003b, #0000003b, #0000003b);
+  position: absolute;
+  position: fixed;
+  inset: 0;
+  margin: 1rem 0 0 1rem;
+  padding: 0;
+  width: 90%;
+  max-width: 600px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.nav-bar button {
+  background: none;
+  color: #ffd700;
+  color: whitesmoke;
+  border: 1px solid #0000007c;
+  border: none;
+  padding: 1rem 2rem;
+  transition: 0.5s;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.nav-bar button:hover {
+  background-color: #0000007c;
 }
 
 .hero-header {
@@ -46,4 +80,19 @@
   display: flex;
   align-items: center;
   /* align-self: flex-start; */
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-bar button {
+    background-color: #0000007c;
+    padding: 0.6rem;
+  }
+
+  .search-section {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
 }

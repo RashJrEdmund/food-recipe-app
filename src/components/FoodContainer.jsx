@@ -15,9 +15,9 @@ export default function FoodContainer() {
     setPickFoodToUpdate,
   } = React.useContext(MyFoodContext);
 
-  const handleShowRecipe = (id) => {
+  const handleShowRecipe = (ind) => {
     const holder = foodData;
-    holder[id].showRecipe = !holder[id].showRecipe;
+    holder[ind].showRecipe = !holder[ind].showRecipe;
     setFoodData([...holder]);
   };
 
@@ -67,6 +67,7 @@ export default function FoodContainer() {
                 onClick={(e) => {
                   chooseFoodToUpdate(+e.target.id);
                   setShowUpdateForm((prev) => !prev);
+                  handleShowRecipe(index);
                 }}
               >
                 UpdateRecipe

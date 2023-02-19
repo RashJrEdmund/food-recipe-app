@@ -14,10 +14,9 @@
   align-items: center;
 }
 
-.footer-food {
+.footer-photo {
   position: absolute;
-  inset: 0;
-
+  left: 0;
   background: linear-gradient(to bottom, #0000007c, #00000048, #00000048), url('../images/africanMumCooking.png');
   background-size: cover;
   background-position: center;
@@ -31,6 +30,12 @@
 
 .got-to-top {
   background-color: #6ee374;
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 4rem;
+  transform: translate(50%);
   color: #000;
   padding: 1rem 2rem;
   border-radius: 10px;
