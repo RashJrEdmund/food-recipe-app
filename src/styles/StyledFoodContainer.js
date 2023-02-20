@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledFoodContainer = styled.div`
-  /* background-color: brown; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;

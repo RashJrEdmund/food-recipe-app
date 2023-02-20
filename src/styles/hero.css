@@ -20,15 +20,25 @@
   justify-content: center;
 }
 
-.nav-bar {
-  /* background-color: green; */
+.nav-bar-container {
   background: linear-gradient(to bottom, #0000003b, #0000003b, #0000003b);
-  position: absolute;
   position: fixed;
   inset: 0;
   margin: 1rem 0 0 1rem;
+  width: fit-content;
+  height: fit-content;
+  z-index: 4;
+}
+
+.nav-bar-container:hover {
+  background: none;
+}
+
+.nav-bar {
+  position: relative;
+  background: none;
   padding: 0;
-  width: 90%;
+  width: 90vw;
   max-width: 600px;
   height: fit-content;
   display: flex;
@@ -40,7 +50,7 @@
 .nav-bar button {
   background: none;
   color: #ffd700;
-  color: whitesmoke;
+  color: #f5f5f5;
   border: 1px solid #0000007c;
   border: none;
   padding: 1rem 2rem;
@@ -49,8 +59,29 @@
   font-size: 1rem;
 }
 
+.nav-bar .add-food-btn {
+  min-width: 150px;
+}
+
 .nav-bar button:hover {
   background-color: #0000007c;
+}
+
+
+.menu-icon,
+.close-menu-icon {
+  display: none;
+}
+
+.nav-bar .side-menu-holder {
+  background-color: #808080;
+  width: 100%;
+  margin-left: 2rem;
+  height: fit-content;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .hero-header {
@@ -82,10 +113,62 @@
   /* align-self: flex-start; */
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
+  .nav-bar-container {
+    background: none;
+  }
+
   .nav-bar button {
     background-color: #0000007c;
-    padding: 0.6rem;
+    font-weight: 1000;
+  }
+
+  .nav-bar .side-menu-holder {
+    background-color: green;
+    background: linear-gradient(to bottom, #0000003b, #0000003b, #0000003b);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: fit-content;
+    min-height: 50vh;
+    min-width: 50vw;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: unset;
+    transition: 0.5s;
+  }
+
+  .nav-bar .side-menu-holder.active-side-menu {
+    right: -100%;
+    /* transform: translateY(-130%); */
+  }
+
+  .menu-icon,
+  .close-menu-icon {
+    display: unset;
+    height: 60px;
+    width: 60px;
+    margin: 0;
+  }
+
+  .menu-icon {
+    height: 50px;
+  }
+
+  .active-varying-anything {
+    display: none;
+  }
+
+  .close-menu-icon {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 1rem 0 4rem;
+  }
+
+  .nav-bar .side-menu-holder button {
+    width: 100%;
+    margin: 1rem 0;
   }
 
   .search-section {
@@ -94,5 +177,11 @@
     margin: 0;
     left: 50%;
     transform: translate(-50%, 50%);
+  }
+
+  .hero-header .span2 {
+    font-weight: 600;
+    font-size: 6rem;
+    padding-bottom: 4px;
   }
 }

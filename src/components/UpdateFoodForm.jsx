@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -9,21 +10,48 @@ import closeIcon from '../images/close menu icon.png';
 
 export default function UpdateFoodForm() {
   const {
-    /* setShowFoodForm, foodData, setFoodData,  */ setShowUpdateForm,
+    foodData,
+    setFoodData,
+
+    setShowUpdateForm,
+
     pickedFoodToUpdate,
     setPickFoodToUpdate,
   } = React.useContext(MyFoodContext);
 
-  const handleUpdateFood = (ID) => {
-    console.log('handleUpdate entered', ID);
-    // setShowUpdateForm((prev) => !prev);
+  const handleSaveUpdatedFood = () => {
+    const Holder = foodData;
+    const newHolder = Holder.map((food, index) => {
+      if (food.id === pickedFoodToUpdate.id) {
+        return (Holder[index] = { ...pickedFoodToUpdate });
+      }
+      return food;
+    });
+
+    setFoodData([...newHolder]);
   };
 
   const handleModifyPickedFoodName = (newNom) => {
     const holder = pickedFoodToUpdate;
     holder.name = newNom;
-    setPickFoodToUpdate(holder);
+    setPickFoodToUpdate({ ...holder });
   };
+
+  const updateChosenFoodSteps = (nextStep) => {
+    // console.log('you wish to add :', nextStep);
+    const stepHolder = pickedFoodToUpdate.recipe;
+    stepHolder.push(nextStep);
+    setPickFoodToUpdate((prev) => ({ ...prev, recipe: stepHolder }));
+  };
+
+  const handleDeleteUpdateStep = (unWantedStepId) => {
+    const stepHolder = pickedFoodToUpdate.recipe;
+    const newHolder = stepHolder.filter((rec, inDx) => inDx !== unWantedStepId);
+
+    setPickFoodToUpdate({ ...pickedFoodToUpdate, recipe: [...newHolder] });
+  };
+
+  // console.log('name changed to :', { ...pickedFoodToUpdate });
 
   return (
     <div className="update-overlay">
@@ -32,14 +60,14 @@ export default function UpdateFoodForm() {
           className="update-food-form"
           onSubmit={(e) => {
             e.preventDefault();
-            handleUpdateFood();
+            updateChosenFoodSteps(e.target.elements.next_update_step.value);
           }}
         >
           <button
             className="close-form-btn"
             type="button"
             onClick={() => {
-              // handleSaveFood();
+              handleSaveUpdatedFood();
               setShowUpdateForm((prev) => !prev);
             }}
           >
@@ -51,12 +79,14 @@ export default function UpdateFoodForm() {
             <label htmlFor="food_name">Input Food Name</label>
             <input
               type="text"
-              id="food_name"
+              id="food_update_name"
               placeholder="Input Food Name here"
               defaultValue={pickedFoodToUpdate.name}
               required
               // onChange={(e) => handleModifyPickedFoodName(e.target.value)}
-              onChange={(e) => handleModifyPickedFoodName(e.target.value)}
+              onChange={(e) => {
+                handleModifyPickedFoodName(e.target.value);
+              }}
             />
           </div>
 
@@ -65,7 +95,7 @@ export default function UpdateFoodForm() {
             <div>
               <input
                 type="text"
-                id="next_step"
+                id="next_update_step"
                 placeholder="input Step to Add"
               />
               <button className="add-step-btn" type="submit">
@@ -86,9 +116,9 @@ export default function UpdateFoodForm() {
                 src={closeIcon}
                 id={ind}
                 alt="delete_food_icon"
-                // onClick={(e) => {
-                //   handleDeleteStep(+e.target.id);
-                // }}
+                onClick={(e) => {
+                  handleDeleteUpdateStep(+e.target.id);
+                }}
               />
             </li>
           ))}

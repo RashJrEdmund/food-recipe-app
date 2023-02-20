@@ -40,7 +40,7 @@ export default function FoodContainer() {
   };
 
   return (
-    <StyledFoodContainer>
+    <StyledFoodContainer id="all_food_container">
       {showUpdateFrom && <UpdateFoodForm />}
 
       {foodData.map((piece, index) => {

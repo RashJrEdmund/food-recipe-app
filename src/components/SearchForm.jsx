@@ -1,5 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import React from 'react';
 import styled from 'styled-components';
+import MyFoodContext from '../context/MyContext';
 
 const StyledForm = styled.form`
   display: flex;
@@ -44,14 +47,41 @@ const StyledForm = styled.form`
 `;
 
 export default function SearchForm() {
+  const { foodData, setFoodData, MyData } = React.useContext(MyFoodContext);
+
+  const handleSearch = (foodNom) => {
+    if (foodNom === '') {
+      setFoodData(MyData);
+      return;
+    }
+
+    const holder = foodData;
+    const Results = holder.filter((food) =>
+      food.name.toLowerCase().includes(foodNom.toLowerCase())
+    );
+
+    setFoodData(Results);
+
+    console.log('this search Results', Results.length);
+
+    if (Results.length < 1) {
+      alert('no foods match search');
+    }
+  };
   return (
     <StyledForm
       className="search-form"
       onSubmit={(e) => {
         e.preventDefault();
+        handleSearch(e.target.elements.search_input.value);
       }}
     >
-      <input type="text" placeholder="search avalaible Food" />
+      <input
+        id="search_input"
+        type="text"
+        placeholder="search avalaible Food"
+        onChange={(e) => handleSearch(e.target.value)}
+      />
       <button type="submit">search</button>
     </StyledForm>
   );

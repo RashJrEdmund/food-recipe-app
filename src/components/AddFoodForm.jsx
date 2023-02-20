@@ -38,8 +38,6 @@ export default function AddFoodForm() {
   };
 
   const handleAddStep = (nextStep) => {
-    console.clear();
-    console.log('form submitted, submit entered');
     if (nextStep === '') {
       return;
     }
@@ -47,12 +45,9 @@ export default function AddFoodForm() {
     setRecipeSteps((prev) => [...prev, nextStep]);
   };
 
-  console.log('this recipe, steps', recipeSteps);
-
   const handleDeleteStep = (unWantedStepId) => {
     const HOLDER = recipeSteps;
     const newHolder = HOLDER.filter((rec, inDx) => inDx !== unWantedStepId);
-    console.log('this newHolder', newHolder, unWantedStepId);
 
     setRecipeSteps([...newHolder]);
   };
