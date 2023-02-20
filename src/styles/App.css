@@ -5,46 +5,32 @@
 }
 
 .App {
-  background-color: #ffc145;
-  background-color: #6ee374;
+  /* background-color: #ffc145; */
+  border: 1px solid grey;
+  border-top: none;
+  border-bottom: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 97vw;
   max-width: 1224px;
   height: fit-content;
-  margin: 2rem auto;
-  padding: 0 2rem 1rem;
-  border-radius: 0 70px 0 0;
-}
-
-.add-food-btn {
-  background-color: #ec5766;
-  color: #fff;
-  font-weight: 700;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 1rem;
-  align-self: flex-end;
-  border: none;
-  transition: 0.5s;
-}
-
-.add-food-btn:hover {
-  box-shadow: 0 0 10px #222;
+  margin: 0 auto;
+  padding: 5rem 2rem 1rem;
 }
 
 .below-are {
+  font-size: 1.3rem;
+  border-bottom: 1px solid #080;
   width: fit-content;
   margin: 1rem auto;
+  padding-bottom: 1rem;
   cursor: default;
 }
 
 .app-buttons {
-  background-color: gold;
   height: fit-content;
   width: fit-content;
-  padding: 10px;
   margin: 0.7rem auto;
 }
 

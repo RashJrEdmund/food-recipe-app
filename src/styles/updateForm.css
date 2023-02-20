@@ -8,15 +8,18 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
+  min-height: fit-content;
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 5;
+  overflow: auto;
 }
 
 @keyframes updateFormAnime {
   from {
-    top: -120%;
+    top: -130%;
   }
 
   to {
@@ -35,6 +38,7 @@
   height: fit-content;
   padding: 2rem 1.2rem;
   border-radius: 20px 0 0;
+  margin: 2rem auto;
 }
 
 .update-form-container .update-food-form {
