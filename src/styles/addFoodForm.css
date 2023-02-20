@@ -33,10 +33,12 @@
   position: relative;
 
   background-color: #ec5766;
+  background-color: green;
   width: 98vw;
   max-width: 600px;
   padding: 2rem 1.2rem;
   border-radius: 20px 0 0;
+  box-shadow: 0 0 10px #222;
 }
 
 .add-food-overlay .add-food-form {

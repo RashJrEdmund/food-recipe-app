@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable no-return-assign */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -21,9 +22,9 @@ export default function UpdateFoodForm() {
 
   const handleSaveUpdatedFood = () => {
     const Holder = foodData;
-    const newHolder = Holder.map((food, index) => {
+    const newHolder = Holder.map((food) => {
       if (food.id === pickedFoodToUpdate.id) {
-        return (Holder[index] = { ...pickedFoodToUpdate });
+        return (Holder[food] = { ...pickedFoodToUpdate });
       }
       return food;
     });
@@ -38,7 +39,9 @@ export default function UpdateFoodForm() {
   };
 
   const updateChosenFoodSteps = (nextStep) => {
-    // console.log('you wish to add :', nextStep);
+    if (nextStep === '') {
+      return;
+    }
     const stepHolder = pickedFoodToUpdate.recipe;
     stepHolder.push(nextStep);
     setPickFoodToUpdate((prev) => ({ ...prev, recipe: stepHolder }));
@@ -61,6 +64,7 @@ export default function UpdateFoodForm() {
           onSubmit={(e) => {
             e.preventDefault();
             updateChosenFoodSteps(e.target.elements.next_update_step.value);
+            e.target.elements.next_update_step.value = '';
           }}
         >
           <button
@@ -94,6 +98,7 @@ export default function UpdateFoodForm() {
             <p>Input steps below</p>
             <div>
               <input
+                autoFocus
                 type="text"
                 id="next_update_step"
                 placeholder="input Step to Add"
