@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable no-alert */
 import React from 'react';
 import styled from 'styled-components';
@@ -10,9 +9,6 @@ const StyledForm = styled.form`
   justify-content: center;
 
   input {
-    background-color: gold;
-    background-color: #ec5766;
-    background-color: #6ee374;
     background-color: #f0b843;
     width: 55vw;
     min-width: 300px;
@@ -61,8 +57,6 @@ export default function SearchForm() {
     );
 
     setFoodData(Results);
-
-    console.log('this search Results', Results.length);
 
     if (Results.length < 1) {
       alert('no foods match search');
