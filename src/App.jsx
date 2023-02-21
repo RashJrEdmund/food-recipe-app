@@ -78,10 +78,11 @@ const MyData = [
 
 function App() {
   const [foodData, setFoodData] = React.useState(MyData);
+  const [pickedFoodToUpdate, setPickFoodToUpdate] = React.useState({});
 
   const [showFoodForm, setShowFoodForm] = React.useState(false);
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
-  const [pickedFoodToUpdate, setPickFoodToUpdate] = React.useState({});
+  const [activeMenu, setActiveMenu] = React.useState(false);
 
   const toggleBodyOverFlow = () => {
     if (showFoodForm || showUpdateFrom) {
@@ -109,6 +110,9 @@ function App() {
 
         showUpdateFrom,
         setShowUpdateForm,
+
+        activeMenu,
+        setActiveMenu,
 
         pickedFoodToUpdate,
         setPickFoodToUpdate,
