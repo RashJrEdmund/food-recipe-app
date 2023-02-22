@@ -83,12 +83,17 @@ function App() {
   const [foodData, setFoodData] = React.useState(MyData);
   const [pickedFoodToUpdate, setPickFoodToUpdate] = React.useState({});
 
-  const [showFoodForm, setShowFoodForm] = React.useState(false);
+  const [showFoodForm, setShowFoodForm] = React.useState({
+    form: false,
+    uploadImg: false,
+  });
+
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState(false);
+  const [imagePath, setImagePath] = React.useState('');
 
   const toggleBodyOverFlow = () => {
-    if (showFoodForm || showUpdateFrom) {
+    if (showFoodForm.form || showUpdateFrom) {
       document.body.classList.add('body-overflow');
     } else {
       document.body.classList.remove('body-overflow');
@@ -97,7 +102,7 @@ function App() {
 
   React.useEffect(() => {
     toggleBodyOverFlow();
-  }, [showFoodForm, showUpdateFrom]);
+  }, [showFoodForm.form, showUpdateFrom]);
 
   return (
     <MyFoodContext.Provider
@@ -109,6 +114,10 @@ function App() {
         foodData,
         setFoodData,
 
+        pickedFoodToUpdate,
+        setPickFoodToUpdate,
+
+        showFoodForm,
         setShowFoodForm,
 
         showUpdateFrom,
@@ -117,13 +126,13 @@ function App() {
         activeMenu,
         setActiveMenu,
 
-        pickedFoodToUpdate,
-        setPickFoodToUpdate,
+        imagePath,
+        setImagePath,
       }}
     >
       <Hero />
 
-      {showFoodForm && <AddFoodForm />}
+      {showFoodForm.form && <AddFoodForm />}
 
       <div className="App" id="App">
         <p className="below-are">
