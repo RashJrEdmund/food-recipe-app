@@ -46,7 +46,7 @@ export default function Navbar() {
             className="add-food-btn"
             type="button"
             onClick={() => {
-              setShowFoodForm((prev) => !prev);
+              setShowFoodForm((prev) => ({ ...prev, form: !prev.form }));
               setActiveMenu((prev) => !prev);
               toggleBodyOverFlow();
             }}

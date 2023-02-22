@@ -8,17 +8,26 @@ import React from 'react';
 import '../styles/addFoodForm.css';
 import MyFoodContext from '../context/MyContext';
 import closeIcon from '../images/close menu icon.png';
+import UploadImage from './UploadImage';
 
 export default function AddFoodForm() {
-  const { setShowFoodForm, foodData, setFoodData } =
-    React.useContext(MyFoodContext);
+  const {
+    showFoodForm,
+    setShowFoodForm,
+
+    foodData,
+    setFoodData,
+
+    imagePath,
+    setImagePath,
+  } = React.useContext(MyFoodContext);
 
   const [foodNom, setFoodNom] = React.useState('');
   const [recipeSteps, setRecipeSteps] = React.useState([]);
 
   const handleSaveFood = () => {
     if (recipeSteps.length <= 0) {
-      setShowFoodForm((prev) => !prev);
+      setShowFoodForm((prev) => ({ ...prev, form: !prev.form }));
       return;
     }
 
@@ -34,7 +43,7 @@ export default function AddFoodForm() {
         id: foodData[foodData.length - 1].id + 1,
       },
     ]);
-    setShowFoodForm((prev) => !prev);
+    setShowFoodForm((prev) => ({ ...prev, form: !prev.form }));
   };
 
   const handleAddStep = (nextStep) => {
@@ -66,6 +75,9 @@ export default function AddFoodForm() {
           <button
             className="close-form-btn"
             type="button"
+            style={{
+              backgroundColor: recipeSteps.length >= 1 ? '#6ee374' : 'brown',
+            }}
             onClick={handleSaveFood}
           >
             {recipeSteps.length >= 1 ? 'save newFood' : 'closeForm'}
@@ -82,6 +94,29 @@ export default function AddFoodForm() {
               onChange={(e) => setFoodNom(e.target.value)}
             />
           </div>
+
+          {/* UPLOAD IMAGE SECTION */}
+
+          <button
+            className="open-add-image-btn"
+            type="button"
+            style={{
+              backgroundColor: showFoodForm.uploadImg ? 'brown' : '#6ee374',
+            }}
+            onClick={() => {
+              setShowFoodForm((prev) => ({
+                ...prev,
+                uploadImg: !prev.uploadImg,
+              }));
+              setImagePath('');
+            }}
+          >
+            {showFoodForm.uploadImg ? 'Close Image' : 'Add Image'}
+          </button>
+
+          {showFoodForm.uploadImg && <UploadImage />}
+
+          {/* ENDING UPLOAD IMAGE SECTION */}
 
           <div className="add-steps-section">
             <p>Input steps below</p>
