@@ -46,11 +46,20 @@ const StyledFoodContainer = styled.div`
       }
 
       h1 {
-        font-size: 1.3rem;
         margin: 1rem 0;
-        border-bottom: 1px solid grey;
-        padding-bottom: 10px;
         width: fit-content;
+
+        .piece-name {
+          font-size: 1.3rem;
+          border-bottom: 1px solid grey;
+          padding-bottom: 10px;
+        }
+
+        .how-to-prep {
+          font-size: 1rem;
+          font-weight: 300;
+          font-style: italic;
+        }
       }
 
       ol {

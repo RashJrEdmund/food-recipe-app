@@ -12,7 +12,6 @@ import UploadImage from './UploadImage';
 
 export default function AddFoodForm() {
   const {
-    showFoodForm,
     setShowFoodForm,
 
     foodData,
@@ -27,7 +26,8 @@ export default function AddFoodForm() {
 
   const handleSaveFood = () => {
     if (recipeSteps.length <= 0) {
-      setShowFoodForm((prev) => ({ ...prev, form: !prev.form }));
+      setShowFoodForm((prev) => ({ form: !prev.form, uploadImg: false }));
+      setImagePath(null);
       return;
     }
 
@@ -36,14 +36,15 @@ export default function AddFoodForm() {
 
       {
         name: foodNom,
-        img: 'src',
+        img: imagePath,
         recipe: recipeSteps,
         showRecipe: false,
         fav: false,
         id: foodData[foodData.length - 1].id + 1,
       },
     ]);
-    setShowFoodForm((prev) => ({ ...prev, form: !prev.form }));
+    setShowFoodForm((prev) => ({ form: !prev.form, uploadImg: false }));
+    setImagePath(null);
   };
 
   const handleAddStep = (nextStep) => {
@@ -77,6 +78,7 @@ export default function AddFoodForm() {
             type="button"
             style={{
               backgroundColor: recipeSteps.length >= 1 ? '#6ee374' : 'brown',
+              color: recipeSteps.length >= 1 ? '#000' : '#fff',
             }}
             onClick={handleSaveFood}
           >
@@ -97,24 +99,7 @@ export default function AddFoodForm() {
 
           {/* UPLOAD IMAGE SECTION */}
 
-          <button
-            className="open-add-image-btn"
-            type="button"
-            style={{
-              backgroundColor: showFoodForm.uploadImg ? 'brown' : '#6ee374',
-            }}
-            onClick={() => {
-              setShowFoodForm((prev) => ({
-                ...prev,
-                uploadImg: !prev.uploadImg,
-              }));
-              setImagePath('');
-            }}
-          >
-            {showFoodForm.uploadImg ? 'Close Image' : 'Add Image'}
-          </button>
-
-          {showFoodForm.uploadImg && <UploadImage />}
+          <UploadImage />
 
           {/* ENDING UPLOAD IMAGE SECTION */}
 
