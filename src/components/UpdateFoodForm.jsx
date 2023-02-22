@@ -8,6 +8,7 @@ import React from 'react';
 import '../styles/updateForm.css';
 import MyFoodContext from '../context/MyContext';
 import closeIcon from '../images/close menu icon.png';
+import UploadImage from './UploadImage';
 
 export default function UpdateFoodForm() {
   const {
@@ -18,18 +19,33 @@ export default function UpdateFoodForm() {
 
     pickedFoodToUpdate,
     setPickFoodToUpdate,
+
+    imagePath,
+    setImagePath,
+
+    setShowFoodForm,
   } = React.useContext(MyFoodContext);
 
   const handleSaveUpdatedFood = () => {
     const Holder = foodData;
     const newHolder = Holder.map((food) => {
       if (food.id === pickedFoodToUpdate.id) {
-        return (Holder[food] = { ...pickedFoodToUpdate });
+        return (Holder[food] = {
+          ...pickedFoodToUpdate,
+          img: imagePath || food.img, // this a powerfull line, (if imagePath === null, return food.img else imagePath)
+        });
       }
       return food;
     });
 
+    console.log(pickedFoodToUpdate, imagePath);
+
     setFoodData([...newHolder]);
+    setImagePath(null);
+    setShowFoodForm((prev) => ({
+      ...prev,
+      uploadImg: false,
+    }));
   };
 
   const handleModifyPickedFoodName = (newNom) => {
@@ -93,6 +109,8 @@ export default function UpdateFoodForm() {
               }}
             />
           </div>
+
+          <UploadImage />
 
           <div className="add-steps-section">
             <p>Input steps below</p>

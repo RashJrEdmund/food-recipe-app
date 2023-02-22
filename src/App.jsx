@@ -90,7 +90,7 @@ function App() {
 
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState(false);
-  const [imagePath, setImagePath] = React.useState('');
+  const [imagePath, setImagePath] = React.useState(null);
 
   const toggleBodyOverFlow = () => {
     if (showFoodForm.form || showUpdateFrom) {

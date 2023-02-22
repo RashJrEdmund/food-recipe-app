@@ -53,7 +53,10 @@ export default function FoodContainer() {
                   : 'food-recipe'
               }
             >
-              <h1>How to prepare {piece.name} </h1>
+              <h1>
+                <span className="how-to-prep">How to prepare</span>{' '}
+                <span className="piece-name"> {piece.name}</span>
+              </h1>
               <ol>
                 {piece.recipe.map((rec, ind) => (
                   <li key={ind}>{rec}</li>
