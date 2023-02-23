@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import menuIcon from '../images/menu icon.svg';
 import closeMenuIcon from '../images/close menu icon.png';
@@ -64,13 +65,15 @@ export default function Navbar() {
             </button>
           </a>
 
-          <button
-            id="foods-btn"
-            type="button"
-            onClick={() => setActiveMenu((prev) => !prev)}
-          >
-            FAVORITES
-          </button>
+          <Link to="/favorites">
+            <button
+              id="foods-btn"
+              type="button"
+              onClick={() => setActiveMenu((prev) => !prev)}
+            >
+              FAVORITES
+            </button>
+          </Link>
 
           <a href="#footer">
             <button

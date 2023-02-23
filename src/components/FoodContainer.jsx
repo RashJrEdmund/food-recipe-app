@@ -9,6 +9,8 @@ export default function FoodContainer() {
     foodData,
     setFoodData,
 
+    setFavorite,
+
     showUpdateFrom,
     setShowUpdateForm,
 
@@ -21,10 +23,14 @@ export default function FoodContainer() {
     setFoodData([...holder]);
   };
 
-  const handleFavorite = (id) => {
+  const handleFavorite = (ID) => {
     const holder = foodData;
-    holder[id].fav = !holder[id].fav;
+    holder[ID].fav = !holder[ID].fav;
     setFoodData([...holder]);
+
+    const Fav = holder.filter(({ fav }) => fav === true);
+
+    setFavorite(Fav);
   };
 
   const handleDeleteFood = (ID) => {
@@ -89,7 +95,7 @@ export default function FoodContainer() {
                 type="button"
                 className="add-btn"
                 name={piece.id}
-                onClick={(e) => handleFavorite(e.target.name)}
+                onClick={(e) => handleFavorite(+e.target.name)}
               >
                 {piece.fav ? 'remove from favorite' : '+ to Favorite'}
               </button>
