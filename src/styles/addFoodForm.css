@@ -32,10 +32,12 @@
   animation-duration: 0.7s;
   position: relative;
 
-  background-color: #ec5766;
   background-color: green;
   width: 98vw;
   max-width: 600px;
+  height: fit-content;
+  max-height: 90vh;
+  overflow: auto;
   padding: 2rem 1.2rem;
   border-radius: 20px 0 0;
   box-shadow: 0 0 10px #222;

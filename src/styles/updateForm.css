@@ -33,8 +33,11 @@
   position: relative;
 
   background-color: green;
-  width: 98vw;
+  width: 90vw;
   max-width: 600px;
+  height: fit-content;
+  max-height: 90vh;
+  overflow: auto;
   height: fit-content;
   padding: 2rem 1.2rem;
   border-radius: 20px 0 0;

@@ -8,14 +8,42 @@ import closeMenuIcon from '../images/close menu icon.png';
 import MyFoodContext from '../context/MyContext';
 
 export default function Navbar() {
-  const { activeMenu, setActiveMenu, setShowFoodForm, toggleBodyOverFlow } =
-    React.useContext(MyFoodContext);
+  const {
+    foodData,
+    setFoodData,
+
+    favoriteData,
+    setFavorite,
+
+    activeMenu,
+    setActiveMenu,
+
+    setShowFoodForm,
+    toggleBodyOverFlow,
+  } = React.useContext(MyFoodContext);
+
+  const closeAllOpenRecipes = () => {
+    const holder1 = foodData;
+    const newHolder1 = holder1.map((food) => ({ ...food, showRecipe: false }));
+    setFoodData(newHolder1);
+
+    const holderFav = favoriteData;
+    const newHolderFav = favoriteData
+      ? holderFav.map((food) => ({ ...food, showRecipe: false }))
+      : [];
+
+    setFavorite(newHolderFav);
+  };
 
   return (
     <div className="nav-bar-container">
       <nav className="nav-bar">
         <a href="#hero-section">
-          <button id="home-btn" type="button">
+          <button
+            id="home-btn"
+            type="button"
+            onClick={() => closeAllOpenRecipes()}
+          >
             HOME
           </button>
         </a>
@@ -26,7 +54,10 @@ export default function Navbar() {
           }
           src={menuIcon}
           alt="menu icon"
-          onClick={() => setActiveMenu((prev) => !prev)}
+          onClick={() => {
+            setActiveMenu((prev) => !prev);
+            closeAllOpenRecipes();
+          }}
         />
 
         <div
@@ -40,7 +71,10 @@ export default function Navbar() {
             className="close-menu-icon"
             src={closeMenuIcon}
             alt="close menu icon"
-            onClick={() => setActiveMenu((prev) => !prev)}
+            onClick={() => {
+              setActiveMenu((prev) => !prev);
+              closeAllOpenRecipes();
+            }}
           />
 
           <button
@@ -49,6 +83,7 @@ export default function Navbar() {
             onClick={() => {
               setShowFoodForm((prev) => ({ ...prev, form: !prev.form }));
               setActiveMenu((prev) => !prev);
+              closeAllOpenRecipes();
               toggleBodyOverFlow();
             }}
           >
@@ -59,7 +94,10 @@ export default function Navbar() {
             <button
               id="foods-btn"
               type="button"
-              onClick={() => setActiveMenu((prev) => !prev)}
+              onClick={() => {
+                setActiveMenu((prev) => !prev);
+                closeAllOpenRecipes();
+              }}
             >
               FOODS
             </button>
@@ -69,7 +107,10 @@ export default function Navbar() {
             <button
               id="foods-btn"
               type="button"
-              onClick={() => setActiveMenu((prev) => !prev)}
+              onClick={() => {
+                setActiveMenu((prev) => !prev);
+                closeAllOpenRecipes();
+              }}
             >
               FAVORITES
             </button>
@@ -79,7 +120,10 @@ export default function Navbar() {
             <button
               id="contact-btn"
               type="button"
-              onClick={() => setActiveMenu((prev) => !prev)}
+              onClick={() => {
+                setActiveMenu((prev) => !prev);
+                closeAllOpenRecipes();
+              }}
             >
               CONTACT
             </button>

@@ -11,7 +11,6 @@ export default function FavoritePage() {
   } = React.useContext(MyFoodContext);
 
   const handleShowFavsRecipe = (ind) => {
-    console.log('handle fav entered', ind);
     const holder = favoriteData;
     holder[ind].showRecipe = !holder[ind].showRecipe;
     setFavorite([...holder]);

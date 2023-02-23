@@ -131,21 +131,24 @@ export default function UpdateFoodForm() {
         <h3 className="form-food-name">
           Name: <span>{pickedFoodToUpdate.name}</span>
         </h3>
-        <ol className="display-steps-section">
-          {pickedFoodToUpdate.recipe.map((stage, ind) => (
-            <li key={ind}>
-              {stage}
-              <img
-                src={closeIcon}
-                id={ind}
-                alt="delete_food_icon"
-                onClick={(e) => {
-                  handleDeleteUpdateStep(+e.target.id);
-                }}
-              />
-            </li>
-          ))}
-        </ol>
+
+        <div className="display-steps-container">
+          <ol className="display-steps-section">
+            {pickedFoodToUpdate.recipe.map((stage, ind) => (
+              <li key={ind}>
+                {stage}
+                <img
+                  src={closeIcon}
+                  id={ind}
+                  alt="delete_food_icon"
+                  onClick={(e) => {
+                    handleDeleteUpdateStep(+e.target.id);
+                  }}
+                />
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </div>
   );

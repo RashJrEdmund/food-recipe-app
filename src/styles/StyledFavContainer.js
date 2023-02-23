@@ -90,6 +90,9 @@ const StyledFavContainer = styled.div`
           margin: 1.3rem auto;
           padding-left: 1.4rem;
           width: 100%;
+          height: fit-content;
+          max-height: 300px;
+          overflow-y: auto;
 
           li {
             word-wrap: break-word;
@@ -99,20 +102,6 @@ const StyledFavContainer = styled.div`
             font-style: italic;
             padding: 8px 0;
             margin: 0;
-          }
-        }
-
-        .update-recipe-btn {
-          background-color: #a5a5a5;
-          font-weight: 650;
-          padding: 10px;
-          border-radius: 10px;
-          align-self: flex-end;
-          transition: 0.5s;
-          margin: 1rem 0 0;
-
-          &:hover {
-            box-shadow: 0 0 10px #222;
           }
         }
       }

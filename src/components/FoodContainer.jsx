@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import StyledFoodContainer from '../styles/StyledFoodContainer';
+import closeIcon from '../images/close menu icon.png';
 import MyFoodContext from '../context/MyContext';
 import UpdateFoodForm from './UpdateFoodForm';
 
@@ -68,19 +71,28 @@ export default function FoodContainer() {
                   <li key={ind}>{rec}</li>
                 ))}
               </ol>
+              <div className="recipe-btns-holder">
+                <img
+                  className="close-recipe-btn"
+                  src={closeIcon}
+                  name={index}
+                  alt="delete_food_icon"
+                  onClick={(e) => handleShowRecipe(e.target.name)}
+                />
 
-              <button
-                className="update-recipe-btn"
-                type="button"
-                id={piece.id}
-                onClick={(e) => {
-                  chooseFoodToUpdate(+e.target.id);
-                  setShowUpdateForm((prev) => !prev);
-                  handleShowRecipe(index);
-                }}
-              >
-                UpdateRecipe
-              </button>
+                <button
+                  className="update-recipe-btn"
+                  type="button"
+                  id={piece.id}
+                  onClick={(e) => {
+                    chooseFoodToUpdate(+e.target.id);
+                    setShowUpdateForm((prev) => !prev);
+                    handleShowRecipe(index);
+                  }}
+                >
+                  UpdateRecipe
+                </button>
+              </div>
             </div>
 
             <h2 className="food-title">{piece.name}</h2>
@@ -101,7 +113,8 @@ export default function FoodContainer() {
               </button>
               <button
                 type="button"
-                className="del-btn"
+                className="
+                background-color: gold;del-btn"
                 name={piece.id}
                 onClick={(e) => handleDeleteFood(+e.target.name)}
               >
