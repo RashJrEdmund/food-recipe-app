@@ -5,10 +5,7 @@ import MyFoodContext from '../context/MyContext';
 import StyledFavContainer from '../styles/StyledFavContainer';
 
 export default function FavoritePage() {
-  const {
-    /* setShowUpdateForm, chooseFoodToUpdate, */ favoriteData,
-    setFavorite,
-  } = React.useContext(MyFoodContext);
+  const { favoriteData, setFavorite } = React.useContext(MyFoodContext);
 
   const handleShowFavsRecipe = (ind) => {
     const holder = favoriteData;

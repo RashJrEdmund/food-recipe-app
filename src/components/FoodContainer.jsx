@@ -20,6 +20,8 @@ export default function FoodContainer() {
     setPickFoodToUpdate,
   } = React.useContext(MyFoodContext);
 
+  let localData = JSON.parse(localStorage.getItem('MyData'));
+
   const handleShowRecipe = (ind) => {
     const holder = foodData;
     holder[ind].showRecipe = !holder[ind].showRecipe;
@@ -27,24 +29,25 @@ export default function FoodContainer() {
   };
 
   const handleFavorite = (ID) => {
-    const holder = foodData;
-    holder[ID].fav = !holder[ID].fav;
-    setFoodData([...holder]);
+    localData[ID].fav = !localData[ID].fav;
+    setFoodData([...localData]);
+    localStorage.setItem('MyData', JSON.stringify(localData));
 
-    const Fav = holder.filter(({ fav }) => fav === true);
+    const Fav = localData.filter(({ fav }) => fav === true);
+    localStorage.setItem('favorites', JSON.stringify(Fav));
 
     setFavorite(Fav);
   };
 
   const handleDeleteFood = (ID) => {
-    const holder = foodData;
-    const newHolder = holder.filter(({ id }) => id !== ID);
-    setFoodData([...newHolder]);
+    const holder = localData.filter(({ id }) => id !== ID);
+    setFoodData([...holder]);
+    localStorage.setItem('MyData', JSON.stringify(holder));
+    localData = JSON.parse(localStorage.getItem('MyData'));
   };
 
   const chooseFoodToUpdate = (ID) => {
-    const holder = foodData;
-    const newHolder = holder.filter((food) => food.id === ID);
+    const newHolder = localData.filter((food) => food.id === ID);
     setPickFoodToUpdate(...newHolder);
   };
 

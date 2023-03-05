@@ -4,7 +4,7 @@
 import './styles/App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Data from './data/Data.json';
+import MyData from './data/Data.json';
 import MyFoodContext from './context/MyContext';
 import FoodContainer from './components/FoodContainer';
 import AddFoodForm from './components/AddFoodForm';
@@ -79,20 +79,23 @@ import FavoritePage from './components/FavoritePage';
 //   },
 // ];
 
-const MyData = Data;
-
 // const MyData = Data;
 
-localStorage.setItem('MyData', JSON.stringify(MyData));
+// const MyData = Data;
+if (!JSON.parse(localStorage.getItem('MyData'))) {
+  localStorage.setItem('MyData', JSON.stringify(MyData));
+}
 
-// console.log('this localStore', localStorage.getItem(JSON.parse('MyData')));
+const localData = JSON.parse(localStorage.getItem('MyData'));
 // localStorage.clear();
 
 // const localData = Data;
 
 function App() {
-  const [foodData, setFoodData] = React.useState(MyData);
-  const [favoriteData, setFavorite] = React.useState([]);
+  const [foodData, setFoodData] = React.useState(localData);
+  const [favoriteData, setFavorite] = React.useState(
+    JSON.parse(localStorage.getItem('favorites'))
+  );
   const [pickedFoodToUpdate, setPickFoodToUpdate] = React.useState({});
 
   const [showFoodForm, setShowFoodForm] = React.useState({
@@ -122,6 +125,7 @@ function App() {
         toggleBodyOverFlow,
 
         MyData,
+        localData,
 
         foodData,
         setFoodData,
