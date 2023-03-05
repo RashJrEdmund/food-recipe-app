@@ -17,6 +17,7 @@ if (!JSON.parse(localStorage.getItem('MyData'))) {
 }
 
 const localData = JSON.parse(localStorage.getItem('MyData'));
+
 function App() {
   const [foodData, setFoodData] = React.useState(localData);
 
@@ -58,6 +59,10 @@ function App() {
       : [];
 
     setFavorite(newHolderFav);
+  };
+
+  const handleNavigation = () => {
+    alert('this feature is not yet availble');
   };
 
   return (
@@ -110,7 +115,11 @@ function App() {
           </Routes>
 
           <div className="app-buttons">
-            <button className="left-right-btns" type="button">
+            <button
+              className="left-right-btns"
+              type="button"
+              onClick={() => handleNavigation()}
+            >
               &#60;
             </button>
 
@@ -119,12 +128,17 @@ function App() {
                 className="page-number-button"
                 type="button"
                 key={piece.id}
+                onClick={() => handleNavigation()}
               >
                 {piece.id + 1}
               </button>
             ))}
 
-            <button className="left-right-btns" type="button">
+            <button
+              className="left-right-btns"
+              type="button"
+              onClick={() => handleNavigation()}
+            >
               &#62;
             </button>
           </div>

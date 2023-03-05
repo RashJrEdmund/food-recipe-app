@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import closeIcon from '../images/close menu icon.png';
 import MyFoodContext from '../context/MyContext';
 import StyledFavContainer from '../styles/StyledFavContainer';
 
@@ -42,6 +45,14 @@ export default function FavoritePage() {
                     <li key={ind}>{rec}</li>
                   ))}
                 </ol>
+
+                <img
+                  className="close-recipe-btn"
+                  src={closeIcon}
+                  name={index}
+                  alt="delete_food_icon"
+                  onClick={(e) => handleShowFavsRecipe(e.target.name)}
+                />
 
                 {/* <button
                   className="update-recipe-btn"

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
 import menuIcon from '../images/menu icon.svg';
 import closeMenuIcon from '../images/close menu icon.png';
@@ -17,6 +17,8 @@ export default function Navbar() {
 
     closeAllOpenRecipes,
   } = React.useContext(MyFoodContext);
+
+  const navigate = useNavigate();
 
   return (
     <div className="nav-bar-container">
@@ -86,18 +88,19 @@ export default function Navbar() {
             </button>
           </a>
 
-          <Link to="/favorites">
+          <a href="#App">
             <button
               id="foods-btn"
               type="button"
               onClick={() => {
                 setActiveMenu((prev) => !prev);
                 closeAllOpenRecipes();
+                navigate('/favorites');
               }}
             >
               FAVORITES
             </button>
-          </Link>
+          </a>
 
           <a href="#footer">
             <button

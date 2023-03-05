@@ -50,7 +50,11 @@ export default function Footer() {
 
       <div className="footer-btns">
         <a href="#hero-section">
-          <button className="got-to-top" type="button">
+          <button
+            className="got-to-top"
+            type="button"
+            onClick={closeAllOpenRecipes}
+          >
             TOP
           </button>
         </a>

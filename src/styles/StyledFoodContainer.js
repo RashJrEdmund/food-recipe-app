@@ -17,13 +17,13 @@ const StyledFoodContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 1rem 10px;
-    margin: 1rem auto;
+    margin: 1rem;
     max-width: 350px;
-    width: 100%;
+    width: Calc(100% - 1rem);
     height: fit-content;
     border-radius: 20px 0 0;
     box-shadow: 0 0 10px #222;
-    z-index: 0;
+    z-index: 1;
 
     .food-recipe {
       background-color: #f0b843;
@@ -35,9 +35,9 @@ const StyledFoodContainer = styled.div`
       display: flex;
       flex-direction: column;
       padding: 10px 10px 1rem;
-      opacity: 0;
+      /* opacity: 0; */
       transition: 0.5s;
-      z-index: -1;
+      z-index: -4;
 
       &.active-food-recipe {
         right: -90%;
@@ -136,7 +136,7 @@ const StyledFoodContainer = styled.div`
       min-height: 245px;
       max-height: 300px;
       transition: 0.5s;
-      z-index: 1;
+      /* z-index: 1; */
 
       &:hover {
         transform: scale(1.03);
@@ -144,11 +144,12 @@ const StyledFoodContainer = styled.div`
     }
 
     .action-btns {
-      width: 100%;
+      width: calc(100% - 20px);
+      max-width: 200px;
       height: fit-content;
       display: flex;
       justify-content: space-between;
-      margin: 2.2rem auto 0;
+      margin: 1.5rem auto 0;
 
       button {
         padding: 5px 10px;
@@ -163,17 +164,39 @@ const StyledFoodContainer = styled.div`
       }
 
       .add-btn {
-        background-color: #6ee374;
+        background: none;
+
+        .fa-icon {
+          position: relative;
+          height: 25px;
+          width: 25px;
+          z-index: -1;
+        }
       }
 
       .del-btn {
-        background-color: #ec5766;
+        background: none;
+        padding: 0;
+        height: 38px;
+        width: 38px;
+        border-radius: 5px;
+
+        .fa-icon {
+          position: relative;
+          inset: 0;
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          padding: 2px;
+          font-size: 20px;
+          z-index: -1;
+        }
       }
     }
 
     .see-recipe-btn {
       padding: 5px 10px;
-      margin: 2.5rem auto 0.5rem;
+      margin: 1rem auto;
       border-radius: 5px;
       font-weight: 600;
       font-size: 1.05rem;
@@ -185,7 +208,7 @@ const StyledFoodContainer = styled.div`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     gap: 0 1rem;
     grid-template-columns: repeat(2, 1fr);
 
@@ -216,6 +239,16 @@ const StyledFoodContainer = styled.div`
         }
       }
 
+      .action-btns {
+        button {
+          box-shadow: 0 0 10px #222;
+
+          &:hover {
+            box-shadow: 0 0 10px #222;
+          }
+        }
+      }
+
       .food-title {
         &:hover {
           color: #000;
@@ -227,6 +260,10 @@ const StyledFoodContainer = styled.div`
 
   @media only screen and (max-width: 600px) {
     grid-template-columns: 1fr;
+
+    .food-div {
+      margin: 1rem auto;
+    }
   }
 `;
 

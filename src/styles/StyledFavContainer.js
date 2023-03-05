@@ -43,7 +43,7 @@ const StyledFavContainer = styled.div`
       padding: 1rem 10px;
       margin: 1rem auto;
       max-width: 350px;
-      width: 100%;
+      width: Calc(100% - 1rem);
       height: fit-content;
       border-radius: 20px 0 0;
       box-shadow: 0 0 10px #222;
@@ -104,6 +104,15 @@ const StyledFavContainer = styled.div`
             margin: 0;
           }
         }
+
+        .close-recipe-btn {
+          background-color: brown;
+          padding: 0;
+          margin: 0;
+          height: 40px;
+          width: 40px;
+          border-radius: 50px;
+        }
       }
 
       .food-title {
@@ -133,20 +142,6 @@ const StyledFavContainer = styled.div`
         }
       }
 
-      .add-btn {
-        background-color: #6ee374;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-weight: 600;
-        font-size: 1.05rem;
-        transition: 0.5s;
-        margin: 2.2rem 0 0;
-
-        &:hover {
-          box-shadow: 0 0 10px #222;
-        }
-      }
-
       .see-recipe-btn {
         padding: 5px 10px;
         margin: 2.5rem auto 0.5rem;
@@ -162,12 +157,28 @@ const StyledFavContainer = styled.div`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 850px) {
     .fav-subcontainer {
       gap: 0 1rem;
       grid-template-columns: repeat(2, 1fr);
 
       .food-div {
+        .food-recipe {
+          width: 100%;
+
+          &.active-food-recipe {
+            right: 0;
+            opacity: 1;
+            z-index: 3;
+            transform: scale(1.08, 1.2);
+          }
+
+          .recipe-btns-holder {
+            .close-recipe-btn {
+              display: unset;
+            }
+          }
+        }
         .food-image {
           &:hover {
             transform: scale(1);
@@ -187,6 +198,10 @@ const StyledFavContainer = styled.div`
   @media only screen and (max-width: 600px) {
     .fav-subcontainer {
       grid-template-columns: 1fr;
+
+      .food-div {
+        margin: 1rem auto;
+      }
     }
   }
 `;
