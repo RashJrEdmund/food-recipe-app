@@ -12,90 +12,18 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import FavoritePage from './components/FavoritePage';
 
-// const Data = [
-//   {
-//     name: 'Garri',
-//     img: 'https://i0.wp.com/humblevege.com/wp-content/uploads/2022/02/gari-soaking-garri-snack_humblevege.jpg?fit=1536%2C2048&ssl=1',
-//     recipe: [
-//       `pour required quantity in clean pan, taking note that "it's rising bad"`,
-//       `add enough water (enough to completely conver the golden poder)`,
-//       `pour out some of the hovering water to remove unnecessary particles`,
-//       `add sugar: add to your tates`,
-//       `garri also goes well with groundnut and or milk`,
-//     ],
-//     showRecipe: false,
-//     fav: false,
-//     id: 0,
-//   },
-//   {
-//     name: 'Khahti Khahti',
-//     img: 'https://africanbites.com/wp-content/uploads/2014/08/IMG_4973.jpg',
-//     recipe: [
-//       `kill and skin a fowl (cocks make more sense)`,
-//       `clean the innerParts and chop in different sieves`,
-//       `roast over enough heat (not neccessarily blazing fire)`,
-//       'while roasting, sieze and prepare corn fufu',
-//       `prepare sauce (enough of it): add maggi and salt to clean dry red oil and mix till finnesse`,
-//       `add the already roasted sliced bird to the ready sauce and mix`,
-//       `dish your self a hefty load of kiban accompanied with the bird and sauce`,
-//       `God did! enjoy! 😹`,
-//     ],
-//     showRecipe: false,
-//     fav: false,
-//     id: 1,
-//   },
-//   {
-//     name: 'Ndole',
-//     img: 'https://i.pinimg.com/originals/6d/e7/9c/6de79cb3e00b1eba9e36b945f8fc91b1.jpg',
-//     recipe: [`boil bitter leaf`, `i dont yet know the wosup 😹`],
-//     showRecipe: false,
-//     fav: false,
-//     id: 2,
-//   },
-//   {
-//     name: 'water Fufu & Erru',
-//     img: 'https://www.africanbites.com/wp-content/uploads/2022/02/Cassava-Fufu.jpg',
-//     recipe: [
-//       `cook water fufu`,
-//       'do some other things laat',
-//       'do another thing',
-//     ],
-//     showRecipe: false,
-//     fav: false,
-//     id: 3,
-//   },
-//   {
-//     name: 'Koki',
-//     img: 'https://sawagrill.com/wp-content/uploads/2022/06/rdd-07-scaled.webp',
-//     recipe: [
-//       `harvest and warm (to clean and make ready) plantain leaves`,
-//       `do something`,
-//       'do another thing',
-//       'take on something',
-//     ],
-//     showRecipe: false,
-//     fav: false,
-//     id: 4,
-//   },
-// ];
-
-// const MyData = Data;
-
-// const MyData = Data;
 if (!JSON.parse(localStorage.getItem('MyData'))) {
   localStorage.setItem('MyData', JSON.stringify(MyData));
 }
 
 const localData = JSON.parse(localStorage.getItem('MyData'));
-// localStorage.clear();
-
-// const localData = Data;
-
 function App() {
   const [foodData, setFoodData] = React.useState(localData);
+
   const [favoriteData, setFavorite] = React.useState(
     JSON.parse(localStorage.getItem('favorites'))
   );
+
   const [pickedFoodToUpdate, setPickFoodToUpdate] = React.useState({});
 
   const [showFoodForm, setShowFoodForm] = React.useState({
@@ -105,10 +33,11 @@ function App() {
 
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState(false);
+  const [resetDialogue, setResetDialogue] = React.useState(false);
   const [imagePath, setImagePath] = React.useState(null);
 
   const toggleBodyOverFlow = () => {
-    if (showFoodForm.form || showUpdateFrom) {
+    if (showFoodForm.form || showUpdateFrom || resetDialogue) {
       document.body.classList.add('body-overflow');
     } else {
       document.body.classList.remove('body-overflow');
@@ -117,12 +46,25 @@ function App() {
 
   React.useEffect(() => {
     toggleBodyOverFlow();
-  }, [showFoodForm.form, showUpdateFrom]);
+  }, [showFoodForm.form, showUpdateFrom, resetDialogue]);
+
+  const closeAllOpenRecipes = () => {
+    const holder1 = foodData;
+    const newHolder1 = holder1.map((food) => ({ ...food, showRecipe: false }));
+    setFoodData(newHolder1);
+
+    const newHolderFav = favoriteData
+      ? favoriteData.map((food) => ({ ...food, showRecipe: false }))
+      : [];
+
+    setFavorite(newHolderFav);
+  };
 
   return (
     <MyFoodContext.Provider
       value={{
         toggleBodyOverFlow,
+        closeAllOpenRecipes,
 
         MyData,
         localData,
@@ -147,6 +89,9 @@ function App() {
 
         imagePath,
         setImagePath,
+
+        resetDialogue,
+        setResetDialogue,
       }}
     >
       <BrowserRouter>

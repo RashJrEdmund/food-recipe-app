@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/no-array-index-key */
@@ -29,11 +30,16 @@ export default function FoodContainer() {
   };
 
   const handleFavorite = (ID) => {
-    localData[ID].fav = !localData[ID].fav;
-    setFoodData([...localData]);
-    localStorage.setItem('MyData', JSON.stringify(localData));
+    localData.forEach((food) => {
+      if (food.id === ID) {
+        food.fav = !food.fav;
+      }
+    });
 
+    setFoodData([...localData]);
     const Fav = localData.filter(({ fav }) => fav === true);
+
+    localStorage.setItem('MyData', JSON.stringify(localData));
     localStorage.setItem('favorites', JSON.stringify(Fav));
 
     setFavorite(Fav);
@@ -116,8 +122,7 @@ export default function FoodContainer() {
               </button>
               <button
                 type="button"
-                className="
-                background-color: gold;del-btn"
+                className="del-btn"
                 name={piece.id}
                 onClick={(e) => handleDeleteFood(+e.target.name)}
               >

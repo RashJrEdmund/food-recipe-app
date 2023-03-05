@@ -9,31 +9,14 @@ import MyFoodContext from '../context/MyContext';
 
 export default function Navbar() {
   const {
-    foodData,
-    setFoodData,
-
-    favoriteData,
-    setFavorite,
-
     activeMenu,
     setActiveMenu,
 
     setShowFoodForm,
     toggleBodyOverFlow,
+
+    closeAllOpenRecipes,
   } = React.useContext(MyFoodContext);
-
-  const closeAllOpenRecipes = () => {
-    const holder1 = foodData;
-    const newHolder1 = holder1.map((food) => ({ ...food, showRecipe: false }));
-    setFoodData(newHolder1);
-
-    const holderFav = favoriteData;
-    const newHolderFav = favoriteData
-      ? holderFav.map((food) => ({ ...food, showRecipe: false }))
-      : [];
-
-    setFavorite(newHolderFav);
-  };
 
   return (
     <div className="nav-bar-container">

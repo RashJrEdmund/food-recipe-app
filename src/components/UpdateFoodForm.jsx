@@ -12,10 +12,11 @@ import UploadImage from './UploadImage';
 
 export default function UpdateFoodForm() {
   const {
-    foodData,
     setFoodData,
 
     setShowUpdateForm,
+
+    setFavorite,
 
     pickedFoodToUpdate,
     setPickFoodToUpdate,
@@ -27,20 +28,24 @@ export default function UpdateFoodForm() {
   } = React.useContext(MyFoodContext);
 
   const handleSaveUpdatedFood = () => {
-    const Holder = foodData;
-    const newHolder = Holder.map((food) => {
+    const localHolder = JSON.parse(localStorage.getItem('MyData'));
+    const holder = localHolder.map((food) => {
       if (food.id === pickedFoodToUpdate.id) {
-        return (Holder[food] = {
+        return {
           ...pickedFoodToUpdate,
           img: imagePath || food.img, // this a powerfull line, (if imagePath === null, return food.img else imagePath)
-        });
+        };
       }
       return food;
     });
 
-    console.log(pickedFoodToUpdate, imagePath);
+    localStorage.setItem('MyData', JSON.stringify(holder));
 
-    setFoodData([...newHolder]);
+    const Fav = holder.filter(({ fav }) => fav === true);
+    localStorage.setItem('favorites', JSON.stringify(Fav));
+
+    setFoodData([...holder]);
+    setFavorite([...Fav]);
     setImagePath(null);
     setShowFoodForm((prev) => ({
       ...prev,
