@@ -177,7 +177,7 @@ const StyledFavContainer = styled.div`
         .food-title {
           &:hover {
             color: #000;
-            transform: scale(0);
+            transform: scale(1);
           }
         }
       }

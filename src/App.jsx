@@ -12,7 +12,7 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import FavoritePage from './components/FavoritePage';
 
-// let MyData = [
+// const Data = [
 //   {
 //     name: 'Garri',
 //     img: 'https://i0.wp.com/humblevege.com/wp-content/uploads/2022/02/gari-soaking-garri-snack_humblevege.jpg?fit=1536%2C2048&ssl=1',
@@ -80,6 +80,15 @@ import FavoritePage from './components/FavoritePage';
 // ];
 
 const MyData = Data;
+
+// const MyData = Data;
+
+localStorage.setItem('MyData', JSON.stringify(MyData));
+
+// console.log('this localStore', localStorage.getItem(JSON.parse('MyData')));
+// localStorage.clear();
+
+// const localData = Data;
 
 function App() {
   const [foodData, setFoodData] = React.useState(MyData);
