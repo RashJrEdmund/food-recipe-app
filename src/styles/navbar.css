@@ -81,6 +81,7 @@
 
   .nav-bar .side-menu-holder {
     background: linear-gradient(to bottom, #0000003b, #0000003b, #0000003b);
+    background-color: red;
     position: absolute;
     right: 0;
     top: 0;
