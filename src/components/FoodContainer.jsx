@@ -71,47 +71,47 @@ export default function FoodContainer() {
       {foodData.map((piece, index) => {
         return (
           <div className="food-div" key={piece.id}>
-            {piece.showRecipe && (
-              <div
-                className={
-                  piece.showRecipe
-                    ? 'food-recipe active-food-recipe'
-                    : 'food-recipe'
-                }
-              >
-                <h1>
-                  <span className="how-to-prep">How to prepare</span>{' '}
-                  <span className="piece-name"> {piece.name}</span>
-                </h1>
-                <ol>
-                  {piece.recipe.map((rec, ind) => (
-                    <li key={ind}>{rec}</li>
-                  ))}
-                </ol>
-                <div className="recipe-btns-holder">
-                  <img
-                    className="close-recipe-btn"
-                    src={closeIcon}
-                    name={index}
-                    alt="delete_food_icon"
-                    onClick={(e) => handleShowRecipe(e.target.name)}
-                  />
+            {/* {piece.showRecipe && ( */}
+            <div
+              className={
+                piece.showRecipe
+                  ? 'food-recipe active-food-recipe'
+                  : 'food-recipe'
+              }
+            >
+              <h1>
+                <span className="how-to-prep">How to prepare</span>{' '}
+                <span className="piece-name"> {piece.name}</span>
+              </h1>
+              <ol>
+                {piece.recipe.map((rec, ind) => (
+                  <li key={ind}>{rec}</li>
+                ))}
+              </ol>
+              <div className="recipe-btns-holder">
+                <img
+                  className="close-recipe-btn"
+                  src={closeIcon}
+                  name={index}
+                  alt="delete_food_icon"
+                  onClick={(e) => handleShowRecipe(e.target.name)}
+                />
 
-                  <button
-                    className="update-recipe-btn"
-                    type="button"
-                    id={piece.id}
-                    onClick={(e) => {
-                      chooseFoodToUpdate(+e.target.id);
-                      setShowUpdateForm((prev) => !prev);
-                      handleShowRecipe(index);
-                    }}
-                  >
-                    UpdateRecipe
-                  </button>
-                </div>
+                <button
+                  className="update-recipe-btn"
+                  type="button"
+                  id={piece.id}
+                  onClick={(e) => {
+                    chooseFoodToUpdate(+e.target.id);
+                    setShowUpdateForm((prev) => !prev);
+                    handleShowRecipe(index);
+                  }}
+                >
+                  UpdateRecipe
+                </button>
               </div>
-            )}
+            </div>
+            {/* )} */}
 
             <h2 className="food-title">{piece.name}</h2>
             {/* <img src={piece.img} alt="food_image" className="food-image" /> */}

@@ -23,7 +23,6 @@ const StyledFoodContainer = styled.div`
     height: fit-content;
     border-radius: 20px 0 0;
     box-shadow: 0 0 10px #222;
-    z-index: 1;
 
     .food-recipe {
       background-color: #f0b843;
@@ -35,9 +34,9 @@ const StyledFoodContainer = styled.div`
       display: flex;
       flex-direction: column;
       padding: 10px 10px 1rem;
-      /* opacity: 0; */
+      opacity: 0;
       transition: 0.5s;
-      z-index: -4;
+      z-index: -1;
 
       &.active-food-recipe {
         right: -90%;
@@ -145,11 +144,13 @@ const StyledFoodContainer = styled.div`
 
     .action-btns {
       width: calc(100% - 20px);
+      background: none;
       max-width: 200px;
       height: fit-content;
       display: flex;
       justify-content: space-between;
       margin: 1.5rem auto 0;
+      z-index: 1;
 
       button {
         padding: 5px 10px;
@@ -213,6 +214,8 @@ const StyledFoodContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);
 
     .food-div {
+      width: 100%;
+
       .food-recipe {
         width: 100%;
 

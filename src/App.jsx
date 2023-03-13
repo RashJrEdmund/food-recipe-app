@@ -12,6 +12,8 @@ import Hero from './components/Hero';
 import Footer from './components/Footer';
 import FavoritePage from './components/FavoritePage';
 
+import AlertMessage from './components/AlertMessage';
+
 if (!JSON.parse(localStorage.getItem('MyData'))) {
   localStorage.setItem('MyData', JSON.stringify(MyData));
 }
@@ -31,6 +33,8 @@ function App() {
     form: false,
     uploadImg: false,
   });
+
+  const [showAlert, setShowAlert] = React.useState(false);
 
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState(false);
@@ -61,8 +65,16 @@ function App() {
     setFavorite(newHolderFav);
   };
 
+  const toggleAlert = () => {
+    setShowAlert((prev) => !prev);
+
+    setTimeout(() => {
+      setShowAlert((prev) => !prev);
+    }, 2000);
+  };
+
   const handleNavigation = () => {
-    alert('this feature is not yet availble');
+    toggleAlert();
   };
 
   return (
@@ -101,6 +113,10 @@ function App() {
     >
       <BrowserRouter>
         <Hero />
+
+        {showAlert && (
+          <AlertMessage message="This feature is not yet availble" />
+        )}
 
         {showFoodForm.form && <AddFoodForm />}
 

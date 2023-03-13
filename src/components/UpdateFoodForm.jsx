@@ -75,8 +75,6 @@ export default function UpdateFoodForm() {
     setPickFoodToUpdate({ ...pickedFoodToUpdate, recipe: [...newHolder] });
   };
 
-  // console.log('name changed to :', { ...pickedFoodToUpdate });
-
   return (
     <div className="update-overlay">
       <div className="update-form-container">

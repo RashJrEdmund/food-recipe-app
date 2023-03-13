@@ -82,6 +82,7 @@ export default function Navbar() {
               onClick={() => {
                 setActiveMenu((prev) => !prev);
                 closeAllOpenRecipes();
+                navigate('/');
               }}
             >
               FOODS
