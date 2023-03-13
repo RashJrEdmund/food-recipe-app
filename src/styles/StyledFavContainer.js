@@ -47,7 +47,6 @@ const StyledFavContainer = styled.div`
       height: fit-content;
       border-radius: 20px 0 0;
       box-shadow: 0 0 10px #222;
-      z-index: 0;
 
       .food-recipe {
         background-color: #f0b843;

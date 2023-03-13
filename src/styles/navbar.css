@@ -4,6 +4,7 @@
 
 .nav-bar-container {
   background: linear-gradient(to bottom, #0000003b, #0000003b, #0000003b);
+  background-color: red;
   position: fixed;
   inset: 0;
   margin: 1rem 0 0 1rem;

@@ -122,7 +122,7 @@ function App() {
 
         <div className="App" id="App">
           <p className="below-are">
-            Below are a compilation of a few food recipes
+            this is a minor compilation of food recipes
           </p>
 
           <Routes>
