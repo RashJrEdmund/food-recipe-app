@@ -112,6 +112,7 @@ const StyledFavContainer = styled.div`
           height: 40px;
           width: 40px;
           border-radius: 50px;
+          cursor: pointer;
         }
       }
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -9,7 +10,7 @@ import closeIcon from '../images/close menu icon.png';
 import MyFoodContext from '../context/MyContext';
 import UpdateFoodForm from './UpdateFoodForm';
 
-export default function FoodContainer() {
+export default function FoodContainer({ toggleMessage }) {
   const {
     foodData,
     setFoodData,
@@ -71,7 +72,6 @@ export default function FoodContainer() {
       {foodData.map((piece, index) => {
         return (
           <div className="food-div" key={piece.id}>
-            {/* {piece.showRecipe && ( */}
             <div
               className={
                 piece.showRecipe
@@ -111,7 +111,6 @@ export default function FoodContainer() {
                 </button>
               </div>
             </div>
-            {/* )} */}
 
             <h2 className="food-title">{piece.name}</h2>
             {/* <img src={piece.img} alt="food_image" className="food-image" /> */}
@@ -125,7 +124,10 @@ export default function FoodContainer() {
                 type="button"
                 className="add-btn"
                 name={piece.id}
-                onClick={(e) => handleFavorite(+e.target.name)}
+                onClick={(e) => {
+                  handleFavorite(+e.target.name);
+                  toggleMessage('favorite list updated');
+                }}
               >
                 <FaHeart // heart icon
                   className="fa-icon"
@@ -139,7 +141,10 @@ export default function FoodContainer() {
                 type="button"
                 className="del-btn"
                 name={piece.id}
-                onClick={(e) => handleDeleteFood(+e.target.name)}
+                onClick={(e) => {
+                  handleDeleteFood(+e.target.name);
+                  toggleMessage(`${piece.name} removed`);
+                }}
               >
                 <FaRegTrashAlt // delete icon
                   className="fa-icon"

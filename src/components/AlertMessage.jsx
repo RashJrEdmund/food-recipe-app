@@ -37,8 +37,6 @@ const StyledAlertMessage = styled.div`
 function AlertMessage({ message }) {
   return (
     <StyledAlertMessage>
-      <p>Hello</p>
-      <br />
       <p>{message}</p>
     </StyledAlertMessage>
   );

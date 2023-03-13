@@ -18,7 +18,6 @@ export default function FavoritePage() {
 
   return (
     <StyledFavContainer id="all_food_container">
-      {/* {showUpdateFrom && <UpdateFoodForm />} */}
       <Link to="/">
         <button className="fav-back-btn" type="button">
           Back
@@ -53,19 +52,6 @@ export default function FavoritePage() {
                   alt="delete_food_icon"
                   onClick={(e) => handleShowFavsRecipe(e.target.name)}
                 />
-
-                {/* <button
-                  className="update-recipe-btn"
-                  type="button"
-                  id={piece.id}
-                  onClick={() => {
-                    // chooseFoodToUpdate(+e.target.id);
-                    // setShowUpdateForm((prev) => !prev);
-                    // handleShowRecipe(index);
-                  }}
-                >
-                  UpdateRecipe
-                </button> */}
               </div>
 
               <h2 className="food-title">{piece.name}</h2>
@@ -74,15 +60,6 @@ export default function FavoritePage() {
                 style={{ backgroundImage: `URL(${piece.img})` }}
                 className="food-image"
               />
-
-              {/* <button
-                type="button"
-                className="add-btn"
-                name={piece.id}
-                // onClick={(e) => handleShowFavsRecipe(+e.target.name)}
-              >
-                {piece.fav ? 'remove from favorite' : '+ to Favorite'}
-              </button> */}
 
               <button
                 className="see-recipe-btn"

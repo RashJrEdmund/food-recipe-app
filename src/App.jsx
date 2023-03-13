@@ -35,6 +35,7 @@ function App() {
   });
 
   const [showAlert, setShowAlert] = React.useState(false);
+  const [customMessage, setCustomMessage] = React.useState('');
 
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState(false);
@@ -65,7 +66,8 @@ function App() {
     setFavorite(newHolderFav);
   };
 
-  const toggleAlert = () => {
+  const toggleAlert = (message) => {
+    setCustomMessage(message);
     setShowAlert((prev) => !prev);
 
     setTimeout(() => {
@@ -74,7 +76,7 @@ function App() {
   };
 
   const handleNavigation = () => {
-    toggleAlert();
+    toggleAlert('This feature is not yet availble');
   };
 
   return (
@@ -114,9 +116,7 @@ function App() {
       <BrowserRouter>
         <Hero />
 
-        {showAlert && (
-          <AlertMessage message="This feature is not yet availble" />
-        )}
+        {showAlert && <AlertMessage message={customMessage} />}
 
         {showFoodForm.form && <AddFoodForm />}
 
@@ -126,7 +126,10 @@ function App() {
           </p>
 
           <Routes>
-            <Route index element={<FoodContainer />} />
+            <Route
+              index
+              element={<FoodContainer toggleMessage={toggleAlert} />}
+            />
             <Route path="/favorites" element={<FavoritePage />} />
           </Routes>
 
