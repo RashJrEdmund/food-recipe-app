@@ -136,7 +136,6 @@ const StyledFoodContainer = styled.div`
       min-height: 245px;
       max-height: 300px;
       transition: 0.5s;
-      /* z-index: 1; */
 
       &:hover {
         transform: scale(1.03);

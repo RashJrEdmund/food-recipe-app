@@ -34,13 +34,23 @@ function App() {
     uploadImg: false,
   });
 
-  const [showAlert, setShowAlert] = React.useState(false);
-  const [customMessage, setCustomMessage] = React.useState('');
-
   const [showUpdateFrom, setShowUpdateForm] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState(false);
   const [resetDialogue, setResetDialogue] = React.useState(false);
   const [imagePath, setImagePath] = React.useState(null);
+
+  const [alertMsg, setAlertMsg] = React.useState({
+    message: '',
+    show: false,
+  });
+
+  const toggleAlert = (msg) => {
+    setAlertMsg((prev) => ({ message: msg, show: !prev.show }));
+
+    setTimeout(() => {
+      setAlertMsg((prev) => ({ ...prev, show: !prev.show }));
+    }, 2000);
+  };
 
   const toggleBodyOverFlow = () => {
     if (showFoodForm.form || showUpdateFrom || resetDialogue) {
@@ -66,15 +76,6 @@ function App() {
     setFavorite(newHolderFav);
   };
 
-  const toggleAlert = (message) => {
-    setCustomMessage(message);
-    setShowAlert((prev) => !prev);
-
-    setTimeout(() => {
-      setShowAlert((prev) => !prev);
-    }, 2000);
-  };
-
   const handleNavigation = () => {
     toggleAlert('This feature is not yet availble');
   };
@@ -82,6 +83,8 @@ function App() {
   return (
     <MyFoodContext.Provider
       value={{
+        toggleAlert,
+
         toggleBodyOverFlow,
         closeAllOpenRecipes,
 
@@ -116,7 +119,7 @@ function App() {
       <BrowserRouter>
         <Hero />
 
-        {showAlert && <AlertMessage message={customMessage} />}
+        {alertMsg.show && <AlertMessage message={alertMsg.message} />}
 
         {showFoodForm.form && <AddFoodForm />}
 

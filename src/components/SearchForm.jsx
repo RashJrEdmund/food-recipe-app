@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import MyFoodContext from '../context/MyContext';
-import AlertMessage from './AlertMessage';
 
 const StyledForm = styled.form`
   display: flex;
@@ -43,17 +42,8 @@ const StyledForm = styled.form`
 `;
 
 export default function SearchForm() {
-  const { foodData, setFoodData, MyData } = React.useContext(MyFoodContext);
-
-  const [showAlert, setShowAlert] = React.useState(false);
-
-  const toggleAlert = () => {
-    setShowAlert((prev) => !prev);
-
-    setTimeout(() => {
-      setShowAlert((prev) => !prev);
-    }, 2000);
-  };
+  const { foodData, setFoodData, MyData, toggleAlert } =
+    React.useContext(MyFoodContext);
 
   const handleSearch = (foodNom) => {
     if (foodNom === '') {
@@ -69,9 +59,10 @@ export default function SearchForm() {
     setFoodData(Results);
 
     if (Results.length < 1) {
-      toggleAlert();
+      toggleAlert('no foods match search');
     }
   };
+
   return (
     <StyledForm
       className="search-form"
@@ -80,8 +71,6 @@ export default function SearchForm() {
         handleSearch(e.target.elements.search_input.value);
       }}
     >
-      {showAlert && <AlertMessage message="no foods match search" />}
-
       <input
         id="search_input"
         type="text"
