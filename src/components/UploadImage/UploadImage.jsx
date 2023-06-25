@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/uploadImage.css';
-import MyFoodContext from '../context/MyContext';
+import './uploadImage.css';
+import MyFoodContext from '../../context/MyContext';
 
 export default function UploadImage() {
   const { showFoodForm, setShowFoodForm, imagePath, setImagePath } =

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/hero.css';
-import SearchForm from './SearchForm';
-import Navbar from './Navbar';
+import './hero.css';
+import SearchForm from '../SearchForm';
+import Navbar from '../Navbar/Navbar';
 
 export default function Hero() {
   return (

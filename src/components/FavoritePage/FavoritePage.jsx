@@ -3,9 +3,9 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import closeIcon from '../images/close menu icon.png';
-import MyFoodContext from '../context/MyContext';
-import StyledFavContainer from '../styles/StyledFavContainer';
+import closeIcon from '../../images/close menu icon.png';
+import MyFoodContext from '../../context/MyContext';
+import StyledFavContainer from './StyledFavContainer';
 
 export default function FavoritePage() {
   const { favoriteData, setFavorite } = React.useContext(MyFoodContext);

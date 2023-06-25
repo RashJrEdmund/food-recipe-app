@@ -4,10 +4,10 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import '../styles/addFoodForm.css';
-import MyFoodContext from '../context/MyContext';
-import closeIcon from '../images/close menu icon.png';
-import UploadImage from './UploadImage';
+import './addFoodForm.css';
+import MyFoodContext from '../../context/MyContext';
+import closeIcon from '../../images/close menu icon.png';
+import UploadImage from '../UploadImage/UploadImage';
 
 export default function AddFoodForm() {
   const {

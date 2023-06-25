@@ -6,7 +6,7 @@
 
 #hero-section {
   position: relative;
-  background: linear-gradient(to bottom, #0000007c, #0000007c, #0000007c), url('../images/banner.png');
+  background: linear-gradient(to bottom, #0000007c, #0000007c, #0000007c), url('../../images/banner.png');
   color: #ffd700;
   background-size: cover;
   background-position: center;

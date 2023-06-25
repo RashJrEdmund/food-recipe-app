@@ -6,11 +6,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MyData from './data/Data.json';
 import MyFoodContext from './context/MyContext';
-import FoodContainer from './components/FoodContainer';
-import AddFoodForm from './components/AddFoodForm';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
-import FavoritePage from './components/FavoritePage';
+import FoodContainer from './components/FoodContainer/FoodContainer';
+import AddFoodForm from './components/AddFoodForm/AddFoodForm';
+import Hero from './components/Hero/Hero';
+import Footer from './components/Footer/Footer';
+import FavoritePage from './components/FavoritePage/FavoritePage';
 
 import AlertMessage from './components/AlertMessage';
 

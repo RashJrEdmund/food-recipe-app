@@ -2,10 +2,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/navbar.css';
-import menuIcon from '../images/menu icon.svg';
-import closeMenuIcon from '../images/close menu icon.png';
-import MyFoodContext from '../context/MyContext';
+import './navbar.css';
+import menuIcon from '../../images/menu icon.svg';
+import closeMenuIcon from '../../images/close menu icon.png';
+import MyFoodContext from '../../context/MyContext';
 
 export default function Navbar() {
   const {

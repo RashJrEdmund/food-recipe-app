@@ -5,10 +5,10 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { FaHeart, FaRegTrashAlt } from 'react-icons/fa';
-import StyledFoodContainer from '../styles/StyledFoodContainer';
-import closeIcon from '../images/close menu icon.png';
-import MyFoodContext from '../context/MyContext';
-import UpdateFoodForm from './UpdateFoodForm';
+import StyledFoodContainer from './StyledFoodContainer';
+import closeIcon from '../../images/close menu icon.png';
+import MyFoodContext from '../../context/MyContext';
+import UpdateFoodForm from '../UpdateFoodForm/UpdateFoodForm';
 
 export default function FoodContainer({ toggleMessage }) {
   const {

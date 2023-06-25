@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/footer.css';
-import MyData from '../data/Data.json';
-import MyFoodContext from '../context/MyContext';
+import './footer.css';
+import MyData from '../../data/Data.json';
+import MyFoodContext from '../../context/MyContext';
 
 export default function Footer() {
   const {
