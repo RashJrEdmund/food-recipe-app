@@ -6,6 +6,7 @@ import './navbar.css';
 import menuIcon from '../../images/menu icon.svg';
 import closeMenuIcon from '../../images/close menu icon.png';
 import MyFoodContext from '../../context/MyContext';
+// import SearchForm from '../SearchForm';
 
 export default function Navbar() {
   const {
@@ -116,6 +117,7 @@ export default function Navbar() {
             </button>
           </a>
         </div>
+        {/* <SearchForm /> */}
       </nav>
     </div>
   );

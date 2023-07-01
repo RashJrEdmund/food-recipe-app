@@ -8,11 +8,11 @@ import MyData from './data/Data.json';
 import MyFoodContext from './context/MyContext';
 import FoodContainer from './components/FoodContainer/FoodContainer';
 import AddFoodForm from './components/AddFoodForm/AddFoodForm';
-import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
 import FavoritePage from './components/FavoritePage/FavoritePage';
 
 import AlertMessage from './components/AlertMessage';
+import Navbar from './components/Navbar/Navbar';
 
 if (!JSON.parse(localStorage.getItem('MyData'))) {
   localStorage.setItem('MyData', JSON.stringify(MyData));
@@ -117,7 +117,7 @@ function App() {
       }}
     >
       <BrowserRouter>
-        <Hero />
+        <Navbar />
 
         {alertMsg.show && <AlertMessage message={alertMsg.message} />}
 
