@@ -1,17 +1,15 @@
 import React from 'react';
 
-const MyFoodContext = React.createContext();
+const FoodContext = React.createContext();
 
-export default MyFoodContext;
+export const ContextProvider = ({ children }) => {
+  const [food, setFood] = React.useState(null);
 
-// const toggleBodyOverFlow = () => {
-//     if (showFoodForm.form || showUpdateFrom || resetDialogue) {
-//       document.body.classList.add('body-overflow');
-//     } else {
-//       document.body.classList.remove('body-overflow');
-//     }
-//   };
+  return (
+    <FoodContext.Provider value={{ food, setFood }}>
+      {children}
+    </FoodContext.Provider>
+  );
+};
 
-//   React.useEffect(() => {
-//     toggleBodyOverFlow();
-//   }, [showFoodForm.form, showUpdateFrom, resetDialogue]);
+export const useFooContext = () => React.useContext(FoodContext);
