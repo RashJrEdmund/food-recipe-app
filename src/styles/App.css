@@ -5,7 +5,7 @@
 }
 
 .App {
-  /* background-color: #ffc145; */
+  background-color: #ffc145;
   border: 1px solid grey;
   border-top: none;
   border-bottom: none;
@@ -17,38 +17,4 @@
   height: fit-content;
   margin: 0 auto;
   padding: 5rem 2rem 1rem;
-}
-
-.below-are {
-  font-size: 1.3rem;
-  border-bottom: 1px solid #080;
-  width: fit-content;
-  margin: 1rem auto;
-  padding-bottom: 1rem;
-  cursor: default;
-}
-
-.app-buttons {
-  height: fit-content;
-  width: fit-content;
-  margin: 0.7rem auto;
-}
-
-.app-buttons button {
-  padding: 10px 13px;
-  transition: 0.5s;
-  font-weight: 700;
-}
-
-.app-buttons button:hover {
-  background-color: #555;
-}
-
-.app-buttons .left-right-btns {
-  background-color: green;
-  margin: 0 10px;
-}
-
-.app-buttons .page-number-button.active {
-  background-color: #555;
 }
