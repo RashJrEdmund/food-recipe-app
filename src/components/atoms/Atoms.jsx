@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from '@emotion/styled';
-import { FowardIcon } from './Icons';
+import { DeleteIcon, FowardIcon } from './Icons';
 
 export function Header2Atom({
   text,
@@ -58,6 +58,8 @@ export function ButtonAtom({
   return (
     <StyledAtomBtn type="button" onClick={handleClick}>
       {text} {iconType === 'NEXT' && <FowardIcon iconcolor={iconcolor} />}
+      {iconType === 'EDIT' && <FowardIcon iconcolor={iconcolor} />}
+      {iconType === 'DELETE' && <DeleteIcon iconcolor={iconcolor} />}
     </StyledAtomBtn>
   );
 }

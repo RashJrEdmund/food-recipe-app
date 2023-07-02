@@ -3,6 +3,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { AiFillHeart, AiOutlineAppstoreAdd } from 'react-icons/ai';
 import { MdDelete, MdOutlineArrowForwardIos } from 'react-icons/md';
+import { FiEdit } from 'react-icons/fi';
 
 export const MenuIcon = styled(GiHamburgerMenu)`
   font-size: 50px;
@@ -36,11 +37,15 @@ export const ActionsIcon = styled(AiOutlineAppstoreAdd)`
 `;
 
 export const DeleteIcon = styled(MdDelete)`
-  color: #111111;
+  color: ${({ iconcolor }) => iconcolor || '#111111'};
   font-size: 30px;
 `;
 
 export const FowardIcon = styled(MdOutlineArrowForwardIos)`
   color: ${({ iconcolor }) => iconcolor || '#111111'};
   font-size: 24px;
+`;
+
+export const EditIcon = styled(FiEdit)`
+  color: ${({ iconcolor }) => iconcolor || '#111111'};
 `;
