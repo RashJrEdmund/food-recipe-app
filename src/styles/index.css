@@ -2,6 +2,11 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --general-padding: 15px;
+  --general-min-max-width: min(100%, 1500px);
+}
+
 body {
   /* background-color: #ec5766;
   background-color: #ffc145; */
@@ -25,8 +30,23 @@ button {
   cursor: pointer;
 }
 
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+  cursor: pointer;
+}
+
 a {
   cursor: pointer;
   text-decoration: none;
   color: unset;
+}
+
+@media only screen and (max-width: 900px) {
+  :root {
+    --general-padding: 15px;
+  }
 }

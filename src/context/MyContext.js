@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable react/function-component-definition */
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 
 const FoodContext = React.createContext();
