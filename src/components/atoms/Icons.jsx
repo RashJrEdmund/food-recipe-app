@@ -41,6 +41,6 @@ export const DeleteIcon = styled(MdDelete)`
 `;
 
 export const FowardIcon = styled(MdOutlineArrowForwardIos)`
-  color: ${({ iconColor }) => iconColor || '#111111'};
+  color: ${({ iconcolor }) => iconcolor || '#111111'};
   font-size: 24px;
 `;

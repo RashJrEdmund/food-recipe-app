@@ -38,7 +38,7 @@ export function ButtonAtom({
   margin,
   radius,
   iconType,
-  iconColor,
+  iconcolor,
 }) {
   const StyledAtomBtn = styled.button`
     background-color: ${bg || '#f2f2f2'};
@@ -57,7 +57,7 @@ export function ButtonAtom({
 
   return (
     <StyledAtomBtn type="button" onClick={handleClick}>
-      {text} {iconType === 'NEXT' && <FowardIcon iconColor={iconColor} />}
+      {text} {iconType === 'NEXT' && <FowardIcon iconcolor={iconcolor} />}
     </StyledAtomBtn>
   );
 }

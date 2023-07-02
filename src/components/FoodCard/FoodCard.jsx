@@ -3,11 +3,12 @@
 /* eslint-disable react/prop-types */
 import styled from '@emotion/styled';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
-import { getFromLocalStorage, saveToLocalStorage } from '../../services/utils';
+import { useFoodContext } from '../../context/MyContext';
 
 const StyledFoodCard = styled.div`
-  background-color: #111111;
+  background-color: transparent;
   width: 100%;
   max-width: 350px;
   height: fit-content;
@@ -97,16 +98,16 @@ const StyledFoodCard = styled.div`
   }
 `;
 
-export default function FoodCard({ id, name, description, img, fav }) {
-  const updateFavorite = () => {
-    const update = getFromLocalStorage('foodData')?.map((food) => {
-      if (+food.id === +id) return { ...food, fav: !food.fav };
-
-      return food;
-    });
-
-    saveToLocalStorage('foodData', update);
-  };
+export default function FoodCard({
+  id,
+  name,
+  description,
+  img,
+  fav,
+  allowInteraction,
+}) {
+  const navigate = useNavigate();
+  const { updateFavorite } = useFoodContext();
 
   return (
     <StyledFoodCard url={img}>
@@ -119,18 +120,23 @@ export default function FoodCard({ id, name, description, img, fav }) {
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam doloremque recusandae. Harum nobis dicta inventore est natus optio repudiandae sint libero nam. Officia, ad impedit voluptatem nihil dicta at!'}
         </p>
 
-        <div className="food_cta">
-          <span className="heart" onClick={updateFavorite}>
-            <FavortieIcon
-              fav={fav}
-              title={`${fav ? 'remove from ' : 'add to '} favorites`}
-            />
-          </span>
+        {allowInteraction && (
+          <div className="food_cta">
+            <span className="heart" onClick={() => updateFavorite(id)}>
+              <FavortieIcon
+                fav={fav}
+                title={`${fav ? 'remove from ' : 'add to '} favorites`}
+              />
+            </span>
 
-          <span className="see_more">
-            <ActionsIcon title="more" />
-          </span>
-        </div>
+            <span
+              className="see_more"
+              onClick={() => navigate(`/foods/details/${name}`)}
+            >
+              <ActionsIcon title="more" />
+            </span>
+          </div>
+        )}
       </div>
     </StyledFoodCard>
   );

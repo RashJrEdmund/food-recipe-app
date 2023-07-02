@@ -2,12 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingHero from '../../components/LandingHero/LandingHero';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
-import { getFromLocalStorage } from '../../services/utils';
 import { ButtonAtom, Header2Atom } from '../../components/atoms/Atoms';
+import { useFoodContext } from '../../context/MyContext';
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const [foodData, setFoodData] = React.useState(null);
+  const { foodData } = useFoodContext();
   const styledBtnHolder = {
     width: '97vw',
     display: 'flex',
@@ -20,12 +20,6 @@ export default function LandingPage() {
     navigate('/foods');
     window.scrollTo(0, 0);
   };
-
-  React.useEffect(() => {
-    const data = getFromLocalStorage('foodData');
-
-    if (data) setFoodData(data);
-  }, []);
 
   return (
     <main>
@@ -47,7 +41,7 @@ export default function LandingPage() {
           color="#ffc145"
           text="Next"
           iconType="NEXT"
-          iconColor="#ddd"
+          iconcolor="#ddd"
           action={() => gotToFoods()}
         />
       </div>

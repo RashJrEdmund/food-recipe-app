@@ -10,6 +10,7 @@ import LandingNav from './components/navbar/LandingNav';
 import Footer from './components/footer/Footer';
 import FoodPage from './pages/Foods/FoodPage';
 import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
+import DetailsPage from './pages/Details/DetailsPage';
 
 if (!getFromLocalStorage('foodData')) {
   saveToLocalStorage('foodData', FoodData);
@@ -24,7 +25,7 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="/foods" element={<FoodPage />} />
-          <Route path="/details/:id" />
+          <Route path="foods/details/:id" element={<DetailsPage />} />
         </Routes>
 
         <Footer />
