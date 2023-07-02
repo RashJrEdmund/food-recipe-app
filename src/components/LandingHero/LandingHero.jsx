@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledLandingHero from './StyledLandingHero';
-import { ButtonAtom } from '../atoms/Atoms';
+import ButtonAtom from '../atoms/Button';
 
 export default function LandingHero() {
   const navigate = useNavigate();

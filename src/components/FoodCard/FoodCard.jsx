@@ -6,6 +6,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
 import { useFoodContext } from '../../context/MyContext';
+import useAlert from '../../hooks/UseAlert';
 
 const StyledFoodCard = styled.div`
   background-color: transparent;
@@ -96,6 +97,14 @@ const StyledFoodCard = styled.div`
       }
     }
   }
+
+  @media only screen and (max-width: 400px) {
+    max-width: 97vw;
+
+    .food_cta {
+      max-width: 97vw;
+    }
+  }
 `;
 
 export default function FoodCard({
@@ -109,35 +118,51 @@ export default function FoodCard({
   const navigate = useNavigate();
   const { updateFavorite } = useFoodContext();
 
+  const { AlertComponent, displayAlert, alertMsg } = useAlert();
+
+  const addNewFavorite = () => {
+    updateFavorite(id);
+    displayAlert(
+      `${name.split(/[^a-zA-Z]/).shift()} ${
+        fav ? 'removed from ' : 'added to '
+      } favorites`
+    );
+  };
+
+  const goToFoodDetails = () => {
+    navigate(`/foods/details/${name}`);
+  };
+
   return (
-    <StyledFoodCard url={img}>
-      <div className="food_image" />
-      <div className="food_section_2">
-        <h3 className="food_name">{name || 'FOOD NAME'}</h3>
+    <>
+      {alertMsg.show && <AlertComponent />}
 
-        <p className="food_description">
-          {description ||
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam doloremque recusandae. Harum nobis dicta inventore est natus optio repudiandae sint libero nam. Officia, ad impedit voluptatem nihil dicta at!'}
-        </p>
+      <StyledFoodCard url={img}>
+        <div className="food_image" />
+        <div className="food_section_2">
+          <h3 className="food_name">{name || 'FOOD NAME'}</h3>
 
-        {allowInteraction && (
-          <div className="food_cta">
-            <span className="heart" onClick={() => updateFavorite(id)}>
-              <FavortieIcon
-                fav={fav}
-                title={`${fav ? 'remove from ' : 'add to '} favorites`}
-              />
-            </span>
+          <p className="food_description">
+            {description ||
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam doloremque recusandae. Harum nobis dicta inventore est natus optio repudiandae sint libero nam. Officia, ad impedit voluptatem nihil dicta at!'}
+          </p>
 
-            <span
-              className="see_more"
-              onClick={() => navigate(`/foods/details/${name}`)}
-            >
-              <ActionsIcon title="more" />
-            </span>
-          </div>
-        )}
-      </div>
-    </StyledFoodCard>
+          {allowInteraction && (
+            <div className="food_cta">
+              <span className="heart" onClick={addNewFavorite}>
+                <FavortieIcon
+                  fav={fav}
+                  title={`${fav ? 'remove from ' : 'add to '} favorites`}
+                />
+              </span>
+
+              <span className="see_more" onClick={goToFoodDetails}>
+                <ActionsIcon title="more" />
+              </span>
+            </div>
+          )}
+        </div>
+      </StyledFoodCard>
+    </>
   );
 }

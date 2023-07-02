@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingHero from '../../components/LandingHero/LandingHero';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
-import { ButtonAtom, Header2Atom } from '../../components/atoms/Atoms';
+import { Header2Atom } from '../../components/atoms/Atoms';
+import ButtonAtom from '../../components/atoms/Button';
 import { useFoodContext } from '../../context/MyContext';
 
 export default function LandingPage() {
@@ -39,7 +40,7 @@ export default function LandingPage() {
         <ButtonAtom
           bg="#111111"
           color="#ffc145"
-          text="Next"
+          text="Food List"
           iconType="NEXT"
           iconcolor="#ddd"
           action={() => gotToFoods()}

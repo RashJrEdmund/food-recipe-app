@@ -49,7 +49,7 @@ const StyledLandingNav = styled.nav`
           width: 100%;
           text-align: left;
           font-size: 1.3rem;
-          color: #ddd;
+          color: #fff;
           font-weight: 600;
           padding: 20px 10px;
         }

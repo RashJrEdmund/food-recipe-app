@@ -72,7 +72,8 @@ const StyledDetailsPage = styled.main`
     margin: 2rem auto;
     display: flex;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   @media only screen and (min-width: 1100px) {
@@ -87,6 +88,14 @@ const StyledDetailsPage = styled.main`
 
   @media only screen and (max-width: 900px) {
     .food_container {
+      .food_image {
+        min-height: 600px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .food_container {
       background-color: brown;
       box-shadow: 0 0 10px #111111;
       width: min(97%, 1000px);
@@ -99,13 +108,7 @@ const StyledDetailsPage = styled.main`
       justify-content: center;
 
       .food_image {
-        background: linear-gradient(to bottom, #11111126, #11111126, #11111126),
-          url(${({ url }) => url});
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        min-height: 600px;
+        min-height: 350px;
       }
     }
   }

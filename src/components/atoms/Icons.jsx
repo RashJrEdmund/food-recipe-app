@@ -17,7 +17,7 @@ export const MenuIcon = styled(GiHamburgerMenu)`
 
 export const OpenMenuIcon = styled(HiMenuAlt3)`
   font-size: 50px;
-  color: var(--card-bg);
+  color: #fff;
   align-self: flex-end;
   margin: 10px 0;
   display: none;
