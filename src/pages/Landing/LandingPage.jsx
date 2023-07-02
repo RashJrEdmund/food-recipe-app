@@ -4,7 +4,7 @@ import LandingHero from '../../components/LandingHero/LandingHero';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
-import { useFoodContext } from '../../context/MyContext';
+import { useFoodContext } from '../../context/FoodContext';
 
 export default function LandingPage() {
   const navigate = useNavigate();

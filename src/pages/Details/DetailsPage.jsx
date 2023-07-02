@@ -2,12 +2,18 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
-import { getFromLocalStorage } from '../../services/utils';
+import {
+  getFromLocalStorage,
+  removeFromSession,
+  saveToSessionStorage,
+} from '../../services/utils';
 import StyledDetailsPage from './StyledDetailsPage';
 import useAlert from '../../hooks/UseAlert';
+import FoodForm from '../../components/FoodForm/FoodForm';
 
 export default function DetailsPage() {
   const [food, setFood] = React.useState(null);
+  const [showForm, setShowForm] = React.useState(false);
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
 
@@ -17,17 +23,27 @@ export default function DetailsPage() {
     displayAlert(`${food?.name} deleted`);
   };
 
+  const toggleShowForm = () => {
+    setShowForm((prev) => !prev);
+  };
+
   React.useEffect(() => {
     const currentFood = getFromLocalStorage('foodData').find(
-      (meal) => meal.name === params.id
+      (meal) => meal.name === params.name
     );
 
+    saveToSessionStorage('foodToEdit', currentFood);
+
     setFood({ ...currentFood });
+
+    return () => removeFromSession('foodToEdit');
   }, [params]);
 
   return (
     <>
       {alertMsg.show && <AlertComponent />}
+
+      {showForm && <FoodForm action={toggleShowForm} />}
 
       <StyledDetailsPage url={food?.img}>
         <section className="food_container">
@@ -67,6 +83,7 @@ export default function DetailsPage() {
             bg="#111111"
             iconType="EDIT"
             iconcolor="#ddd"
+            action={toggleShowForm}
           />
 
           <ButtonAtom

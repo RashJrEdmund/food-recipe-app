@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
-import { useFoodContext } from '../../context/MyContext';
+import { useFoodContext } from '../../context/FoodContext';
 
 export default function FoodPage() {
   const { foodData } = useFoodContext();

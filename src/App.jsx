@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="/foods" element={<FoodPage />} />
-          <Route path="foods/details/:id" element={<DetailsPage />} />
+          <Route path="foods/details/:name" element={<DetailsPage />} />
         </Routes>
 
         <Footer />

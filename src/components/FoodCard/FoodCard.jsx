@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
-import { useFoodContext } from '../../context/MyContext';
+import { useFoodContext } from '../../context/FoodContext';
 import useAlert from '../../hooks/UseAlert';
 
 const StyledFoodCard = styled.div`

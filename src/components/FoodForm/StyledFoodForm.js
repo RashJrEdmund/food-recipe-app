@@ -1,25 +1,28 @@
 import styled from '@emotion/styled';
 
-const StyledLandingHero = styled.section`
+const StyledFoodForm = styled.div`
   /* background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
       url(${({ url }) => url});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
   background-color: #111111;
   color: #f2f2f2;
   display: flex;
   align-items: flex-start;
+  width: min(97vw, 700px);
   height: fit-content;
-  margin: 0 auto 1.5rem;
-  width: var(--general-min-max-width);
-  padding: 80px var(--general-padding);
+  margin: 1rem auto;
 
-  .hero_col_1 {
+  .food_form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 40px;
     width: 100%;
 
     .cta_btns {
@@ -27,16 +30,18 @@ const StyledLandingHero = styled.section`
     }
   }
 
-  .hero_col_2 {
-    width: 100%;
-    min-height: 100%;
-  }
-
   @media only screen and (max-width: 768px) {
-    .hero_col_2 {
-      display: none;
-    }
+    /* .food_form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+
+      .cta_btns {
+        align-self: flex-start;
+      }
+    } */
   }
 `;
 
-export default StyledLandingHero;
+export default StyledFoodForm;

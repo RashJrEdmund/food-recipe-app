@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ContextProvider } from './context/MyContext';
+import { ContextProvider } from './context/FoodContext';
 // import Footer from './components/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
