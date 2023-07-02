@@ -1,7 +1,7 @@
 [
   {
-    "name": "Garri",
-    "img": "https://i0.wp.com/humblevege.com/wp-content/uploads/2022/02/gari-soaking-garri-snack_humblevege.jpg?fit=1536%2C2048&ssl=1",
+    "name": "Rice & Beans",
+    "img": "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2017/06/African-Stewed-Beans-and-rice.jpg?resize=1024%2C1024&ssl=1",
     "recipe": [
       "pour required quantity in clean pan, taking note that it's rising bad",
       "add enough water (enough to completely conver the golden poder)",
@@ -40,7 +40,7 @@
   },
   {
     "name": "water Fufu & Erru",
-    "img": "https://www.africanbites.com/wp-content/uploads/2022/02/Cassava-Fufu.jpg",
+    "img": "https://cdn.shopify.com/s/files/1/0409/7484/4060/articles/86E207EF-1F88-4281-92F1-E08AD28C2E76_1000x.webp?v=1681512131",
     "recipe": [
       "cook water fufu",
       "do some other things laat",
@@ -62,5 +62,20 @@
     "showRecipe": false,
     "fav": false,
     "id": 4
+  },
+  {
+    "name": "Achu",
+    "img": "https://medmunch.com/wp-content/uploads/2020/10/Achu-768x511.jpg",
+    "recipe": [
+      "do some other things",
+      "do another thing",
+      "fix fire",
+      "do another something that you've not done",
+      "wait let it get ready",
+      "say a prayer before every meal"
+    ],
+    "showRecipe": false,
+    "fav": false,
+    "id": 5
   }
 ]

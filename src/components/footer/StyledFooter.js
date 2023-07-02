@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const StyledFooter = styled.footer`
   border-top: 1px solid #808080;
-  background-color: #f2f2f2;
+  background-color: transparent;
   color: #111111;
   display: flex;
   align-items: flex-start;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledLandingHero from './StyledLandingHero';
-import { ButtonAtom } from '../../atoms/Atoms';
+import { ButtonAtom } from '../atoms/Atoms';
 
 export default function LandingHero() {
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ export default function LandingHero() {
             action={() => navigate('/foods')}
             radius="5px"
             size="1rem"
+            bg="#ffc145"
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const StyledLandingNav = styled.nav`
-  background-color: #f2f2f2;
+  background-color: var(--main-bg);
   display: flex;
   align-items: center;
   width: 100%;
@@ -25,6 +25,34 @@ const StyledLandingNav = styled.nav`
 
       li {
         font-size: 1.3rem;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .nav_container {
+      ul {
+        position: fixed;
+        z-index: 4;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 400px;
+        padding: 0 0 20px;
+        flex-direction: column;
+        background-color: #111111;
+        gap: 0;
+        transition: 0.3s;
+        transform: translateY(${({ openMenu }) => (openMenu ? 0 : '-120%')});
+
+        li {
+          width: 100%;
+          text-align: left;
+          font-size: 1.3rem;
+          color: #ddd;
+          font-weight: 600;
+          padding: 20px 10px;
+        }
       }
     }
   }

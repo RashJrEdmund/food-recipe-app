@@ -4,9 +4,9 @@ const StyledSampleFoods = styled.section`
   background-color: transparent;
   color: #111111;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   height: fit-content;
-  min-height: 450px;
   margin: 0 auto;
   width: var(--general-min-max-width);
   padding: var(--general-padding);
@@ -15,6 +15,19 @@ const StyledSampleFoods = styled.section`
     padding: 0 0 1rem;
     width: 100%;
     text-align: center;
+  }
+
+  .cards {
+    height: fit-content;
+    min-height: 450px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 1rem auto;
   }
 `;
 

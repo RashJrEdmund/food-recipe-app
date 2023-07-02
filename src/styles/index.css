@@ -5,6 +5,9 @@ html {
 :root {
   --general-padding: 15px;
   --general-min-max-width: min(100%, 1500px);
+  --main-bg: #ffe1d357;
+  --card-bg: #ffe1d3;
+  --secondary-bg: #ffc145;
 }
 
 body {

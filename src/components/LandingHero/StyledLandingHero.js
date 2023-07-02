@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 
 const StyledLandingHero = styled.section`
+  /* background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
+      url(${({ url }) => url});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; */
   background-color: #111111;
   color: #f2f2f2;
   display: flex;
@@ -8,7 +13,7 @@ const StyledLandingHero = styled.section`
   height: fit-content;
   margin: 0 auto 1.5rem;
   width: var(--general-min-max-width);
-  padding: 70px var(--general-padding);
+  padding: 80px var(--general-padding);
 
   .hero_col_1 {
     display: flex;
