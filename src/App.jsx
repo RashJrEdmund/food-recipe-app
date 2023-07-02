@@ -4,17 +4,16 @@
 import './styles/App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MyData from './data/Data.json';
+import FoodData from './data/Data.json';
 import LandingPage from './pages/Landing/LandingPage';
 import LandingNav from './components/navbar/LandingNav';
 import Footer from './components/footer/Footer';
 import FoodPage from './pages/Foods/FoodPage';
+import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
 
-if (!JSON.parse(localStorage.getItem('MyData'))) {
-  localStorage.setItem('MyData', JSON.stringify(MyData));
+if (!getFromLocalStorage('foodData')) {
+  saveToLocalStorage('foodData', FoodData);
 }
-
-// const localData = JSON.parse(localStorage.getItem('MyData'));
 
 function App() {
   return (
@@ -25,6 +24,7 @@ function App() {
         <Routes>
           <Route index element={<LandingPage />} />
           <Route path="/foods" element={<FoodPage />} />
+          <Route path="/details/:id" />
         </Routes>
 
         <Footer />

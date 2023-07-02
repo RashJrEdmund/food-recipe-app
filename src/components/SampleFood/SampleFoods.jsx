@@ -7,11 +7,14 @@ export default function SampleFoods({ arrayFoods, allowInteraction }) {
   return (
     <StyledSampleFoods>
       <div className="cards">
-        {arrayFoods?.map(({ name, id, img }) => (
+        {arrayFoods?.map(({ id, name, description, recipe, fav, img }) => (
           <FoodCard
-            name={name}
             key={id}
+            id={id}
+            name={name}
+            description={description || recipe[0]}
             img={img}
+            fav={fav}
             allowInteraction={allowInteraction}
           />
         ))}

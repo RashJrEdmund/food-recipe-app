@@ -16,7 +16,12 @@ export default function LandingNav() {
 
       <StyledLandingNav openMenu={openMenu}>
         <div className="nav_container">
-          <Header2Atom text="Logo" size="1.5rem" weight="900" />
+          <Header2Atom
+            text="Logo"
+            size="1.5rem"
+            weight="900"
+            action={() => navigate('/')}
+          />
 
           <ul>
             <OpenMenuIcon onClick={() => setOpenMenu(false)} />

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from '@emotion/styled';
+import { FowardIcon } from './Icons';
 
 export function Header2Atom({
   text,
@@ -18,6 +19,7 @@ export function Header2Atom({
     font-weight: ${weight || 'unset'};
     text-align: ${align || 'unset'};
     margin: ${margin || 'unset'};
+    cursor: ${() => (action ? 'pointer' : 'default')};
   `;
 
   const handleClick = () => action && action();
@@ -33,7 +35,10 @@ export function ButtonAtom({
   size,
   weight,
   padding,
+  margin,
   radius,
+  iconType,
+  iconColor,
 }) {
   const StyledAtomBtn = styled.button`
     background-color: ${bg || '#f2f2f2'};
@@ -42,12 +47,17 @@ export function ButtonAtom({
     font-weight: ${weight || 600};
     padding: ${padding || '12px 17px'};
     border-radius: ${radius || '5px'};
+    margin: ${margin || 'unset'};
+    display: flex;
+    align-items: center;
+    justify-content: center;
   `;
+
   const handleClick = () => action && action();
 
   return (
     <StyledAtomBtn type="button" onClick={handleClick}>
-      {text}
+      {text} {iconType === 'NEXT' && <FowardIcon iconColor={iconColor} />}
     </StyledAtomBtn>
   );
 }

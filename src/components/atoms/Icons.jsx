@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiMenuAlt3 } from 'react-icons/hi';
-import { AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineAppstoreAdd } from 'react-icons/ai';
+import { MdDelete, MdOutlineArrowForwardIos } from 'react-icons/md';
 
 export const MenuIcon = styled(GiHamburgerMenu)`
   font-size: 50px;
@@ -26,6 +27,20 @@ export const OpenMenuIcon = styled(HiMenuAlt3)`
 `;
 
 export const FavortieIcon = styled(AiFillHeart)`
-  color: ${({ fav }) => (fav ? 'red' : '#111111')};
+  color: ${({ fav }) => (fav ? '#f00' : '#111111')};
   font-size: 30px;
+`;
+
+export const ActionsIcon = styled(AiOutlineAppstoreAdd)`
+  font-size: 30px;
+`;
+
+export const DeleteIcon = styled(MdDelete)`
+  color: #111111;
+  font-size: 30px;
+`;
+
+export const FowardIcon = styled(MdOutlineArrowForwardIos)`
+  color: ${({ iconColor }) => iconColor || '#111111'};
+  font-size: 24px;
 `;

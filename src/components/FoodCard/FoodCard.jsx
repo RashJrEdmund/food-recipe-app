@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import styled from '@emotion/styled';
 import React from 'react';
-import { FavortieIcon } from '../atoms/Icons';
+import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
+import { getFromLocalStorage, saveToLocalStorage } from '../../services/utils';
 
 const StyledFoodCard = styled.div`
   background-color: #111111;
@@ -56,12 +59,12 @@ const StyledFoodCard = styled.div`
     }
 
     .food_cta {
-      width: 100%;
+      width: min(100%, 100px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: nowrap;
-      margin: 10px 0 0;
+      margin: 15px 0 0;
       border-radius: 0 0 10px 10px;
 
       .heart,
@@ -70,9 +73,41 @@ const StyledFoodCard = styled.div`
       }
     }
   }
+
+  @media only screen and (min-width: 768px) {
+    .food_cta {
+      width: min(100%, 100px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      margin: 15px 0 0;
+      border-radius: 0 0 10px 10px;
+
+      .heart,
+      .see_more {
+        transition: 0.3s;
+
+        &:hover {
+          box-shadow: 0 0 10px #111111;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
 `;
 
-export default function FoodCard({ name, description, img, fav }) {
+export default function FoodCard({ id, name, description, img, fav }) {
+  const updateFavorite = () => {
+    const update = getFromLocalStorage('foodData')?.map((food) => {
+      if (+food.id === +id) return { ...food, fav: !food.fav };
+
+      return food;
+    });
+
+    saveToLocalStorage('foodData', update);
+  };
+
   return (
     <StyledFoodCard url={img}>
       <div className="food_image" />
@@ -85,10 +120,16 @@ export default function FoodCard({ name, description, img, fav }) {
         </p>
 
         <div className="food_cta">
-          <span className="heart">
-            <FavortieIcon fav={fav} />
+          <span className="heart" onClick={updateFavorite}>
+            <FavortieIcon
+              fav={fav}
+              title={`${fav ? 'remove from ' : 'add to '} favorites`}
+            />
           </span>
-          <span className="see_more">seem more</span>
+
+          <span className="see_more">
+            <ActionsIcon title="more" />
+          </span>
         </div>
       </div>
     </StyledFoodCard>
