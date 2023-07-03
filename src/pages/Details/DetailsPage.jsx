@@ -12,7 +12,7 @@ import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 
 export default function DetailsPage() {
-  const [food, setFood] = React.useState(null);
+  const [detailedFood, setDetailedFood] = React.useState(null);
   const [showForm, setShowForm] = React.useState(false);
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
@@ -20,7 +20,7 @@ export default function DetailsPage() {
   const params = useParams();
 
   const handleDelete = () => {
-    displayAlert(`${food?.name} deleted`);
+    displayAlert(`${detailedFood?.name} deleted`);
   };
 
   const toggleShowForm = () => {
@@ -34,7 +34,7 @@ export default function DetailsPage() {
 
     saveToSessionStorage('foodToEdit', currentFood);
 
-    setFood({ ...currentFood });
+    if (currentFood) setDetailedFood({ ...currentFood });
 
     return () => removeFromSession('foodToEdit');
   }, [params]);
@@ -43,15 +43,21 @@ export default function DetailsPage() {
     <>
       {alertMsg.show && <AlertComponent />}
 
-      {showForm && <FoodForm action={toggleShowForm} />}
+      {showForm && (
+        <FoodForm
+          toggleShowForm={toggleShowForm}
+          displayAlert={displayAlert}
+          setDetailedFood={setDetailedFood}
+        />
+      )}
 
-      <StyledDetailsPage url={food?.img}>
+      <StyledDetailsPage url={detailedFood?.img}>
         <section className="food_container">
           <div className="food_image" />
 
           <div className="food_col_">
             <Header2Atom
-              text={`${food?.name || 'Food Item'}`}
+              text={`${detailedFood?.name || 'Food Item'}`}
               size="1.4rem"
               margin="3rem 10px 2rem"
               weight="800"
@@ -60,7 +66,7 @@ export default function DetailsPage() {
             />
 
             <p className="description">
-              {food?.description ||
+              {detailedFood?.description ||
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum fuga necessitatibus harum reprehenderit?'}
             </p>
           </div>
@@ -68,7 +74,7 @@ export default function DetailsPage() {
 
         <section className="section_2_recipe">
           <ul>
-            {food?.recipe?.map((step) => (
+            {detailedFood?.recipe?.map((step) => (
               <li key={step} className="food_step">
                 {step}
               </li>
@@ -76,26 +82,28 @@ export default function DetailsPage() {
           </ul>
         </section>
 
-        <div className="food_details_cta">
-          <ButtonAtom
-            text="Modify"
-            color="#ffc145"
-            bg="#111111"
-            iconType="EDIT"
-            iconcolor="#ddd"
-            action={toggleShowForm}
-          />
+        {detailedFood && (
+          <div className="food_details_cta">
+            <ButtonAtom
+              text="Modify"
+              color="#ffc145"
+              bg="#111111"
+              iconType="EDIT"
+              iconcolor="#ddd"
+              action={toggleShowForm}
+            />
 
-          <ButtonAtom
-            text="Delete"
-            color="brown"
-            bg="transparent"
-            iconType="DELETE"
-            iconcolor="#111111"
-            margin="0 0 0 3rem"
-            action={handleDelete}
-          />
-        </div>
+            <ButtonAtom
+              text="Delete"
+              color="brown"
+              bg="transparent"
+              iconType="DELETE"
+              iconcolor="#111111"
+              margin="0 0 0 3rem"
+              action={handleDelete}
+            />
+          </div>
+        )}
       </StyledDetailsPage>
     </>
   );

@@ -28,7 +28,7 @@ export const OpenMenuIcon = styled(HiMenuAlt3)`
 `;
 
 export const FavortieIcon = styled(AiFillHeart)`
-  color: ${({ fav }) => (fav ? '#f00' : '#111111')};
+  color: ${({ color }) => color};
   font-size: 30px;
 `;
 
@@ -53,7 +53,11 @@ export const EditIcon = styled(FiEdit)`
 export const AddIcon = styled(MdAddBox)`
   font-size: ${({ size = '50px' }) => size};
   color: ${({ color = '#ddd' }) => color};
-  width: ${({ width = 'fit-content' }) => width};
-  height: ${({ height = 'fit-content' }) => height};
+  width: fit-content;
+  align-self: flex-end;
   cursor: ${({ cursor = 'pointer' }) => cursor};
+
+  & * {
+    width: fit-content;
+  }
 `;

@@ -25,19 +25,19 @@ const StyledFoodForm = styled.div`
     display: none;
   }
 
-  & * {
+  .food_form {
     display: flex;
     align-items: flex-start;
     width: 100%;
-  }
-
-  .food_form {
     background-color: #111111;
     flex-direction: column;
 
     padding: 2rem 15px 3rem;
 
     .top_section {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
       justify-content: space-between;
 
       .image_preview_span {
@@ -59,18 +59,27 @@ const StyledFoodForm = styled.div`
     }
 
     .name_label {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
       margin: 20px 0 0;
 
       flex-direction: column;
 
       input {
-        height: min(40px);
+        background-color: #111111;
+        color: #ddd;
+        height: 40px;
+        width: 100%;
         margin: 10px 0 0;
         padding: 10px 5px;
       }
     }
 
     .description {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
       min-height: 180px;
       margin: 20px 0 0;
       padding: 10px 5px;
@@ -78,13 +87,11 @@ const StyledFoodForm = styled.div`
 
     .image_upload_section {
       margin: 15px 0 0;
+      display: flex;
+      align-items: flex-start;
       width: 100%;
       align-items: center;
       justify-content: space-between;
-
-      & * {
-        display: unset;
-      }
 
       .image_field {
         padding: 10px 5px;
@@ -104,44 +111,48 @@ const StyledFoodForm = styled.div`
 
     .recipe_form {
       margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
 
       align-items: center;
 
       input {
+        width: 100%;
         height: 40px;
         padding: 10px 5px;
-      }
-
-      button {
-        height: 35px;
-        width: fit-content;
-        white-space: nowrap;
-        align-items: center;
-        font-size: 20px;
-        font-weight: 600;
       }
     }
 
     .recipe_list {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
       flex-direction: column;
 
       li {
+        display: flex;
+        width: 100%;
         align-items: center;
         justify-content: space-between;
         margin: 10px 0;
 
-        & * {
-          width: fit-content;
-        }
-
         span {
-          width: 100%;
+          width: 95%;
           color: #ddd;
           word-break: break-all;
           height: fit-content;
           padding: 10px 0;
         }
       }
+    }
+
+    .submit_btn {
+      width: 100%;
+      height: 45px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 1rem 0 0;
     }
   }
 

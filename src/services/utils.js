@@ -14,7 +14,7 @@ export const getFromLocalStorage = (key) =>
   JSON.parse(localStorage.getItem(key));
 
 export const saveToLocalStorage = (key, value) =>
-  sessionStorage.setItem(key, JSON.stringify(value));
+  localStorage.setItem(key, JSON.stringify(value));
 
 //  SESSIONSTORAGE BELOW using it to hold the state of the edit form
 
@@ -25,3 +25,17 @@ export const saveToSessionStorage = (key, value) =>
   sessionStorage.setItem(key, JSON.stringify(value));
 
 export const removeFromSession = (key) => sessionStorage.removeItem(key);
+
+// DONE WITH SESSIONSTORAGE. MOVING TO UPDATING FAVORITE
+
+export const updateFavorite = (id, setFoodData) => {
+  const update = getFromLocalStorage('foodData')?.map((food) => {
+    if (+food.id === +id) return { ...food, fav: !food.fav };
+
+    return food;
+  });
+
+  saveToLocalStorage('foodData', update);
+
+  setFoodData([...update]);
+};

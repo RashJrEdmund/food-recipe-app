@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
-import { getFromLocalStorage, saveToLocalStorage } from '../services/utils';
+import { getFromLocalStorage } from '../services/utils';
 
 const FoodContext = React.createContext();
 
@@ -16,20 +16,8 @@ export const ContextProvider = ({ children }) => {
     if (data) setFoodData(data);
   }, []);
 
-  const updateFavorite = (id) => {
-    const update = getFromLocalStorage('foodData')?.map((food) => {
-      if (+food.id === +id) return { ...food, fav: !food.fav };
-
-      return food;
-    });
-
-    saveToLocalStorage('foodData', update);
-
-    setFoodData([...update]);
-  };
-
   return (
-    <FoodContext.Provider value={{ foodData, setFoodData, updateFavorite }}>
+    <FoodContext.Provider value={{ foodData, setFoodData }}>
       {children}
     </FoodContext.Provider>
   );
