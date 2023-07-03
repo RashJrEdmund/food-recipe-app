@@ -19,7 +19,7 @@ export const saveToLocalStorage = (key, value) =>
 //  SESSIONSTORAGE BELOW using it to hold the state of the edit form
 
 export const getFromSessionStorage = (key) =>
-  JSON.parse(localStorage.getItem(key));
+  JSON.parse(sessionStorage.getItem(key));
 
 export const saveToSessionStorage = (key, value) =>
   sessionStorage.setItem(key, JSON.stringify(value));

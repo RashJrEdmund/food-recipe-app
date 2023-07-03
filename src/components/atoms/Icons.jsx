@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { AiFillHeart, AiOutlineAppstoreAdd } from 'react-icons/ai';
-import { MdDelete, MdOutlineArrowForwardIos } from 'react-icons/md';
+import { MdDelete, MdOutlineArrowForwardIos, MdAddBox } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 
 export const MenuIcon = styled(GiHamburgerMenu)`
@@ -48,4 +48,12 @@ export const FowardIcon = styled(MdOutlineArrowForwardIos)`
 
 export const EditIcon = styled(FiEdit)`
   color: ${({ iconcolor }) => iconcolor || '#111111'};
+`;
+
+export const AddIcon = styled(MdAddBox)`
+  font-size: ${({ size = '50px' }) => size};
+  color: ${({ color = '#ddd' }) => color};
+  width: ${({ width = 'fit-content' }) => width};
+  height: ${({ height = 'fit-content' }) => height};
+  cursor: ${({ cursor = 'pointer' }) => cursor};
 `;

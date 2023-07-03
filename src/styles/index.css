@@ -48,6 +48,11 @@ a {
   color: unset;
 }
 
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 @media only screen and (max-width: 900px) {
   :root {
     --general-padding: 15px;

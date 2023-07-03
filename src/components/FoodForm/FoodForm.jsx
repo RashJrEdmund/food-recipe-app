@@ -3,10 +3,14 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StyledFoodForm from './StyledFoodForm';
-import { DeleteIcon } from '../atoms/Icons';
+import { AddIcon, DeleteIcon } from '../atoms/Icons';
 import { Overlay } from '../atoms/Atoms';
+import { getFromSessionStorage } from '../../services/utils';
 
 export default function FoodForm({ action }) {
+  const [food, setFood] = React.useState(null);
+  const [useUrl, setUseUrl] = React.useState(false);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
   };
@@ -15,46 +19,81 @@ export default function FoodForm({ action }) {
     step.slice(0, 1);
   };
 
+  React.useEffect(() => {
+    const sesSfood = getFromSessionStorage('foodToEdit');
+
+    if (sesSfood) setFood(sesSfood);
+  }, []);
+
   return (
     <>
-      <Overlay index="4" opacity="1" action={action} />
+      <Overlay index="4" opacity="1" />
 
-      <StyledFoodForm>
+      <StyledFoodForm url={food?.img} useUrl={useUrl}>
         <div className="food_form">
-          <span className="image_preview_span" />
+          <div className="top_section">
+            <span className="image_preview_span" />
 
-          <span className="cancel_btn" onClick={() => action()}>
-            Cancel
-          </span>
+            <span className="cancel_btn" onClick={() => action()}>
+              Cancel
+            </span>
+          </div>
 
-          <label htmlFor="name">
+          <label htmlFor="name" className="name_label">
             <span className="name_span">Name</span>
-            <input type="text" name="name" id="name" placeholder="Food Name" />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Food Name"
+              value={food?.name}
+            />
           </label>
 
-          <label htmlFor="description">
-            <textarea name="description" id="description" cols="30" rows="10" />
-          </label>
+          <textarea
+            name="description"
+            id="description"
+            className="description"
+            placeholder="food description"
+            cols="30"
+            rows="10"
+            value={food?.description}
+          />
+
+          <div className="image_upload_section">
+            <input
+              type={useUrl ? 'url' : 'file'}
+              name="image_file"
+              id=""
+              className="image_field"
+            />
+
+            <span
+              className="switch_btwn_link"
+              onClick={() => setUseUrl((prev) => !prev)}
+            >
+              {useUrl ? 'upload file' : 'use Url'} instead
+            </span>
+          </div>
 
           <form className="recipe_form" onSubmit={handleFormSubmit}>
-            <div className="add_recipe_div">
-              <input type="recipe" placeholder="Add recipe" />
+            <input type="recipe" placeholder="Add recipe" />
 
-              <button className="add_btn" type="submit">
-                Add recipe
-              </button>
-            </div>
-
-            <ul className="recipe_list">
-              {['step 1', 'step 2', 'step 3', 'step 4'].map((step) => (
-                <li key={step}>
-                  <span>{step}</span>
-
-                  <DeleteIcon onClick={() => removeRecipeStep(step)} />
-                </li>
-              ))}
-            </ul>
+            <AddIcon />
           </form>
+
+          <ul className="recipe_list">
+            {food?.recipe.map((step) => (
+              <li key={step}>
+                <span>{step}</span>
+
+                <DeleteIcon
+                  onClick={() => removeRecipeStep(step)}
+                  color="brown"
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </StyledFoodForm>
     </>
