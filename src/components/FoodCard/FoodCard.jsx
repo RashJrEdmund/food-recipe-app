@@ -5,7 +5,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
 import { useFoodContext } from '../../context/FoodContext';
-import useAlert from '../../hooks/UseAlert';
 import StyledFoodCard from './StyledFoodCard';
 import { updateFavorite } from '../../services/utils';
 
@@ -15,12 +14,11 @@ export default function FoodCard({
   description,
   img,
   fav,
+  displayAlert,
   allowInteraction,
 }) {
   const navigate = useNavigate();
   const { setFoodData } = useFoodContext();
-
-  const { AlertComponent, displayAlert, alertMsg } = useAlert();
 
   const addNewFavorite = () => {
     updateFavorite(id, setFoodData);
@@ -36,35 +34,28 @@ export default function FoodCard({
   };
 
   return (
-    <>
-      {alertMsg.show && <AlertComponent />}
+    <StyledFoodCard url={img}>
+      <div className="food_image" />
+      <div className="food_section_2">
+        <h3 className="food_name">{name || 'FOOD NAME'}</h3>
 
-      <StyledFoodCard url={img}>
-        <div className="food_image" />
-        <div className="food_section_2">
-          <h3 className="food_name">{name || 'FOOD NAME'}</h3>
+        <p className="food_description">{description || 'Food description'}</p>
 
-          <p className="food_description">
-            {description ||
-              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia totam doloremque recusandae. Harum nobis dicta inventore est natus optio repudiandae sint libero nam. Officia, ad impedit voluptatem nihil dicta at!'}
-          </p>
+        {allowInteraction && (
+          <div className="food_cta">
+            <span className="heart" onClick={addNewFavorite}>
+              <FavortieIcon
+                color={fav ? '#f00' : '#111111'}
+                title={`${fav ? 'remove from ' : 'add to '} favorites`}
+              />
+            </span>
 
-          {allowInteraction && (
-            <div className="food_cta">
-              <span className="heart" onClick={addNewFavorite}>
-                <FavortieIcon
-                  color={fav ? '#f00' : '#111111'}
-                  title={`${fav ? 'remove from ' : 'add to '} favorites`}
-                />
-              </span>
-
-              <span className="see_more" onClick={goToFoodDetails}>
-                <ActionsIcon title="more" />
-              </span>
-            </div>
-          )}
-        </div>
-      </StyledFoodCard>
-    </>
+            <span className="see_more" onClick={goToFoodDetails}>
+              <ActionsIcon title="more" />
+            </span>
+          </div>
+        )}
+      </div>
+    </StyledFoodCard>
   );
 }

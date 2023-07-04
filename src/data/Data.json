@@ -3,38 +3,29 @@
     "name": "Rice & Beans",
     "img": "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2017/06/African-Stewed-Beans-and-rice.jpg?resize=1024%2C1024&ssl=1",
     "recipe": [
-      "pour required quantity in clean pan, taking note that it's rising bad",
-      "add enough water (enough to completely conver the golden poder)",
-      "pour out some of the hovering water to remove unnecessary particles",
-      "add sugar: add to your tates",
+      "A pan full of beans",
+      "About 2kg Rice",
+      "Spicies like, ginger, garlic, onions, tomatoes(if u want), green beans, Cray fish",
+      "about 3/4 a liter of oil, Maggi and salts",
       "garri also goes well with groundnut and or milk"
     ],
-    "showRecipe": false,
+    "description": "Omo, The Rice and beans is Jones, only sweart 😭 😂 ",
     "fav": false,
     "id": 0
   },
   {
     "name": "Khahti Khahti",
     "img": "https://africanbites.com/wp-content/uploads/2014/08/IMG_4973.jpg",
-    "recipe": [
-      "kill and skin a fowl (cocks make more sense)",
-      "clean the innerParts and chop in different sieves",
-      "roast over enough heat (not neccessarily blazing fire)",
-      "while roasting, sieze and prepare corn fufu",
-      "prepare sauce (enough of it): add maggi and salt to clean dry red oil and mix till finnesse",
-      "add the already roasted sliced bird to the ready sauce and mix",
-      "dish your self a hefty load of kiban accompanied with the bird and sauce",
-      "God did! enjoy!"
-    ],
-    "showRecipe": false,
+    "recipe": ["A bird 😂", "Oil", "Maggi", "Salt", "corn fufu", "fire"],
+    "description": "Bad dope",
     "fav": false,
     "id": 1
   },
   {
     "name": "Ndole",
     "img": "https://i.pinimg.com/originals/6d/e7/9c/6de79cb3e00b1eba9e36b945f8fc91b1.jpg",
-    "recipe": ["boil bitter leaf", "i dont yet know the wosup"],
-    "showRecipe": false,
+    "recipe": ["bitter leaf", "ion know the rest of the sup"],
+    "description": "it's good",
     "fav": false,
     "id": 2
   },
@@ -43,39 +34,36 @@
     "img": "https://cdn.shopify.com/s/files/1/0409/7484/4060/articles/86E207EF-1F88-4281-92F1-E08AD28C2E76_1000x.webp?v=1681512131",
     "recipe": [
       "cook water fufu",
-      "do some other things laat",
-      "do another thing"
+      "Eru",
+      "Biff, dry fish, cray fish",
+      "complete the this list.."
     ],
-    "showRecipe": false,
+    "description": "Only life and joy",
     "fav": false,
     "id": 3
   },
   {
     "name": "Koki",
     "img": "https://sawagrill.com/wp-content/uploads/2022/06/rdd-07-scaled.webp",
-    "recipe": [
-      "harvest and warm (to clean and make ready) plantain leaves",
-      "do something",
-      "do another thing",
-      "take on something"
-    ],
-    "showRecipe": false,
+    "recipe": ["you complete it..."],
+    "description": "Koki is feh divine",
     "fav": false,
     "id": 4
   },
   {
     "name": "Achu",
     "img": "https://medmunch.com/wp-content/uploads/2020/10/Achu-768x511.jpg",
-    "recipe": [
-      "do some other things",
-      "do another thing",
-      "fix fire",
-      "do another something that you've not done",
-      "wait let it get ready",
-      "say a prayer before every meal"
-    ],
-    "showRecipe": false,
+    "recipe": ["you complete it..."],
+    "description": "Its good",
     "fav": false,
     "id": 5
+  },
+  {
+    "name": "Dougnuts",
+    "img": "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-15.jpg",
+    "recipe": ["step 1", "step 2", "step 3", "ect"],
+    "description": "Bad dope, and Attractive",
+    "fav": false,
+    "id": 6
   }
 ]
