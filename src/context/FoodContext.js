@@ -4,11 +4,16 @@
 
 import React from 'react';
 import { getFromLocalStorage } from '../services/utils';
+import useAlert from '../hooks/UseAlert';
 
 const FoodContext = React.createContext();
 
 export const ContextProvider = ({ children }) => {
   const [foodData, setFoodData] = React.useState(null);
+
+  const { AlertComponent, displayAlert, alertMsg } = useAlert();
+  // using this only when i want the alert message to persit even
+  // when you route to a diff location. like the case of deleting food
 
   React.useEffect(() => {
     const data = getFromLocalStorage('foodData') || [];
@@ -17,7 +22,9 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <FoodContext.Provider value={{ foodData, setFoodData }}>
+    <FoodContext.Provider value={{ foodData, setFoodData, displayAlert }}>
+      {alertMsg.show && <AlertComponent />}
+
       {children}
     </FoodContext.Provider>
   );

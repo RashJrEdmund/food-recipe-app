@@ -1,26 +1,35 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
 import {
   getFromLocalStorage,
   removeFromSession,
+  saveToLocalStorage,
   saveToSessionStorage,
 } from '../../services/utils';
 import StyledDetailsPage from './StyledDetailsPage';
-import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
+import { useFoodContext } from '../../context/FoodContext';
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
   const [showForm, setShowForm] = React.useState(false);
+  const navigate = useNavigate();
 
-  const { AlertComponent, displayAlert, alertMsg } = useAlert();
+  const { displayAlert, setFoodData } = useFoodContext();
 
   const params = useParams();
 
   const handleDelete = () => {
+    const newFoodlist = getFromLocalStorage('foodData').filter(
+      (food) => food.id !== detailedFood.id
+    );
+
+    saveToLocalStorage('foodData', newFoodlist);
+    setFoodData([...newFoodlist]);
     displayAlert(`${detailedFood?.name} deleted`);
+    navigate('/foods');
   };
 
   const toggleShowForm = () => {
@@ -41,8 +50,6 @@ export default function DetailsPage() {
 
   return (
     <>
-      {alertMsg.show && <AlertComponent />}
-
       {showForm && (
         <FoodForm
           toggleShowForm={toggleShowForm}

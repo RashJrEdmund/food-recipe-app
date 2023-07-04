@@ -106,7 +106,7 @@ export default function FoodForm({
         description: '',
         recipe: [],
         fav: false,
-        id: prev ? prev.pop().id + 1 : 1,
+        id: prev && prev.length > 0 ? prev.pop().id + 1 : 1,
       });
     }
   }, []);
