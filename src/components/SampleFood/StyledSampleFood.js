@@ -7,6 +7,7 @@ const StyledSampleFoods = styled.section`
   flex-direction: column;
   align-items: flex-start;
   height: fit-content;
+  min-height: 60vh;
   margin: 0 auto;
   width: var(--general-min-max-width);
   padding: var(--general-padding);
@@ -28,6 +29,13 @@ const StyledSampleFoods = styled.section`
     gap: 15px;
     flex-wrap: wrap;
     margin: 1rem auto;
+  }
+
+  .fall_back_text {
+    text-align: center;
+    margin: 2rem 0;
+    font-weight: 600;
+    width: var(--general-min-max-width);
   }
 `;
 

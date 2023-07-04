@@ -44,7 +44,11 @@ export default function Favorites() {
           weight="700"
         />
 
-        <SampleFoods arrayFoods={favorites} allowInteraction />
+        <SampleFoods
+          arrayFoods={favorites}
+          allowInteraction
+          fallbackmessage="You Have No Food In Your Favourite List"
+        />
 
         <div style={StyledBtnHolder}>
           <ButtonAtom

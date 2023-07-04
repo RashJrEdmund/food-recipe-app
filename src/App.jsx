@@ -12,6 +12,7 @@ import FoodPage from './pages/Foods/FoodPage';
 import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
 import DetailsPage from './pages/Details/DetailsPage';
 import Favorites from './pages/Favorites/Favorites';
+import Search from './pages/Search/Search';
 
 if (!getFromLocalStorage('foodData')) {
   saveToLocalStorage('foodData', FoodData);
@@ -28,6 +29,7 @@ function App() {
           <Route path="/foods" element={<FoodPage />} />
           <Route path="foods/details/:name" element={<DetailsPage />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
 
         <Footer />

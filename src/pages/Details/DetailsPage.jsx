@@ -11,6 +11,7 @@ import {
 import StyledDetailsPage from './StyledDetailsPage';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
+import useDialogue from '../../hooks/useDialogue';
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -19,9 +20,11 @@ export default function DetailsPage() {
 
   const { displayAlert, setFoodData } = useFoodContext();
 
+  const { DialogueComponent, dialogueDetails, displayDialogue } = useDialogue();
+
   const params = useParams();
 
-  const handleDelete = () => {
+  const deleteFood = () => {
     const newFoodlist = getFromLocalStorage('foodData').filter(
       (food) => food.id !== detailedFood.id
     );
@@ -30,6 +33,17 @@ export default function DetailsPage() {
     setFoodData([...newFoodlist]);
     displayAlert(`${detailedFood?.name} deleted`);
     navigate('/foods');
+  };
+
+  const handleDelete = () => {
+    const options = {
+      message2: `You are about to delete ${detailedFood.name}`,
+      agreeTxt: 'Delete Food',
+      fxntoCall: deleteFood,
+      show: false,
+    };
+
+    displayDialogue(options);
   };
 
   const toggleShowForm = () => {
@@ -58,11 +72,13 @@ export default function DetailsPage() {
         />
       )}
 
+      {dialogueDetails.show && <DialogueComponent />}
+
       <StyledDetailsPage url={detailedFood?.img}>
         <section className="food_container">
           <div className="food_image" />
 
-          <div className="food_col_">
+          <div className="food_col_2">
             <Header2Atom
               text={`${detailedFood?.name || 'Food Item'}`}
               size="1.4rem"

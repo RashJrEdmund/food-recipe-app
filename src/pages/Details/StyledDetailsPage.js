@@ -12,7 +12,7 @@ const StyledDetailsPage = styled.main`
   padding: 3rem 0 10px;
 
   .food_container {
-    background-color: brown;
+    background-color: var(--main-bg);
     box-shadow: 0 0 10px #111111;
     width: min(97%, 1000px);
     height: fit-content;
@@ -33,13 +33,17 @@ const StyledDetailsPage = styled.main`
       min-height: 600px;
     }
 
-    .description {
-      width: 100%;
+    .food_col_2 {
+      width: min(100%, 600px);
       word-wrap: break-word;
-      padding: 10px;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 25px;
+
+      .description {
+        word-wrap: break-word;
+        padding: 10px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 25px;
+      }
     }
   }
 
@@ -96,7 +100,6 @@ const StyledDetailsPage = styled.main`
 
   @media only screen and (max-width: 600px) {
     .food_container {
-      background-color: brown;
       box-shadow: 0 0 10px #111111;
       width: min(97%, 1000px);
       height: fit-content;
@@ -109,6 +112,11 @@ const StyledDetailsPage = styled.main`
 
       .food_image {
         min-height: 350px;
+      }
+
+      .food_col_2 {
+        width: 100%;
+        background: none;
       }
     }
   }

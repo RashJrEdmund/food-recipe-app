@@ -9,6 +9,11 @@ import { MenuIcon, OpenMenuIcon } from '../atoms/Icons';
 export default function LandingNav() {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = React.useState(false);
+  const routeToPage = (route) => {
+    navigate(route);
+    window.scrollTo(0, 95);
+    setOpenMenu(false);
+  };
 
   return (
     <>
@@ -25,9 +30,10 @@ export default function LandingNav() {
 
           <ul>
             <OpenMenuIcon onClick={() => setOpenMenu(false)} />
-            <li onClick={() => navigate('/')}>Home</li>
-            <li onClick={() => navigate('/foods')}>Food List</li>
-            <li onClick={() => navigate('/favorites')}>Favorites</li>
+            <li onClick={() => routeToPage('/')}>Home</li>
+            <li onClick={() => routeToPage('/foods')}>Food List</li>
+            <li onClick={() => routeToPage('/favorites')}>Favorites</li>
+            <li onClick={() => routeToPage('/search')}>search</li>
             <li>User</li>
           </ul>
 
