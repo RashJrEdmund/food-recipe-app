@@ -5,17 +5,11 @@ import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
 import { useFoodContext } from '../../context/FoodContext';
+import StyledBtnHolder from '../../common/styledBtnHolder';
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const { foodData } = useFoodContext();
-  const styledBtnHolder = {
-    width: '97vw',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '2rem auto',
-  };
 
   const gotToFoods = () => {
     navigate('/foods');
@@ -36,7 +30,7 @@ export default function LandingPage() {
         allowInteraction={false}
       />
 
-      <div style={styledBtnHolder}>
+      <div style={StyledBtnHolder}>
         <ButtonAtom
           bg="#111111"
           color="#ffc145"

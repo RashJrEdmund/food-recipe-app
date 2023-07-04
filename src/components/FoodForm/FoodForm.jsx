@@ -12,6 +12,7 @@ import {
   saveToSessionStorage,
 } from '../../services/utils';
 import { useFoodContext } from '../../context/FoodContext';
+import { DEFAULT_FOOD_BG } from '../../services/constants';
 
 export default function FoodForm({
   toggleShowForm,
@@ -101,6 +102,7 @@ export default function FoodForm({
       const prev = getFromLocalStorage('foodData');
       setFood({
         name: '',
+        img: DEFAULT_FOOD_BG,
         description: '',
         recipe: [],
         fav: false,

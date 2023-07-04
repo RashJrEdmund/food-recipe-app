@@ -7,8 +7,10 @@ import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 
-export default function FoodPage() {
+export default function Favorites() {
   const [showForm, setShowForm] = React.useState(false);
+  const [favorites, setFavorites] = React.useState(null);
+
   const { foodData } = useFoodContext();
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
@@ -17,6 +19,11 @@ export default function FoodPage() {
     setShowForm(true);
     //
   };
+
+  React.useEffect(() => {
+    if (foodData)
+      setFavorites([...foodData.filter((food) => food.fav === true)]);
+  }, [foodData]);
 
   return (
     <>
@@ -37,7 +44,8 @@ export default function FoodPage() {
           weight="700"
         />
 
-        <SampleFoods arrayFoods={foodData} allowInteraction />
+        <SampleFoods arrayFoods={favorites} allowInteraction />
+
         <div style={StyledBtnHolder}>
           <ButtonAtom
             bg="#111111"

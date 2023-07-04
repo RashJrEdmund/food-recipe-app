@@ -41,7 +41,7 @@ const StyledFoodForm = styled.div`
       justify-content: space-between;
 
       .image_preview_span {
-        background: url(${({ url }) => url});
+        background-image: url(${({ url }) => url});
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -157,16 +157,7 @@ const StyledFoodForm = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    /* .food_form {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-
-      .cta_btns {
-        align-self: flex-start;
-      }
-    } */
+    //
   }
 `;
 
