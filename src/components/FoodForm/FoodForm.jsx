@@ -167,7 +167,9 @@ export default function FoodForm({
           <form className="recipe_form" onSubmit={handleFormSubmit}>
             <input type="recipe" placeholder="Add recipe" name="newrecipe" />
 
-            <AddIcon />
+            <button type="submit">
+              <AddIcon />
+            </button>
           </form>
 
           <ul className="recipe_list">

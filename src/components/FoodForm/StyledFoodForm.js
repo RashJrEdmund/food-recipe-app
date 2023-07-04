@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
 
 const StyledFoodForm = styled.div`
-  /* background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
-      url(${({ url }) => url});
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -121,6 +116,10 @@ const StyledFoodForm = styled.div`
         width: 100%;
         height: 40px;
         padding: 10px 5px;
+      }
+
+      button {
+        background-color: transparent;
       }
     }
 

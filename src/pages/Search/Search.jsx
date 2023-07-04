@@ -15,7 +15,7 @@ export default function Search() {
     const data = getFromLocalStorage('foodData') || [];
 
     const res = data.filter((food) =>
-      food.name.toLowerCase().includes(searchValue.toLowerCase())
+      food.name.trim().toLowerCase().includes(searchValue.trim().toLowerCase())
     );
 
     setSearchItems([...res]);

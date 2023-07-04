@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const StyledSearchForm = styled.nav`
+const StyledSearchForm = styled.section`
   width: 100%;
   display: flex;
   align-items: center;
