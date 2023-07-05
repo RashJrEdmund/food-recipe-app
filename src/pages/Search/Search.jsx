@@ -40,12 +40,14 @@ export default function Search() {
   }, []);
 
   const handleWindowClick = () => {
-    if (searchValue.trim()) debounceFetch();
-    a;
+    /*  if (searchValue.trim()) */ debounceFetch();
   };
 
   React.useEffect(() => {
-    window.addEventListener('click', handleWindowClick);
+    window.addEventListener('click', () => {
+      debounceFetch();
+      console.log('clicked', { searchValue });
+    });
     // this is so that liking an item will cause a re-search and thus render an updated version
 
     return () => window.removeEventListener('click', handleWindowClick);
