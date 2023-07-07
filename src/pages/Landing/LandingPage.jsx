@@ -26,7 +26,7 @@ export default function LandingPage() {
         weight="800"
       />
       <SampleFoods
-        arrayFoods={foodData?.slice(0, 6)}
+        arrayFoods={foodData?.slice(0, 12)}
         allowInteraction={false}
       />
 
