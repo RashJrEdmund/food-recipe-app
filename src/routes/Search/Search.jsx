@@ -1,12 +1,11 @@
-/* eslint-disable */
-
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { getFromLocalStorage, removeFromSession } from '../../services/utils';
 import SearchForm from '../../components/SearchForm/SearchForm';
 
-export default function Search() {
+export default function Search({ setPathName }) {
   const [searchValue, setSearchValue] = React.useState('');
   const [searchedItems, setSearchItems] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -36,19 +35,20 @@ export default function Search() {
   }, [searchValue]);
 
   React.useEffect(() => {
+    setPathName(window.location.pathname); // helps for my 404 page
     return () => removeFromSession('search');
   }, []);
 
-  const handleWindowClick = () => {
-    if (searchValue.trim()) debounceFetch();
-  };
+  // const handleWindowClick = () => {
+  //   if (searchValue.trim()) debounceFetch();
+  // };
 
-  React.useEffect(() => {
-    window.addEventListener('click', handleWindowClick);
-    // this is so that liking an item will cause a re-search and thus render an updated version
+  // React.useEffect(() => {
+  //   window.addEventListener('click', handleWindowClick);
+  //   // this is so that liking an item will cause a re-search and thus render an updated version
 
-    return () => window.removeEventListener('click', handleWindowClick);
-  }, []);
+  //   return () => window.removeEventListener('click', handleWindowClick);
+  // }, []);
 
   return (
     <div style={{ width: '100%' }}>

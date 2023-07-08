@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
@@ -13,7 +14,7 @@ import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
 
-export default function DetailsPage() {
+export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
   const [showForm, setShowForm] = React.useState(false);
   const navigate = useNavigate();
@@ -59,6 +60,8 @@ export default function DetailsPage() {
 
     if (currentFood) setDetailedFood({ ...currentFood });
 
+    setPathName(window.location.pathname); // helps for my 404 page
+
     return () => removeFromSession('foodToEdit');
   }, [params]);
 
@@ -80,7 +83,7 @@ export default function DetailsPage() {
 
           <div className="food_col_2">
             <Header2Atom
-              text={`${detailedFood?.name || 'Food Item'}`}
+              text={`${detailedFood?.name || 'Food Name'}`}
               size="1.4rem"
               margin="3rem 10px 2rem"
               weight="800"
