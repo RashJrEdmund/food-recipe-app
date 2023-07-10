@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
@@ -7,7 +8,7 @@ import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 
-export default function FoodPage() {
+export default function FoodPage({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
   const { foodData } = useFoodContext();
 
@@ -15,8 +16,9 @@ export default function FoodPage() {
 
   const createNewFood = () => {
     setShowForm(true);
-    //
   };
+
+  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
 
   return (
     <>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LandingHero from '../../components/LandingHero/LandingHero';
@@ -7,7 +8,7 @@ import ButtonAtom from '../../components/atoms/Button';
 import { useFoodContext } from '../../context/FoodContext';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 
-export default function LandingPage() {
+export default function LandingPage({ setPathName }) {
   const navigate = useNavigate();
   const { foodData } = useFoodContext();
 
@@ -15,6 +16,8 @@ export default function LandingPage() {
     navigate('/foods');
     window.scrollTo(0, 0);
   };
+
+  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
 
   return (
     <main>
@@ -26,7 +29,7 @@ export default function LandingPage() {
         weight="800"
       />
       <SampleFoods
-        arrayFoods={foodData?.slice(0, 6)}
+        arrayFoods={foodData?.slice(0, 12)}
         allowInteraction={false}
       />
 

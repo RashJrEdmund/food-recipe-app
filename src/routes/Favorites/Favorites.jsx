@@ -1,29 +1,24 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { useFoodContext } from '../../context/FoodContext';
-import ButtonAtom from '../../components/atoms/Button';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
-import StyledBtnHolder from '../../common/styledBtnHolder';
 
-export default function Favorites() {
+export default function Favorites({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
 
   const { foodData } = useFoodContext();
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
-
-  const createNewFood = () => {
-    setShowForm(true);
-    //
-  };
-
   React.useEffect(() => {
     if (foodData)
       setFavorites([...foodData.filter((food) => food.fav === true)]);
   }, [foodData]);
+
+  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
 
   return (
     <>
@@ -49,17 +44,6 @@ export default function Favorites() {
           allowInteraction
           fallbackmessage="You Have No Food In Your Favourite List"
         />
-
-        <div style={StyledBtnHolder}>
-          <ButtonAtom
-            bg="#111111"
-            color="#ffc145"
-            text="Create New"
-            iconType="ADD"
-            iconcolor="#ddd"
-            action={createNewFood}
-          />
-        </div>
       </div>
     </>
   );

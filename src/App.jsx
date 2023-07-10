@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/jsx-pascal-case */
@@ -5,31 +6,44 @@ import './styles/App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FoodData from './data/Data.json';
-import LandingPage from './pages/Landing/LandingPage';
+import LandingPage from './routes/Landing/LandingPage';
 import LandingNav from './components/navbar/LandingNav';
 import Footer from './components/footer/Footer';
-import FoodPage from './pages/Foods/FoodPage';
+import FoodPage from './routes/Foods/FoodPage';
 import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
-import DetailsPage from './pages/Details/DetailsPage';
-import Favorites from './pages/Favorites/Favorites';
-import Search from './pages/Search/Search';
+import DetailsPage from './routes/Details/DetailsPage';
+import Favorites from './routes/Favorites/Favorites';
+import Search from './routes/Search/Search';
+import PageGaurd from './HOC/PageGaurd';
 
 if (!getFromLocalStorage('foodData')) {
   saveToLocalStorage('foodData', FoodData);
 }
 
-function App() {
+function App({ setPathName }) {
   return (
     <BrowserRouter>
       <div className="App" id="App">
         <LandingNav />
 
         <Routes>
-          <Route index element={<LandingPage />} />
-          <Route path="/foods" element={<FoodPage />} />
-          <Route path="foods/details/:name" element={<DetailsPage />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/search" element={<Search />} />
+          <Route index element={<LandingPage setPathName={setPathName} />} />
+          <Route
+            path="/foods"
+            element={<FoodPage setPathName={setPathName} />}
+          />
+          <Route
+            path="foods/details/:name"
+            element={<DetailsPage setPathName={setPathName} />}
+          />
+          <Route
+            path="/favorites"
+            element={<Favorites setPathName={setPathName} />}
+          />
+          <Route
+            path="/search"
+            element={<Search setPathName={setPathName} />}
+          />
         </Routes>
 
         <Footer />
@@ -38,4 +52,4 @@ function App() {
   );
 }
 
-export default App;
+export default PageGaurd(App);
