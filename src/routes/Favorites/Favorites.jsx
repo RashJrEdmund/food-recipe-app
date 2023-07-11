@@ -36,6 +36,7 @@ export default function Favorites({ setPathName }) {
           creatingNew // to signify that it's a new item beeing created
         />
       )}
+
       <div>
         <SearchForm
           searchOptions={['FAV']}
@@ -44,7 +45,7 @@ export default function Favorites({ setPathName }) {
         />
 
         <Header2Atom
-          text="Food List"
+          text="Favorite List"
           size="1.5rem"
           margin="3rem auto 2rem"
           weight="700"

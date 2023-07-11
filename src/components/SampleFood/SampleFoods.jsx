@@ -18,18 +18,21 @@ export default function SampleFoods({
       <StyledSampleFoods>
         {(arrayFoods?.length > 0 && (
           <div className="cards">
-            {arrayFoods?.map(({ id, name, description, recipe, fav, img }) => (
-              <FoodCard
-                key={id}
-                id={id}
-                name={name}
-                description={description || recipe[0]}
-                img={img}
-                fav={fav}
-                displayAlert={displayAlert}
-                allowInteraction={allowInteraction}
-              />
-            ))}
+            {arrayFoods?.map(
+              ({ id, name, description, recipe, fav, img, imgIndx }) => (
+                <FoodCard
+                  key={id}
+                  id={id}
+                  name={name}
+                  description={description || recipe[0]}
+                  img={img}
+                  fav={fav}
+                  imgIndx={imgIndx}
+                  displayAlert={displayAlert}
+                  allowInteraction={allowInteraction}
+                />
+              )
+            )}
           </div>
         )) || (
           <p className="fall_back_text">
