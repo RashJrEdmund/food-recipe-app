@@ -7,9 +7,11 @@ import ButtonAtom from '../../components/atoms/Button';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 export default function FoodPage({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
+  const [foodList, setFoodList] = React.useState(null);
   const { foodData } = useFoodContext();
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
@@ -18,7 +20,10 @@ export default function FoodPage({ setPathName }) {
     setShowForm(true);
   };
 
-  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
+  React.useEffect(() => {
+    if (foodData) setFoodList([...foodData]);
+    setPathName(window.location.pathname); // helps for my 404 page
+  }, []);
 
   return (
     <>
@@ -32,6 +37,8 @@ export default function FoodPage({ setPathName }) {
         />
       )}
       <div>
+        <SearchForm setSearchItems={setFoodList} searchFallBack={foodData} />
+
         <Header2Atom
           text="Food List"
           size="1.5rem"
@@ -39,7 +46,7 @@ export default function FoodPage({ setPathName }) {
           weight="700"
         />
 
-        <SampleFoods arrayFoods={foodData} allowInteraction />
+        <SampleFoods arrayFoods={foodList} allowInteraction />
         <div style={StyledBtnHolder}>
           <ButtonAtom
             bg="#111111"

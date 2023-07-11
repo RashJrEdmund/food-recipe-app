@@ -5,17 +5,22 @@ import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { useFoodContext } from '../../context/FoodContext';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 export default function Favorites({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
+  const [searchFallBack, setSearchFallBack] = React.useState([]);
 
   const { foodData } = useFoodContext();
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
   React.useEffect(() => {
-    if (foodData)
-      setFavorites([...foodData.filter((food) => food.fav === true)]);
+    if (foodData) {
+      const favs = foodData.filter((food) => food.fav === true);
+      setFavorites([...favs]);
+      setSearchFallBack([...favs]);
+    }
   }, [foodData]);
 
   React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
@@ -32,6 +37,12 @@ export default function Favorites({ setPathName }) {
         />
       )}
       <div>
+        <SearchForm
+          searchOptions={['FAV']}
+          setSearchItems={setFavorites}
+          searchFallBack={searchFallBack}
+        />
+
         <Header2Atom
           text="Food List"
           size="1.5rem"

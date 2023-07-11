@@ -3,4 +3,4 @@ export const DEFAULT_FOOD_BG =
 
 export const MAX_FOOD_PER_PAGINATION = 12;
 
-export const DEFINED_ROUTES = ['', 'foods', 'details', 'favorites', 'search'];
+export const DEFINED_ROUTES = ['', 'foods', 'details', 'favorites'];
