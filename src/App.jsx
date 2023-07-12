@@ -13,7 +13,6 @@ import FoodPage from './routes/Foods/FoodPage';
 import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
 import DetailsPage from './routes/Details/DetailsPage';
 import Favorites from './routes/Favorites/Favorites';
-import Search from './routes/Search/Search';
 import PageGaurd from './HOC/PageGaurd';
 
 if (!getFromLocalStorage('foodData')) {
@@ -39,10 +38,6 @@ function App({ setPathName }) {
           <Route
             path="/favorites"
             element={<Favorites setPathName={setPathName} />}
-          />
-          <Route
-            path="/search"
-            element={<Search setPathName={setPathName} />}
           />
         </Routes>
 

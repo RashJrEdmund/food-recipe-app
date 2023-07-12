@@ -1,27 +1,57 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import styled from '@emotion/styled';
+import StyledSearchForm from './StyledSearchForm';
+import { getFromLocalStorage } from '../../services/utils';
 
-const StyledSearchForm = styled.section`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem auto;
+export default function SearchForm({
+  setSearchItems,
+  searchFallBack, // the fallback value given no search is found
+  searchOptions = [],
+}) {
+  const [searchValue, setSearchValue] = React.useState('');
+  // const [searchIedtems, setSearchItems] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
-  input {
-    background-color: transparent;
-    width: min(97vw, 300px);
-    height: 50px;
-    border: 1px solid #808080;
-    border-radius: 10px;
-    padding: 10px;
-  }
-`;
+  const debounceFetch = () => {
+    const data = getFromLocalStorage('foodData') || [];
 
-export default function SearchForm({ searchValue, setSearchValue }) {
+    const results = data.filter((food) => {
+      if (searchOptions.includes('FAV'))
+        return (
+          food.name
+            .trim()
+            .toLowerCase()
+            .includes(searchValue.trim().toLowerCase()) && food.fav === true
+        );
+
+      return food.name
+        .trim()
+        .toLowerCase()
+        .includes(searchValue.trim().toLowerCase());
+    });
+
+    setSearchItems([...results]);
+
+    setLoading(false);
+  };
+
+  React.useEffect(() => {
+    let intId = null;
+    if (searchValue.match(/\w+/)) {
+      setLoading(true);
+      intId = setTimeout(() => {
+        debounceFetch();
+      }, 900);
+    } else {
+      setLoading(false);
+      setSearchItems([...searchFallBack]);
+    }
+
+    return () => clearTimeout(intId);
+  }, [searchValue]);
+
   return (
-    <StyledSearchForm>
+    <StyledSearchForm loading={loading}>
       <input
         type="text"
         value={searchValue}

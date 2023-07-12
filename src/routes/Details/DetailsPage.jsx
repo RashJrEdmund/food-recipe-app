@@ -77,7 +77,7 @@ export default function DetailsPage({ setPathName }) {
 
       {dialogueDetails.show && <DialogueComponent />}
 
-      <StyledDetailsPage url={detailedFood?.img}>
+      <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
         <section className="food_container">
           <div className="food_image" />
 

@@ -12,7 +12,8 @@ export default function FoodCard({
   id,
   name,
   description,
-  img,
+  img, // an array
+  imgIndx,
   fav,
   displayAlert,
   allowInteraction,
@@ -34,7 +35,7 @@ export default function FoodCard({
   };
 
   return (
-    <StyledFoodCard url={img}>
+    <StyledFoodCard url={img[imgIndx]}>
       <div className="food_image" />
       <div className="food_section_2">
         <h3 className="food_name">{name || 'FOOD NAME'}</h3>

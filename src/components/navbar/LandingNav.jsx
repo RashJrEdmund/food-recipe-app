@@ -33,7 +33,6 @@ export default function LandingNav() {
             <li onClick={() => routeToPage('/')}>Home</li>
             <li onClick={() => routeToPage('/foods')}>Food List</li>
             <li onClick={() => routeToPage('/favorites')}>Favorites</li>
-            <li onClick={() => routeToPage('/search')}>search</li>
             <li>User</li>
           </ul>
 
