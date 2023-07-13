@@ -25,34 +25,3 @@ export const saveToSessionStorage = (key, value) =>
   sessionStorage.setItem(key, JSON.stringify(value));
 
 export const removeFromSession = (key) => sessionStorage.removeItem(key);
-
-// DONE WITH SESSIONSTORAGE. MOVING TO UPDATING FAVORITE
-
-export const updateFavorite = (id, setFoodData) => {
-  const update = getFromLocalStorage('foodData')?.map((food) => {
-    if (+food.id === +id) return { ...food, fav: !food.fav };
-
-    return food;
-  });
-
-  saveToLocalStorage('foodData', update);
-
-  setFoodData([...update]);
-};
-
-// CONVERTING IMAGE TO BASE 64. HAVEN'T REALLY USED IT
-
-export const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};

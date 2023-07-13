@@ -46,7 +46,12 @@ export default function FoodPage({ setPathName }) {
           weight="700"
         />
 
-        <SampleFoods arrayFoods={foodList} allowInteraction />
+        <SampleFoods
+          arrayFoods={foodList}
+          setArrayFoods={setFoodList}
+          allowInteraction
+        />
+
         <div style={StyledBtnHolder}>
           <ButtonAtom
             bg="#111111"

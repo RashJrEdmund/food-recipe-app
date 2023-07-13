@@ -3,10 +3,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
-import { useFoodContext } from '../../context/FoodContext';
+import { ActionsIcon, FavortieIcon, NavigatorIcon } from '../atoms/Icons';
 import StyledFoodCard from './StyledFoodCard';
-import { updateFavorite } from '../../services/utils';
+import { updateFavorite, updateSlideIndex } from '../../services/foodScripts';
 
 export default function FoodCard({
   id,
@@ -15,19 +14,23 @@ export default function FoodCard({
   img, // an array
   imgIndx,
   fav,
+  setArrayFoods,
   displayAlert,
   allowInteraction,
 }) {
   const navigate = useNavigate();
-  const { setFoodData } = useFoodContext();
 
   const addNewFavorite = () => {
-    updateFavorite(id, setFoodData);
+    updateFavorite(id, setArrayFoods);
     displayAlert(
       `${name.split(/[^a-zA-Z]/).shift()} ${
         fav ? 'removed from ' : 'added to '
       } favorites`
     );
+  };
+
+  const handleChangeimg = (indx) => {
+    updateSlideIndex({ indx, setArrayFoods, id });
   };
 
   const goToFoodDetails = () => {
@@ -38,6 +41,17 @@ export default function FoodCard({
     <StyledFoodCard url={img[imgIndx]}>
       <div className="food_image" />
       <div className="food_section_2">
+        <div className="navigators">
+          {img?.map((url, ind) => (
+            <NavigatorIcon
+              iconcolor={imgIndx === ind ? 'steelblue' : '#111111'}
+              margin="0 2px"
+              key={url}
+              onClick={() => handleChangeimg(ind)}
+            />
+          ))}
+        </div>
+
         <h3 className="food_name">{name || 'FOOD NAME'}</h3>
 
         <p className="food_description">{description || 'Food description'}</p>

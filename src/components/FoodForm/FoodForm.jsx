@@ -47,17 +47,21 @@ export default function FoodForm({
 
   const handleChange = ({ target: { name, value, files } }) => {
     const prev = food;
-    if (name === 'image_file') {
-      // checking if it's the file upload part
-      if (value.trim()) {
-        if (useUrl) {
-          // meaning value is a link
-          prev.img = value;
-        } else {
-          prev.img = URL.createObjectURL(files[0]);
-        }
-      } else prev.img = getFromSessionStorage('foodToEdit').img;
-    } else prev[`${name}`] = value;
+    if (creatingNew) {
+      if (name === 'image_file') {
+        // checking if it's the file upload part
+        if (value.trim()) {
+          if (useUrl) {
+            // meaning value is a link
+            prev.img[prev.imgIndx] = value;
+          } else {
+            prev.img[prev.imgIndx] = URL.createObjectURL(files[0]);
+          }
+        } else prev.img = getFromSessionStorage('foodToEdit').img;
+      } else prev[`${name}`] = value;
+    } else {
+      // edit
+    }
 
     setFood({ ...prev });
   };
@@ -102,7 +106,8 @@ export default function FoodForm({
       const prev = getFromLocalStorage('foodData');
       setFood({
         name: '',
-        img: DEFAULT_FOOD_BG,
+        img: [DEFAULT_FOOD_BG],
+        imgIndx: 0,
         description: '',
         recipe: [],
         fav: false,
@@ -115,7 +120,7 @@ export default function FoodForm({
     <>
       <Overlay index="4" opacity="1" />
 
-      <StyledFoodForm url={food?.img} useUrl={useUrl}>
+      <StyledFoodForm url={food?.img[food?.imgIndx]} useUrl={useUrl}>
         <div className="food_form">
           <div className="top_section">
             <span className="image_preview_span" />

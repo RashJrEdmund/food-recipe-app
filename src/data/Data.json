@@ -2,7 +2,9 @@
   {
     "name": "Rice & Beans",
     "img": [
-      "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2017/06/African-Stewed-Beans-and-rice.jpg?resize=1024%2C1024&ssl=1"
+      "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2017/06/African-Stewed-Beans-and-rice.jpg?resize=1024%2C1024&ssl=1",
+      "https://cdn.shopify.com/s/files/1/0085/8711/6608/articles/black_beans_1170x.png?v=1616477531",
+      "https://www.365daysofcrockpot.com/wp-content/uploads/2016/11/slow-cooker-pinto-beans-and-rice-.jpg"
     ],
     "imgIndx": 0,
     "recipe": [
@@ -20,6 +22,7 @@
     "name": "Khahti Khahti",
     "img": [
       "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2019/06/kati-kati-cameroon.jpg?resize=1200%2C900&ssl=1",
+      "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2019/06/kati-kati-spicy-cameroon-chicken.jpg?resize=683%2C1024&ssl=1",
       "https://africanbites.com/wp-content/uploads/2014/08/IMG_4973.jpg"
     ],
     "imgIndx": 0,
@@ -44,6 +47,7 @@
   {
     "name": "water Fufu & Erru",
     "img": [
+      "https://pbs.twimg.com/media/ELbN_DhWkAcsiOo.jpg",
       "https://cdn.shopify.com/s/files/1/0409/7484/4060/articles/86E207EF-1F88-4281-92F1-E08AD28C2E76_1000x.webp?v=1681512131"
     ],
     "imgIndx": 0,
@@ -60,7 +64,10 @@
   {
     "name": "Koki",
     "img": [
-      "https://sawagrill.com/wp-content/uploads/2022/06/rdd-07-scaled.webp"
+      "https://pbs.twimg.com/media/FHrh8-jX0AUXJ48.jpg",
+      "https://sawagrill.com/wp-content/uploads/2022/06/rdd-07-scaled.webp",
+      "https://i.pinimg.com/736x/4a/dd/80/4add8058361bf39aa3fbaf7f2ddfa969.jpg",
+      "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2018/03/IMG_4526.jpg?ssl=1"
     ],
     "imgIndx": 0,
     "recipe": ["you complete it..."],
@@ -70,7 +77,11 @@
   },
   {
     "name": "Achu",
-    "img": ["https://medmunch.com/wp-content/uploads/2020/10/Achu-768x511.jpg"],
+    "img": [
+      "https://medmunch.com/wp-content/uploads/2020/10/Achu-768x511.jpg",
+      "https://i.ytimg.com/vi/g3lQl0wTBDQ/maxresdefault.jpg",
+      "https://magazine.fabafriq.com/content/images/2021/10/achu.jpg"
+    ],
     "imgIndx": 0,
     "recipe": ["you complete it..."],
     "description": "Its good",
@@ -92,7 +103,9 @@
   {
     "name": "Fufu x Njama Njama",
     "img": [
-      "https://www.africanbites.com/wp-content/uploads/2014/07/IMG_3488.jpg"
+      "https://www.africanbites.com/wp-content/uploads/2014/07/IMG_3488.jpg",
+      "https://africanbites.com/wp-content/uploads/2014/07/IMG_3573-2.jpg",
+      "https://i0.wp.com/afrovitalityeats.com/wp-content/uploads/2019/06/kati-kati-chicken-with-turnip-greens.jpg?resize=695%2C1024&ssl=1"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
@@ -103,7 +116,10 @@
   {
     "name": "Fried plantain",
     "img": [
-      "https://seeafricatoday.com/wp-content/uploads/2022/10/Sweet-fried-plantains.jpg"
+      "https://seeafricatoday.com/wp-content/uploads/2022/10/Sweet-fried-plantains.jpg",
+      "https://static01.nyt.com/images/2019/06/26/dining/24Nigerianrex6/24Nigerianrex6-articleLarge.jpg",
+      "https://www.themidwestkitchenblog.com/wp-content/uploads/2022/12/jollof-rice-and-plantains.jpg",
+      "https://foodienotachef.com/wp-content/uploads/2021/02/ovengrilledtilapifried-1.png"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
@@ -112,9 +128,11 @@
     "id": 8
   },
   {
-    "name": "DG",
+    "name": "Poulet DG",
     "img": [
-      "https://ourquickbytes.files.wordpress.com/2016/07/cameroonian-poulet-dg.jpg?resize=3000%2C3000"
+      "https://ourquickbytes.files.wordpress.com/2016/07/cameroonian-poulet-dg.jpg?resize=3000%2C3000",
+      "https://i.pinimg.com/736x/32/b0/a3/32b0a3c6ade3b4740eddb24571fa6ffc.jpg",
+      "https://i0.wp.com/africa-cuisine.com/wp-content/uploads/2022/02/Poulet-Directeur-Ge%CC%81ne%CC%81ral.jpg?fit=1125%2C1104&ssl=1"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
@@ -125,7 +143,9 @@
   {
     "name": "Vegetable salad",
     "img": [
-      "https://www.preciouscore.com/wp-content/uploads/2017/06/cameroonian-vegetable-salad.jpg"
+      "https://i2.wp.com/reluctantentertainer.com/wp-content/uploads/2020/08/delish-Shrimp-Cobb-Salad-Board.jpg",
+      "https://www.preciouscore.com/wp-content/uploads/2017/06/cameroonian-vegetable-salad.jpg",
+      "https://img-global.cpcdn.com/recipes/30b7346ccbc5809e/1200x630cq70/photo.jpg"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
@@ -150,7 +170,8 @@
     "name": "Jollof Spaghetti",
     "img": [
       "https://i0.wp.com/www.yummymedley.com/wp-content/uploads/2017/05/jollof-spaghetti-overhead.jpg?resize=750%2C1125&ssl=1",
-      "https://www.yummymedley.com/wp-content/uploads/2017/05/jollof-spaghetti.jpg"
+      "https://www.yummymedley.com/wp-content/uploads/2017/05/jollof-spaghetti.jpg",
+      "https://dooneyskitchen.com/wp-content/uploads/2021/05/64839867_360671391235811_6748480636979415559_n-1.jpg"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
@@ -161,7 +182,10 @@
   {
     "name": "Dougnuts",
     "img": [
-      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-15.jpg"
+      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-15.jpg",
+      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-13.jpg",
+      "https://foodhub.scene7.com/is/image/woolworthsltdprod/1904-classic-doughnuts:Mobile-1300x1150",
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2022/01/donut-recipe.jpg"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
@@ -173,6 +197,7 @@
     "name": "Corn x Plum",
     "img": [
       "https://ulrichdpola.files.wordpress.com/2016/06/prunes-et-mais-grille.jpg?w=480",
+      "https://abujafooddeliverymart.com/wp-content/uploads/2020/08/CornandPear.jpg",
       "https://www.kelianfood.com/wp-content/uploads/2021/02/maisgrille.jpg"
     ],
     "imgIndx": 0,

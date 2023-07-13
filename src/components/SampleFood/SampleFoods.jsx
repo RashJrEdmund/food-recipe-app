@@ -3,12 +3,15 @@ import React from 'react';
 import StyledSampleFoods from './StyledSampleFood';
 import FoodCard from '../FoodCard/FoodCard';
 import useAlert from '../../hooks/UseAlert';
+import { useFoodContext } from '../../context/FoodContext';
 
 export default function SampleFoods({
   arrayFoods,
+  setArrayFoods,
   allowInteraction,
   fallbackmessage,
 }) {
+  const { setFoodData } = useFoodContext();
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
 
   return (
@@ -28,6 +31,7 @@ export default function SampleFoods({
                   img={img}
                   fav={fav}
                   imgIndx={imgIndx}
+                  setArrayFoods={setArrayFoods || setFoodData}
                   displayAlert={displayAlert}
                   allowInteraction={allowInteraction}
                 />
