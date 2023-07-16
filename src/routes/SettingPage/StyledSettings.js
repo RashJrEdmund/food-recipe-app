@@ -13,6 +13,8 @@ const StyledSettings = styled.div`
       cursor: pointer;
       margin: 10px 0;
       padding: 15px 10px;
+      display: flex;
+      align-items: center;
     }
   }
 

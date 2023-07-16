@@ -31,20 +31,9 @@ const StyledFoodCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 1.1rem 15px;
+    padding: 25px 1.1rem 15px;
     width: 100%;
     position: relative;
-
-    .navigators {
-      /* background-color: gold; */
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
     .food_name {
       font-weight: 800;
@@ -70,7 +59,7 @@ const StyledFoodCard = styled.div`
       justify-content: space-between;
       align-items: center;
       flex-wrap: nowrap;
-      margin: 15px 0 0;
+      margin: 10px 0 0;
       border-radius: 0 0 10px 10px;
 
       .heart,

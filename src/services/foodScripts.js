@@ -12,9 +12,9 @@ export const updateFavorite = (id, setArrayFoods) => {
   setArrayFoods([...update]);
 };
 
-// UPDATING THE NAVIGATOR SLIDES. HAVEN'T USED IT
+// UPDATING THE NAVIGATOR SLIDES.
 
-export const updateSlideIndex = (args) => {
+export const updateCardSlideImage = (args) => {
   const { indx: imgIndx, setArrayFoods, id } = args;
   const foods = getFromLocalStorage('foodData').map((food) => {
     if (food.id === id) {

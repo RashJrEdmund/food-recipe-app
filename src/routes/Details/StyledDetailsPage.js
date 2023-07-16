@@ -24,6 +24,7 @@ const StyledDetailsPage = styled.main`
     justify-content: center;
 
     .food_image {
+      position: relative;
       background: linear-gradient(to bottom, #11111126, #11111126, #11111126),
         url(${({ url }) => url});
       background-position: center;

@@ -11,6 +11,11 @@ import {
   saveToLocalStorage,
 } from '../../services/utils';
 import { useFoodContext } from '../../context/FoodContext';
+import {
+  ResetAllIcon,
+  ResetFoodIcon,
+  ThemeIcon,
+} from '../../components/atoms/Icons';
 
 export default function User({ setPathName }) {
   const { DialogueComponent, dialogueDetails, displayDialogue } = useDialogue();
@@ -60,12 +65,17 @@ export default function User({ setPathName }) {
         />
 
         <ul>
-          <li onClick={handleChangeTheme}>change theme</li>
-          <li title="restore all default food" onClick={handleResetFood}>
-            reset food data
+          <li onClick={handleChangeTheme}>
+            <ThemeIcon /> change theme
           </li>
 
-          <li onClick={handleResetAll}>reset all data</li>
+          <li title="restore all default food" onClick={handleResetFood}>
+            <ResetFoodIcon /> reset food data
+          </li>
+
+          <li onClick={handleResetAll}>
+            <ResetAllIcon /> reset all data
+          </li>
         </ul>
       </StyledSettings>
     </>

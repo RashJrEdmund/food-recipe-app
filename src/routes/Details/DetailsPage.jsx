@@ -13,6 +13,7 @@ import StyledDetailsPage from './StyledDetailsPage';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
+import ImageNavigators from '../../components/ImageNavigators/ImageNavigators';
 
 export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -47,6 +48,15 @@ export default function DetailsPage({ setPathName }) {
     displayDialogue(options);
   };
 
+  const handleChangeDetailImg = (ind) => {
+    const currentFood = detailedFood;
+    currentFood.imgIndx = ind;
+
+    saveToSessionStorage('foodToEdit', currentFood);
+
+    setDetailedFood({ ...currentFood });
+  };
+
   const toggleShowForm = () => {
     setShowForm((prev) => !prev);
   };
@@ -79,7 +89,14 @@ export default function DetailsPage({ setPathName }) {
 
       <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
         <section className="food_container">
-          <div className="food_image" />
+          <div className="food_image">
+            <ImageNavigators
+              img={detailedFood?.img}
+              imgIndx={detailedFood?.imgIndx}
+              handleChangeimg={handleChangeDetailImg}
+              positionFor="FOOD_DETAIL"
+            />
+          </div>
 
           <div className="food_col_2">
             <Header2Atom

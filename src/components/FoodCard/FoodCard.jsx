@@ -3,9 +3,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ActionsIcon, FavortieIcon, NavigatorIcon } from '../atoms/Icons';
+import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
 import StyledFoodCard from './StyledFoodCard';
-import { updateFavorite, updateSlideIndex } from '../../services/foodScripts';
+import {
+  updateFavorite,
+  updateCardSlideImage,
+} from '../../services/foodScripts';
+import ImageNavigators from '../ImageNavigators/ImageNavigators';
 
 export default function FoodCard({
   id,
@@ -30,7 +34,7 @@ export default function FoodCard({
   };
 
   const handleChangeimg = (indx) => {
-    updateSlideIndex({ indx, setArrayFoods, id });
+    updateCardSlideImage({ indx, setArrayFoods, id });
   };
 
   const goToFoodDetails = () => {
@@ -41,16 +45,12 @@ export default function FoodCard({
     <StyledFoodCard url={img[imgIndx]}>
       <div className="food_image" />
       <div className="food_section_2">
-        <div className="navigators">
-          {img?.map((url, ind) => (
-            <NavigatorIcon
-              iconcolor={imgIndx === ind ? 'steelblue' : '#111111'}
-              margin="0 2px"
-              key={url}
-              onClick={() => handleChangeimg(ind)}
-            />
-          ))}
-        </div>
+        <ImageNavigators // the sliders below the images
+          img={img}
+          imgIndx={imgIndx}
+          handleChangeimg={handleChangeimg}
+          positionFor="FOOD_CARD"
+        />
 
         <h3 className="food_name">{name || 'FOOD NAME'}</h3>
 
@@ -66,7 +66,7 @@ export default function FoodCard({
             </span>
 
             <span className="see_more" onClick={goToFoodDetails}>
-              <ActionsIcon title="more" />
+              <ActionsIcon title="see details" />
             </span>
           </div>
         )}
