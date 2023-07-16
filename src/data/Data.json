@@ -196,7 +196,7 @@
   {
     "name": "Corn x Plum",
     "img": [
-      "https://ulrichdpola.files.wordpress.com/2016/06/prunes-et-mais-grille.jpg?w=480",
+      "https://www.localguidesconnect.com/t5/image/serverpage/image-id/985073iEE6738B9A55C1E52?v=v2",
       "https://abujafooddeliverymart.com/wp-content/uploads/2020/08/CornandPear.jpg",
       "https://www.kelianfood.com/wp-content/uploads/2021/02/maisgrille.jpg"
     ],
@@ -205,5 +205,20 @@
     "description": "you understand??¿¿ 😂",
     "fav": false,
     "id": 14
+  },
+  {
+    "name": "Soya",
+    "img": [
+      "https://media-cdn.tripadvisor.com/media/photo-s/09/db/e0/92/special-rotisserie-soya.jpg",
+      "https://jewcanque.com/wp-content/uploads/2022/08/FullSizeRender-2-scaled.jpg",
+      "https://thumbs.dreamstime.com/b/african-food-spicy-suya-kebab-skewers-fresh-vegetable-salad-ketchup-close-up-table-vertical-african-food-spicy-125581737.jpg",
+      "https://www.internationalcuisine.com/wp-content/uploads/2014/11/Cameroon-Suya-1024x685.jpg",
+      "https://davidcarr.us/wp/wp-content/uploads/2021-02-05-soya-meat-cameroon.jpg"
+    ],
+    "imgIndx": 0,
+    "recipe": ["step 1", "step 2", "step 3"],
+    "description": "spicy and sliced roasted beef, sliced and bundled together small fine sticks, or metal",
+    "fav": false,
+    "id": 15
   }
 ]
