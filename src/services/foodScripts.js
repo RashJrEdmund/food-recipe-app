@@ -12,7 +12,7 @@ export const updateFavorite = (id, setArrayFoods) => {
   setArrayFoods([...update]);
 };
 
-// UPDATING THE NAVIGATOR SLIDES
+// UPDATING THE NAVIGATOR SLIDES. HAVEN'T USED IT
 
 export const updateSlideIndex = (args) => {
   const { indx: imgIndx, setArrayFoods, id } = args;
@@ -29,7 +29,7 @@ export const updateSlideIndex = (args) => {
   setArrayFoods([...foods]);
 };
 
-// CONVERTING IMAGE TO BASE 64. HAVEN'T REALLY USED IT
+// CONVERTING IMAGE TO BASE 64. HAVEN'T USED IT
 
 export const convertBase64 = (file) => {
   return new Promise((resolve, reject) => {
