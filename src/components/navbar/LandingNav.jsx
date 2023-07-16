@@ -33,7 +33,7 @@ export default function LandingNav() {
             <li onClick={() => routeToPage('/')}>Home</li>
             <li onClick={() => routeToPage('/foods')}>Food List</li>
             <li onClick={() => routeToPage('/favorites')}>Favorites</li>
-            <li>User</li>
+            <li onClick={() => routeToPage('/settings')}>Settings</li>
           </ul>
 
           <MenuIcon onClick={() => setOpenMenu(true)} />

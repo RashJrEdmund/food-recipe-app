@@ -6,13 +6,14 @@ import './styles/App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FoodData from './data/Data.json';
-import LandingPage from './routes/Landing/LandingPage';
 import LandingNav from './components/navbar/LandingNav';
-import Footer from './components/footer/Footer';
+import LandingPage from './routes/Landing/LandingPage';
 import FoodPage from './routes/Foods/FoodPage';
-import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
 import DetailsPage from './routes/Details/DetailsPage';
 import Favorites from './routes/Favorites/Favorites';
+import Settings from './routes/SettingPage/Settings';
+import Footer from './components/footer/Footer';
+import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
 import PageGaurd from './HOC/PageGaurd';
 
 if (!getFromLocalStorage('foodData')) {
@@ -38,6 +39,11 @@ function App({ setPathName }) {
           <Route
             path="/favorites"
             element={<Favorites setPathName={setPathName} />}
+          />
+
+          <Route
+            path="/settings"
+            element={<Settings setPathName={setPathName} />}
           />
         </Routes>
 

@@ -180,16 +180,16 @@
     "id": 12
   },
   {
-    "name": "Dougnuts",
+    "name": "Potatoe: Hot pot",
     "img": [
-      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-15.jpg",
-      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-13.jpg",
-      "https://foodhub.scene7.com/is/image/woolworthsltdprod/1904-classic-doughnuts:Mobile-1300x1150",
-      "https://www.vegrecipesofindia.com/wp-content/uploads/2022/01/donut-recipe.jpg"
+      "https://1.bp.blogspot.com/-sRU9Inzb6uU/V4esWFllsYI/AAAAAAAAFRo/h58KUBH0oyI5FPlnd6Z5Sa7uFOY4tSa8gCLcB/s1600/Potato%2BHotpot%2Brecipe%2BCameroon.jpg",
+      "https://cheflolaskitchen.com/wp-content/uploads/2021/02/DSC0299-Hot-Pot-Potatoes-Jan-17-2021-Hot-pot-potatoes-683x1024.jpg.webp",
+      "https://i.pinimg.com/736x/3f/78/f0/3f78f0c520ba40e0a6f0243112ea46bb--girl-body-one-pot-dishes.jpg",
+      "https://cheflolaskitchen.com/wp-content/uploads/2021/02/DSC0290-Hot-Pot-Potatoes-Jan-17-2021-Hot-pot-potatoes-683x1024.jpg.webp"
     ],
     "imgIndx": 0,
     "recipe": ["step 1", "step 2", "step 3", "ect"],
-    "description": "Bad dope, and Attractive",
+    "description": "Classy and delicious",
     "fav": false,
     "id": 13
   },
@@ -220,5 +220,19 @@
     "description": "spicy and sliced roasted beef, sliced and bundled together small fine sticks, or metal",
     "fav": false,
     "id": 15
+  },
+  {
+    "name": "Dougnuts",
+    "img": [
+      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-15.jpg",
+      "https://inbloombakery.com/wp-content/uploads/2022/09/Cinnamon-Donuts-13.jpg",
+      "https://foodhub.scene7.com/is/image/woolworthsltdprod/1904-classic-doughnuts:Mobile-1300x1150",
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2022/01/donut-recipe.jpg"
+    ],
+    "imgIndx": 0,
+    "recipe": ["step 1", "step 2", "step 3", "ect"],
+    "description": "Bad dope, and Attractive",
+    "fav": false,
+    "id": 16
   }
 ]
