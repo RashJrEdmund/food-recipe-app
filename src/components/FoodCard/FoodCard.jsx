@@ -10,6 +10,7 @@ import {
   updateCardSlideImage,
 } from '../../services/foodScripts';
 import ImageNavigators from '../ImageNavigators/ImageNavigators';
+import { POSITION_FOR } from '../../services/constants';
 
 export default function FoodCard({
   id,
@@ -49,7 +50,7 @@ export default function FoodCard({
           img={img}
           imgIndx={imgIndx}
           handleChangeimg={handleChangeimg}
-          positionFor="FOOD_CARD"
+          positionFor={POSITION_FOR.FOOD_CARD}
         />
 
         <h3 className="food_name">{name || 'FOOD NAME'}</h3>

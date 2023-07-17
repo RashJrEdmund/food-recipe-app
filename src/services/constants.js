@@ -4,3 +4,8 @@ export const DEFAULT_FOOD_BG =
 export const MAX_FOOD_PER_PAGINATION = 12;
 
 export const DEFINED_ROUTES = ['', 'foods', 'details', 'favorites', 'settings'];
+
+export const POSITION_FOR = {
+  FOOD_DETAIL: 'FOOD_DETAIL',
+  FOOD_CARD: 'FOOD_CARD',
+};

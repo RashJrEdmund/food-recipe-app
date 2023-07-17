@@ -14,6 +14,7 @@ import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
 import ImageNavigators from '../../components/ImageNavigators/ImageNavigators';
+import { POSITION_FOR } from '../../services/constants';
 
 export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -94,7 +95,7 @@ export default function DetailsPage({ setPathName }) {
               img={detailedFood?.img}
               imgIndx={detailedFood?.imgIndx}
               handleChangeimg={handleChangeDetailImg}
-              positionFor="FOOD_DETAIL"
+              positionFor={POSITION_FOR.FOOD_DETAIL}
             />
           </div>
 
