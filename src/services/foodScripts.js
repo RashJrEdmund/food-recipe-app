@@ -1,13 +1,13 @@
-import { getFromLocalStorage, saveToLocalStorage } from './utils';
+import { LOCALSTORAGE } from './storage';
 
 export const updateFavorite = (id, setArrayFoods) => {
-  const update = getFromLocalStorage('foodData')?.map((food) => {
+  const update = LOCALSTORAGE.get('foodData')?.map((food) => {
     if (+food.id === +id) return { ...food, fav: !food.fav };
 
     return food;
   });
 
-  saveToLocalStorage('foodData', update);
+  LOCALSTORAGE.save('foodData', update);
 
   setArrayFoods([...update]);
 };
@@ -16,7 +16,7 @@ export const updateFavorite = (id, setArrayFoods) => {
 
 export const updateCardSlideImage = (args) => {
   const { indx: imgIndx, setArrayFoods, id } = args;
-  const foods = getFromLocalStorage('foodData').map((food) => {
+  const foods = LOCALSTORAGE.get('foodData').map((food) => {
     if (food.id === id) {
       return { ...food, imgIndx };
     }
@@ -24,24 +24,7 @@ export const updateCardSlideImage = (args) => {
     return food;
   });
 
-  saveToLocalStorage('foodData', foods);
+  LOCALSTORAGE.save('foodData', foods);
 
   setArrayFoods([...foods]);
-};
-
-// CONVERTING IMAGE TO BASE 64. HAVEN'T USED IT
-
-export const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
 };

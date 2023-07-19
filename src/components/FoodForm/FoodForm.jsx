@@ -5,12 +5,7 @@ import React from 'react';
 import StyledFoodForm from './StyledFoodForm';
 import { AddIcon, DeleteIcon } from '../atoms/Icons';
 import { Overlay } from '../atoms/Atoms';
-import {
-  getFromLocalStorage,
-  getFromSessionStorage,
-  saveToLocalStorage,
-  saveToSessionStorage,
-} from '../../services/utils';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 import { DEFAULT_FOOD_BG } from '../../services/constants';
 
@@ -57,7 +52,7 @@ export default function FoodForm({
           } else {
             prev.img[prev.imgIndx] = URL.createObjectURL(files[0]);
           }
-        } else prev.img = getFromSessionStorage('foodToEdit').img;
+        } else prev.img = SESSIONSTORAGE.get('foodToEdit').img;
       } else prev[`${name}`] = value;
     } else {
       // edit
@@ -77,20 +72,20 @@ export default function FoodForm({
     if (creatingNew) {
       // a boolean value. if true, i creat a new food else i know i'm editing one.
 
-      const prev = getFromLocalStorage('foodData') || [];
-      saveToLocalStorage('foodData', [...prev, food]);
+      const prev = LOCALSTORAGE.get('foodData') || [];
+      LOCALSTORAGE.save('foodData', [...prev, food]);
 
       setFoodData([...prev, food]);
       toggleShowForm();
     } else {
-      const foodToEdit = getFromSessionStorage('foodToEdit');
-      const update = getFromLocalStorage('foodData').map((foodObj) => {
+      const foodToEdit = SESSIONSTORAGE.get('foodToEdit');
+      const update = LOCALSTORAGE.get('foodData').map((foodObj) => {
         if (foodObj.id === foodToEdit.id) return { ...foodObj, ...food };
         return foodObj;
       });
 
-      saveToLocalStorage('foodData', update);
-      saveToSessionStorage('foodToEdit', food);
+      LOCALSTORAGE.save('foodData', update);
+      SESSIONSTORAGE.save('foodToEdit', food);
       setFoodData([...update]);
       setDetailedFood({ ...food });
       displayAlert('Food Saved');
@@ -99,11 +94,11 @@ export default function FoodForm({
   };
 
   React.useEffect(() => {
-    const sesSfood = getFromSessionStorage('foodToEdit');
+    const sesSfood = SESSIONSTORAGE.get('foodToEdit');
 
     if (sesSfood) setFood(sesSfood);
     if (creatingNew) {
-      const prev = getFromLocalStorage('foodData');
+      const prev = LOCALSTORAGE.get('foodData');
       setFood({
         name: '',
         img: [DEFAULT_FOOD_BG],

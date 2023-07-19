@@ -13,11 +13,11 @@ import DetailsPage from './routes/Details/DetailsPage';
 import Favorites from './routes/Favorites/Favorites';
 import Settings from './routes/SettingPage/Settings';
 import Footer from './components/footer/Footer';
-import { saveToLocalStorage, getFromLocalStorage } from './services/utils';
+import { LOCALSTORAGE } from './services/storage';
 import PageGaurd from './HOC/PageGaurd';
 
-if (!getFromLocalStorage('foodData')) {
-  saveToLocalStorage('foodData', FoodData);
+if (!LOCALSTORAGE.get('foodData')) {
+  LOCALSTORAGE.save('foodData', FoodData);
 }
 
 function App({ setPathName }) {

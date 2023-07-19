@@ -6,10 +6,7 @@ import StyledSettings from './StyledSettings';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import FoodData from '../../data/Data.json';
 import useDialogue from '../../hooks/useDialogue';
-import {
-  removeFromLocalStorage,
-  saveToLocalStorage,
-} from '../../services/utils';
+import { LOCALSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 import {
   ResetAllIcon,
@@ -23,8 +20,8 @@ export default function User({ setPathName }) {
   const { displayAlert, setFoodData } = useFoodContext();
 
   const resetFood = () => {
-    ['foodData'].forEach((key) => removeFromLocalStorage(key));
-    saveToLocalStorage('foodData', FoodData);
+    ['foodData'].forEach((key) => LOCALSTORAGE.remove(key));
+    LOCALSTORAGE.save('foodData', FoodData);
     setFoodData([...FoodData]);
 
     displayAlert('reset completed');

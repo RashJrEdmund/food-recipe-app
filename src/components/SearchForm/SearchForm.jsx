@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StyledSearchForm from './StyledSearchForm';
-import { getFromLocalStorage } from '../../services/utils';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
+import { createSearchIdList } from '../../services/utils';
 
 export default function SearchForm({
   setSearchItems,
@@ -13,10 +14,11 @@ export default function SearchForm({
   const [loading, setLoading] = React.useState(false);
 
   const debounceFetch = () => {
-    const data = getFromLocalStorage('foodData') || [];
+    const data = LOCALSTORAGE.get('foodData') || [];
 
     const results = data.filter((food) => {
       if (searchOptions.includes('FAV'))
+        // to search only through favorites
         return (
           food.name
             .trim()
@@ -30,6 +32,7 @@ export default function SearchForm({
         .includes(searchValue.trim().toLowerCase());
     });
 
+    createSearchIdList(results); // this stores an array of searched id's to sessionstorage, helps when i want to rerender
     setSearchItems([...results]);
 
     setLoading(false);
@@ -47,7 +50,10 @@ export default function SearchForm({
       setSearchItems([...searchFallBack]);
     }
 
-    return () => clearTimeout(intId);
+    return () => {
+      clearTimeout(intId);
+      SESSIONSTORAGE.remove('searchIdList');
+    };
   }, [searchValue]);
 
   return (

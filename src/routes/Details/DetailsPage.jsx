@@ -3,12 +3,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
-import {
-  getFromLocalStorage,
-  removeFromSession,
-  saveToLocalStorage,
-  saveToSessionStorage,
-} from '../../services/utils';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
@@ -28,11 +23,11 @@ export default function DetailsPage({ setPathName }) {
   const params = useParams();
 
   const deleteFood = () => {
-    const newFoodlist = getFromLocalStorage('foodData').filter(
+    const newFoodlist = LOCALSTORAGE.get('foodData').filter(
       (food) => food.id !== detailedFood.id
     );
 
-    saveToLocalStorage('foodData', newFoodlist);
+    LOCALSTORAGE.save('foodData', newFoodlist);
     setFoodData([...newFoodlist]);
     displayAlert(`${detailedFood?.name} deleted`);
     navigate('/foods');
@@ -53,7 +48,7 @@ export default function DetailsPage({ setPathName }) {
     const currentFood = detailedFood;
     currentFood.imgIndx = ind;
 
-    saveToSessionStorage('foodToEdit', currentFood);
+    SESSIONSTORAGE.save('foodToEdit', currentFood);
 
     setDetailedFood({ ...currentFood });
   };
@@ -63,17 +58,17 @@ export default function DetailsPage({ setPathName }) {
   };
 
   React.useEffect(() => {
-    const currentFood = getFromLocalStorage('foodData').find(
+    const currentFood = LOCALSTORAGE.get('foodData').find(
       (meal) => meal.name === params.name
     );
 
-    saveToSessionStorage('foodToEdit', currentFood);
+    SESSIONSTORAGE.save('foodToEdit', currentFood);
 
     if (currentFood) setDetailedFood({ ...currentFood });
 
     setPathName(window.location.pathname); // helps for my 404 page
 
-    return () => removeFromSession('foodToEdit');
+    return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params]);
 
   return (
