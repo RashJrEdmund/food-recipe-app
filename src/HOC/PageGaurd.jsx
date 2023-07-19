@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
-import { getFromLocalStorage } from '../services/utils';
+import { LOCALSTORAGE } from '../services/storage';
 import { DEFINED_ROUTES } from '../services/constants';
 import NotFound from '../components/molecules/NotFound/NotFound';
 import Loading from '../components/molecules/Loading/Loading';
@@ -20,7 +20,7 @@ const PageGaurd = (Component) => {
         const param = routes.pop().replace(/%20/g, ' ').trim();
 
         if (param) {
-          currentFood = getFromLocalStorage('foodData').find(
+          currentFood = LOCALSTORAGE.get('foodData').find(
             (meal) => meal.name === param
           );
 

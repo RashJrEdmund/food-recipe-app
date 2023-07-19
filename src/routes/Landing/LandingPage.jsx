@@ -28,6 +28,7 @@ export default function LandingPage({ setPathName }) {
         margin="3rem auto 2rem"
         weight="800"
       />
+
       <SampleFoods
         arrayFoods={foodData?.slice(0, 12)}
         allowInteraction={false}

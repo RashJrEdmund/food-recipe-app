@@ -5,12 +5,7 @@ import React from 'react';
 import StyledFoodForm from './StyledFoodForm';
 import { AddIcon, DeleteIcon } from '../atoms/Icons';
 import { Overlay } from '../atoms/Atoms';
-import {
-  getFromLocalStorage,
-  getFromSessionStorage,
-  saveToLocalStorage,
-  saveToSessionStorage,
-} from '../../services/utils';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 import { DEFAULT_FOOD_BG } from '../../services/constants';
 
@@ -47,17 +42,21 @@ export default function FoodForm({
 
   const handleChange = ({ target: { name, value, files } }) => {
     const prev = food;
-    if (name === 'image_file') {
-      // checking if it's the file upload part
-      if (value.trim()) {
-        if (useUrl) {
-          // meaning value is a link
-          prev.img = value;
-        } else {
-          prev.img = URL.createObjectURL(files[0]);
-        }
-      } else prev.img = getFromSessionStorage('foodToEdit').img;
-    } else prev[`${name}`] = value;
+    if (creatingNew) {
+      if (name === 'image_file') {
+        // checking if it's the file upload part
+        if (value.trim()) {
+          if (useUrl) {
+            // meaning value is a link
+            prev.img[prev.imgIndx] = value;
+          } else {
+            prev.img[prev.imgIndx] = URL.createObjectURL(files[0]);
+          }
+        } else prev.img = SESSIONSTORAGE.get('foodToEdit').img;
+      } else prev[`${name}`] = value;
+    } else {
+      // edit
+    }
 
     setFood({ ...prev });
   };
@@ -73,20 +72,20 @@ export default function FoodForm({
     if (creatingNew) {
       // a boolean value. if true, i creat a new food else i know i'm editing one.
 
-      const prev = getFromLocalStorage('foodData') || [];
-      saveToLocalStorage('foodData', [...prev, food]);
+      const prev = LOCALSTORAGE.get('foodData') || [];
+      LOCALSTORAGE.save('foodData', [...prev, food]);
 
       setFoodData([...prev, food]);
       toggleShowForm();
     } else {
-      const foodToEdit = getFromSessionStorage('foodToEdit');
-      const update = getFromLocalStorage('foodData').map((foodObj) => {
+      const foodToEdit = SESSIONSTORAGE.get('foodToEdit');
+      const update = LOCALSTORAGE.get('foodData').map((foodObj) => {
         if (foodObj.id === foodToEdit.id) return { ...foodObj, ...food };
         return foodObj;
       });
 
-      saveToLocalStorage('foodData', update);
-      saveToSessionStorage('foodToEdit', food);
+      LOCALSTORAGE.save('foodData', update);
+      SESSIONSTORAGE.save('foodToEdit', food);
       setFoodData([...update]);
       setDetailedFood({ ...food });
       displayAlert('Food Saved');
@@ -95,14 +94,15 @@ export default function FoodForm({
   };
 
   React.useEffect(() => {
-    const sesSfood = getFromSessionStorage('foodToEdit');
+    const sesSfood = SESSIONSTORAGE.get('foodToEdit');
 
     if (sesSfood) setFood(sesSfood);
     if (creatingNew) {
-      const prev = getFromLocalStorage('foodData');
+      const prev = LOCALSTORAGE.get('foodData');
       setFood({
         name: '',
-        img: DEFAULT_FOOD_BG,
+        img: [DEFAULT_FOOD_BG],
+        imgIndx: 0,
         description: '',
         recipe: [],
         fav: false,
@@ -115,7 +115,7 @@ export default function FoodForm({
     <>
       <Overlay index="4" opacity="1" />
 
-      <StyledFoodForm url={food?.img} useUrl={useUrl}>
+      <StyledFoodForm url={food?.img[food?.imgIndx]} useUrl={useUrl}>
         <div className="food_form">
           <div className="top_section">
             <span className="image_preview_span" />

@@ -4,9 +4,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
-import { useFoodContext } from '../../context/FoodContext';
 import StyledFoodCard from './StyledFoodCard';
-import { updateFavorite } from '../../services/utils';
+import {
+  updateFavorite,
+  updateCardSlideImage,
+} from '../../services/foodScripts';
+import ImageNavigators from '../ImageNavigators/ImageNavigators';
+import { POSITION_FOR } from '../../services/constants';
 
 export default function FoodCard({
   id,
@@ -15,19 +19,23 @@ export default function FoodCard({
   img, // an array
   imgIndx,
   fav,
+  setArrayFoods,
   displayAlert,
   allowInteraction,
 }) {
   const navigate = useNavigate();
-  const { setFoodData } = useFoodContext();
 
   const addNewFavorite = () => {
-    updateFavorite(id, setFoodData);
+    updateFavorite(id, setArrayFoods);
     displayAlert(
       `${name.split(/[^a-zA-Z]/).shift()} ${
         fav ? 'removed from ' : 'added to '
       } favorites`
     );
+  };
+
+  const handleChangeimg = (indx) => {
+    updateCardSlideImage({ indx, setArrayFoods, id });
   };
 
   const goToFoodDetails = () => {
@@ -38,6 +46,13 @@ export default function FoodCard({
     <StyledFoodCard url={img[imgIndx]}>
       <div className="food_image" />
       <div className="food_section_2">
+        <ImageNavigators // the sliders below the images
+          img={img}
+          imgIndx={imgIndx}
+          handleChangeimg={handleChangeimg}
+          positionFor={POSITION_FOR.FOOD_CARD}
+        />
+
         <h3 className="food_name">{name || 'FOOD NAME'}</h3>
 
         <p className="food_description">{description || 'Food description'}</p>
@@ -52,7 +67,7 @@ export default function FoodCard({
             </span>
 
             <span className="see_more" onClick={goToFoodDetails}>
-              <ActionsIcon title="more" />
+              <ActionsIcon title="see details" />
             </span>
           </div>
         )}

@@ -3,16 +3,13 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
-import {
-  getFromLocalStorage,
-  removeFromSession,
-  saveToLocalStorage,
-  saveToSessionStorage,
-} from '../../services/utils';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
+import ImageNavigators from '../../components/ImageNavigators/ImageNavigators';
+import { POSITION_FOR } from '../../services/constants';
 
 export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -26,11 +23,11 @@ export default function DetailsPage({ setPathName }) {
   const params = useParams();
 
   const deleteFood = () => {
-    const newFoodlist = getFromLocalStorage('foodData').filter(
+    const newFoodlist = LOCALSTORAGE.get('foodData').filter(
       (food) => food.id !== detailedFood.id
     );
 
-    saveToLocalStorage('foodData', newFoodlist);
+    LOCALSTORAGE.save('foodData', newFoodlist);
     setFoodData([...newFoodlist]);
     displayAlert(`${detailedFood?.name} deleted`);
     navigate('/foods');
@@ -47,22 +44,31 @@ export default function DetailsPage({ setPathName }) {
     displayDialogue(options);
   };
 
+  const handleChangeDetailImg = (ind) => {
+    const currentFood = detailedFood;
+    currentFood.imgIndx = ind;
+
+    SESSIONSTORAGE.save('foodToEdit', currentFood);
+
+    setDetailedFood({ ...currentFood });
+  };
+
   const toggleShowForm = () => {
     setShowForm((prev) => !prev);
   };
 
   React.useEffect(() => {
-    const currentFood = getFromLocalStorage('foodData').find(
+    const currentFood = LOCALSTORAGE.get('foodData').find(
       (meal) => meal.name === params.name
     );
 
-    saveToSessionStorage('foodToEdit', currentFood);
+    SESSIONSTORAGE.save('foodToEdit', currentFood);
 
     if (currentFood) setDetailedFood({ ...currentFood });
 
     setPathName(window.location.pathname); // helps for my 404 page
 
-    return () => removeFromSession('foodToEdit');
+    return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params]);
 
   return (
@@ -79,7 +85,14 @@ export default function DetailsPage({ setPathName }) {
 
       <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
         <section className="food_container">
-          <div className="food_image" />
+          <div className="food_image">
+            <ImageNavigators
+              img={detailedFood?.img}
+              imgIndx={detailedFood?.imgIndx}
+              handleChangeimg={handleChangeDetailImg}
+              positionFor={POSITION_FOR.FOOD_DETAIL}
+            />
+          </div>
 
           <div className="food_col_2">
             <Header2Atom

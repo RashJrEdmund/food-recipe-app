@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
-import { getFromLocalStorage } from '../services/utils';
+import { LOCALSTORAGE } from '../services/storage';
 import useAlert from '../hooks/UseAlert';
 
 const FoodContext = React.createContext();
@@ -16,7 +16,7 @@ export const ContextProvider = ({ children }) => {
   // when you route to a diff location. like the case of deleting food
 
   React.useEffect(() => {
-    const data = getFromLocalStorage('foodData') || [];
+    const data = LOCALSTORAGE.get('foodData') || [];
 
     if (data) setFoodData(data);
   }, []);
