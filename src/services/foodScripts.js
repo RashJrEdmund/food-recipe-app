@@ -1,4 +1,4 @@
-import { LOCALSTORAGE } from './storage';
+import { LOCALSTORAGE, SESSIONSTORAGE } from './storage';
 
 export const updateFavorite = (id, setArrayFoods) => {
   const update = LOCALSTORAGE.get('foodData')?.map((food) => {
@@ -8,6 +8,16 @@ export const updateFavorite = (id, setArrayFoods) => {
   });
 
   LOCALSTORAGE.save('foodData', update);
+
+  if (SESSIONSTORAGE.get('searchIdList')) {
+    const localFood = LOCALSTORAGE.get('foodData');
+    const results = SESSIONSTORAGE.get('searchIdList').map((foodId) =>
+      localFood.find((food) => +food.id === +foodId)
+    );
+
+    setArrayFoods([...results]);
+    return;
+  }
 
   setArrayFoods([...update]);
 };

@@ -8,6 +8,7 @@ import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import { SESSIONSTORAGE } from '../../services/storage';
 
 export default function FoodPage({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
@@ -23,6 +24,11 @@ export default function FoodPage({ setPathName }) {
   React.useEffect(() => {
     if (foodData) setFoodList([...foodData]);
     setPathName(window.location.pathname); // helps for my 404 page
+
+    return () => {
+      SESSIONSTORAGE.remove('searchIdList'); // clearing the search id array that is created when a search is made
+      SESSIONSTORAGE.remove('searchValue'); // clearing the search value from storage
+    };
   }, []);
 
   return (
@@ -37,7 +43,11 @@ export default function FoodPage({ setPathName }) {
         />
       )}
       <div>
-        <SearchForm setSearchItems={setFoodList} searchFallBack={foodData} />
+        <SearchForm
+          setSearchItems={setFoodList}
+          searchFallBack={foodData}
+          placeHolder="search food"
+        />
 
         <Header2Atom
           text="Food List"

@@ -6,6 +6,7 @@ import { useFoodContext } from '../../context/FoodContext';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import { SESSIONSTORAGE } from '../../services/storage';
 
 export default function Favorites({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
@@ -21,6 +22,11 @@ export default function Favorites({ setPathName }) {
       setFavorites([...favs]);
       setSearchFallBack([...favs]);
     }
+
+    return () => {
+      SESSIONSTORAGE.remove('searchIdList'); // clearing the search id array that is created when a search is made
+      SESSIONSTORAGE.remove('searchValue'); // clearing the search value from storage
+    };
   }, [foodData]);
 
   React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
@@ -42,6 +48,7 @@ export default function Favorites({ setPathName }) {
           searchOptions={['FAV']}
           setSearchItems={setFavorites}
           searchFallBack={searchFallBack}
+          placeHolder="search favorites"
         />
 
         <Header2Atom

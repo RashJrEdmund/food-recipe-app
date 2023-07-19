@@ -8,8 +8,10 @@ export default function SearchForm({
   setSearchItems,
   searchFallBack, // the fallback value given no search is found
   searchOptions = [],
+  placeHolder,
 }) {
   const [searchValue, setSearchValue] = React.useState('');
+
   // const [searchIedtems, setSearchItems] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
@@ -48,12 +50,12 @@ export default function SearchForm({
     } else {
       setLoading(false);
       setSearchItems([...searchFallBack]);
+      SESSIONSTORAGE.remove('searchIdList');
     }
 
-    return () => {
-      clearTimeout(intId);
-      SESSIONSTORAGE.remove('searchIdList');
-    };
+    SESSIONSTORAGE.save('searchValue', searchValue.trim()); // storing the search value to sessionstorage
+
+    return () => clearTimeout(intId);
   }, [searchValue]);
 
   return (
@@ -61,7 +63,7 @@ export default function SearchForm({
       <input
         type="text"
         value={searchValue}
-        placeholder="search Item"
+        placeholder={placeHolder || 'search Item'}
         onChange={({ target: { value } }) => setSearchValue(value)}
       />
     </StyledSearchForm>
