@@ -29,11 +29,22 @@ const StyledImagePreview = styled.div`
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      width: 110px;
-      height: 110px;
-      border-radius: 50px;
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
       margin: 0 5px;
       cursor: pointer;
+      position: relative;
+
+      .del_btn_img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: red;
+      }
     }
   }
 `;

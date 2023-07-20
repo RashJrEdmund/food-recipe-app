@@ -96,48 +96,6 @@ const StyledFoodForm = styled.div`
       }
     }
 
-    .recipe_form {
-      margin: 20px 0;
-      display: flex;
-      align-items: flex-start;
-      width: 100%;
-
-      align-items: center;
-
-      input {
-        width: 100%;
-        height: 40px;
-        padding: 10px 5px;
-      }
-
-      button {
-        background-color: transparent;
-      }
-    }
-
-    .recipe_list {
-      display: flex;
-      align-items: flex-start;
-      width: 100%;
-      flex-direction: column;
-
-      li {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        margin: 10px 0;
-
-        span {
-          width: 95%;
-          color: #ddd;
-          word-break: break-all;
-          height: fit-content;
-          padding: 10px 0;
-        }
-      }
-    }
-
     .submit_btn {
       background-color: steelblue;
       width: 100%;
