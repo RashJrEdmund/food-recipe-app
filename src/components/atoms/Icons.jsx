@@ -7,6 +7,7 @@ import {
   MdOutlineArrowForwardIos,
   MdAddBox,
   MdLockReset,
+  MdOutlineCancel,
 } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { RxDotFilled, RxReset } from 'react-icons/rx';
@@ -46,6 +47,16 @@ export const ActionsIcon = styled(AiOutlineAppstoreAdd)`
 export const DeleteIcon = styled(MdDelete)`
   color: ${({ iconcolor }) => iconcolor || '#111111'};
   font-size: 30px;
+`;
+
+export const RemoveIcon = styled(MdOutlineCancel)`
+  color: ${({ iconcolor }) => iconcolor || '#e00000'};
+  font-size: ${({ size = '25px' }) => size};
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  transform: translate(50%, -45%);
 `;
 
 export const FowardIcon = styled(MdOutlineArrowForwardIos)`

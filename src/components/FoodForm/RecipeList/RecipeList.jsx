@@ -51,7 +51,10 @@ export default function RecipeList({ recipeList, food, setFood }) {
           <li key={step}>
             <span>{step}</span>
 
-            <DeleteIcon onClick={() => removeRecipeStep(step)} color="brown" />
+            <DeleteIcon
+              onClick={() => removeRecipeStep(step)}
+              color="#e00000"
+            />
           </li>
         ))
       ) : (

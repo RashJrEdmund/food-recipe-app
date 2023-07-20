@@ -38,7 +38,7 @@ const StyledFoodForm = styled.div`
 
       .cancel_btn {
         cursor: pointer;
-        color: #a52a2a;
+        color: #f00000;
         font-weight: 600;
         width: fit-content;
         margin: 0 0 1rem;
@@ -70,30 +70,6 @@ const StyledFoodForm = styled.div`
       min-height: 180px;
       margin: 20px 0 0;
       padding: 10px 5px;
-    }
-
-    .image_upload_section {
-      margin: 15px 0 0;
-      display: flex;
-      align-items: flex-start;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-
-      .image_field {
-        padding: 10px 5px;
-        height: 30px;
-        width: ${({ useUrl }) => (useUrl ? '100%' : 'fit-content')};
-      }
-
-      .switch_btwn_link {
-        cursor: pointer;
-        color: #1da1f2;
-        text-decoration: underline;
-        width: fit-content;
-        white-space: nowrap;
-        margin: 0 0 0 10px;
-      }
     }
 
     .submit_btn {

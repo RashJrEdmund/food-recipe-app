@@ -23,27 +23,25 @@ const StyledImagePreview = styled.div`
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
+    display: flex;
 
-    .image_preview_span {
-      background-color: grey;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
+    .img_holder_div {
+      background-color: transparent;
       position: relative;
+      height: fit-content;
+      width: fit-content;
+      margin: 0 5px;
+      display: flex;
 
-      .del_btn_img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(50%, -50%);
-        font-weight: 600;
-        font-size: 1.3rem;
-        color: red;
+      .image_preview_span {
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        cursor: pointer;
       }
     }
   }

@@ -10,12 +10,13 @@ import { Overlay } from '../atoms/Atoms';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 import { DEFAULT_FOOD_BG } from '../../services/constants';
+import ImageUploadSection from './ImageUploadSection/ImageUploadSection';
 
 export default function FoodForm({
   toggleShowForm,
   displayAlert,
   setDetailedFood,
-  creatingNew,
+  creatingNew, // boolean attribute to decide wether creating new or not
 }) {
   const [food, setFood] = React.useState(null); // the food we editing
   const [useUrl, setUseUrl] = React.useState(false);
@@ -95,7 +96,7 @@ export default function FoodForm({
     <>
       <Overlay index="4" opacity="1" />
 
-      <StyledFoodForm url={food?.img[food?.imgIndx]} useUrl={useUrl}>
+      <StyledFoodForm url={food?.img[food?.imgIndx]}>
         <div className="food_form">
           <div className="top_section">
             <span className="cancel_btn" onClick={() => toggleShowForm()}>
@@ -132,21 +133,11 @@ export default function FoodForm({
             onChange={handleChange}
           />
 
-          <div className="image_upload_section">
-            <input
-              type={useUrl ? 'url' : 'file'}
-              name="image_file"
-              className="image_field"
-              onChange={handleChange}
-            />
-
-            <span
-              className="switch_btwn_link"
-              onClick={() => setUseUrl((prev) => !prev)}
-            >
-              {useUrl ? 'upload file' : 'use Url'} instead
-            </span>
-          </div>
+          <ImageUploadSection
+            useUrl={useUrl}
+            handleChange={handleChange}
+            setUseUrl={setUseUrl}
+          />
 
           <RecipeForm setFood={setFood} />
 
