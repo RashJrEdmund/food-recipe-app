@@ -59,7 +59,7 @@ export default function SearchForm({
   }, [searchValue]);
 
   return (
-    <StyledSearchForm loading={loading}>
+    <StyledSearchForm loader={loading}>
       <input
         type="text"
         value={searchValue}

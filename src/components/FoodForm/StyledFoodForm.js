@@ -31,25 +31,17 @@ const StyledFoodForm = styled.div`
 
     .top_section {
       display: flex;
+      flex-direction: column;
       align-items: flex-start;
       width: 100%;
       justify-content: space-between;
-
-      .image_preview_span {
-        background-image: url(${({ url }) => url});
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-      }
 
       .cancel_btn {
         cursor: pointer;
         color: #a52a2a;
         font-weight: 600;
         width: fit-content;
+        margin: 0 0 1rem;
       }
     }
 
@@ -147,6 +139,7 @@ const StyledFoodForm = styled.div`
     }
 
     .submit_btn {
+      background-color: steelblue;
       width: 100%;
       height: 45px;
       font-weight: 600;

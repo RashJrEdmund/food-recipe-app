@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StyledFoodForm from './StyledFoodForm';
+import ImagePreview from './FormComponents/ImagePreview';
 import { AddIcon, DeleteIcon } from '../atoms/Icons';
 import { Overlay } from '../atoms/Atoms';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
@@ -15,7 +16,7 @@ export default function FoodForm({
   setDetailedFood,
   creatingNew,
 }) {
-  const [food, setFood] = React.useState(null);
+  const [food, setFood] = React.useState(null); // the food we editing
   const [useUrl, setUseUrl] = React.useState(false);
 
   const { setFoodData } = useFoodContext();
@@ -118,11 +119,15 @@ export default function FoodForm({
       <StyledFoodForm url={food?.img[food?.imgIndx]} useUrl={useUrl}>
         <div className="food_form">
           <div className="top_section">
-            <span className="image_preview_span" />
-
             <span className="cancel_btn" onClick={() => toggleShowForm()}>
               Cancel
             </span>
+
+            <ImagePreview
+              imgArr={food?.img}
+              setFood={setFood}
+              imgIndx={food?.imgIndx}
+            />
           </div>
 
           <label htmlFor="name" className="name_label">
