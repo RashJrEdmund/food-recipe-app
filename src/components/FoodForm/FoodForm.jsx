@@ -3,60 +3,41 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StyledFoodForm from './StyledFoodForm';
-import { AddIcon, DeleteIcon } from '../atoms/Icons';
+import ImagePreview from './ImagePreview/ImagePreview';
+import RecipeForm from './RecipeForm/RecipeForm';
+import RecipeList from './RecipeList/RecipeList';
 import { Overlay } from '../atoms/Atoms';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 import { DEFAULT_FOOD_BG } from '../../services/constants';
+import ImageUploadSection from './ImageUploadSection/ImageUploadSection';
 
 export default function FoodForm({
   toggleShowForm,
   displayAlert,
   setDetailedFood,
-  creatingNew,
+  creatingNew, // boolean attribute to decide wether creating new or not
 }) {
-  const [food, setFood] = React.useState(null);
+  const [food, setFood] = React.useState(null); // the food we editing
   const [useUrl, setUseUrl] = React.useState(false);
 
   const { setFoodData } = useFoodContext();
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const {
-      target: {
-        newrecipe: { value },
-      },
-    } = e;
-
-    if (!value.trim()) return;
-
-    setFood((prev) => ({ ...prev, recipe: [...prev.recipe, value] }));
-    e.target.newrecipe.value = '';
-  };
-
-  const removeRecipeStep = (step) => {
-    const updateRecipe = food.recipe.filter((procedure) => procedure !== step);
-
-    setFood((prev) => ({ ...prev, recipe: updateRecipe }));
-  };
-
   const handleChange = ({ target: { name, value, files } }) => {
     const prev = food;
-    if (creatingNew) {
-      if (name === 'image_file') {
-        // checking if it's the file upload part
-        if (value.trim()) {
-          if (useUrl) {
-            // meaning value is a link
-            prev.img[prev.imgIndx] = value;
-          } else {
-            prev.img[prev.imgIndx] = URL.createObjectURL(files[0]);
-          }
-        } else prev.img = SESSIONSTORAGE.get('foodToEdit').img;
-      } else prev[`${name}`] = value;
-    } else {
-      // edit
-    }
+    if (name === 'image_file') {
+      // checking if it's the file upload part
+      if (value.trim()) {
+        if (useUrl) {
+          // meaning value is a link
+          prev.img[+prev.imgIndx] = value;
+        } else {
+          prev.img[+prev.imgIndx] = URL.createObjectURL(files[0]);
+        }
+      } else {
+        prev.img = SESSIONSTORAGE.get('foodToEdit').img || [DEFAULT_FOOD_BG]; // will resolve to the || part if (creatingNew)
+      }
+    } else prev[`${name}`] = value;
 
     setFood({ ...prev });
   };
@@ -115,14 +96,18 @@ export default function FoodForm({
     <>
       <Overlay index="4" opacity="1" />
 
-      <StyledFoodForm url={food?.img[food?.imgIndx]} useUrl={useUrl}>
+      <StyledFoodForm url={food?.img[food?.imgIndx]}>
         <div className="food_form">
           <div className="top_section">
-            <span className="image_preview_span" />
-
             <span className="cancel_btn" onClick={() => toggleShowForm()}>
               Cancel
             </span>
+
+            <ImagePreview
+              imgArr={food?.img}
+              setFood={setFood}
+              imgIndx={food?.imgIndx}
+            />
           </div>
 
           <label htmlFor="name" className="name_label">
@@ -148,45 +133,18 @@ export default function FoodForm({
             onChange={handleChange}
           />
 
-          <div className="image_upload_section">
-            <input
-              type={useUrl ? 'url' : 'file'}
-              name="image_file"
-              className="image_field"
-              onChange={handleChange}
-            />
+          <ImageUploadSection
+            useUrl={useUrl}
+            handleChange={handleChange}
+            setUseUrl={setUseUrl}
+          />
 
-            <span
-              className="switch_btwn_link"
-              onClick={() => setUseUrl((prev) => !prev)}
-            >
-              {useUrl ? 'upload file' : 'use Url'} instead
-            </span>
-          </div>
+          <RecipeForm setFood={setFood} />
 
-          <form className="recipe_form" onSubmit={handleFormSubmit}>
-            <input type="recipe" placeholder="Add recipe" name="newrecipe" />
-
-            <button type="submit">
-              <AddIcon />
-            </button>
-          </form>
-
-          <ul className="recipe_list">
-            {food?.recipe.map((step) => (
-              <li key={step}>
-                <span>{step}</span>
-
-                <DeleteIcon
-                  onClick={() => removeRecipeStep(step)}
-                  color="brown"
-                />
-              </li>
-            ))}
-          </ul>
+          <RecipeList recipeList={food?.recipe} food={food} setFood={setFood} />
 
           <button type="button" className="submit_btn" onClick={handleSaveFood}>
-            Submit Edit
+            {creatingNew ? 'save food' : 'save edit'}
           </button>
         </div>
       </StyledFoodForm>

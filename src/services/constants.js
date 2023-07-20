@@ -3,6 +3,8 @@ export const DEFAULT_FOOD_BG =
 
 export const MAX_FOOD_PER_PAGINATION = 12;
 
+export const MAX_NUMBER_OF_IMAGES = 4; // the max number of images one food can have. used it in the foodform
+
 export const DEFINED_ROUTES = ['', 'foods', 'details', 'favorites', 'settings'];
 
 export const POSITION_FOR = {
