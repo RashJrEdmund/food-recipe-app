@@ -29,10 +29,7 @@ export default function LandingPage({ setPathName }) {
         weight="800"
       />
 
-      <SampleFoods
-        arrayFoods={foodData?.slice(0, 12)}
-        allowInteraction={false}
-      />
+      <SampleFoods arrayFoods={foodData?.slice(0, 12)} allowInteraction />
 
       <div style={StyledBtnHolder}>
         <ButtonAtom

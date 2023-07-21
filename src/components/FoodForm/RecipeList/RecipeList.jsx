@@ -52,6 +52,7 @@ export default function RecipeList({ recipeList, food, setFood }) {
             <span>{step}</span>
 
             <DeleteIcon
+              title="remove this step"
               onClick={() => removeRecipeStep(step)}
               color="#e00000"
             />
@@ -59,7 +60,7 @@ export default function RecipeList({ recipeList, food, setFood }) {
         ))
       ) : (
         <span className="no_procedure_span">
-          No procedure have been added &#9888;
+          No procedures have been added &#9888;
         </span>
       )}
     </StyledRecipeList>
