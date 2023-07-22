@@ -29,7 +29,7 @@ export default function FoodPage({ setPathName }) {
       SESSIONSTORAGE.remove('searchIdList'); // clearing the search id array that is created when a search is made
       SESSIONSTORAGE.remove('searchValue'); // clearing the search value from storage
     };
-  }, []);
+  }, [foodData]);
 
   return (
     <>

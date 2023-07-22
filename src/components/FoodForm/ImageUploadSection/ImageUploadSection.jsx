@@ -37,6 +37,7 @@ export default function ImageUploadSection({
     <StyledImageUploadSection useUrl={useUrl}>
       <input
         type={useUrl ? 'url' : 'file'}
+        placeholder="example: https://imagepath.png"
         name="image_file"
         className="image_field"
         accept="image/jpeg image/png image/svg/ image/jpg image/ai image/tiff image/gif"

@@ -42,7 +42,7 @@ export default function RecipeForm({ setFood }) {
       <input type="recipe" placeholder="Add recipe" name="newrecipe" />
 
       <button type="submit">
-        <AddIcon />
+        <AddIcon title="add procedure" />
       </button>
     </StyledRecipeForm>
   );
