@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { v4 as uuid4 } from 'uuid';
 import StyledFoodForm from './StyledFoodForm';
 import ImagePreview from './ImagePreview/ImagePreview';
 import RecipeForm from './RecipeForm/RecipeForm';
@@ -79,7 +80,6 @@ export default function FoodForm({
 
     if (sesSfood) setFood(sesSfood);
     if (creatingNew) {
-      const prev = LOCALSTORAGE.get('foodData');
       setFood({
         name: '',
         img: [DEFAULT_FOOD_BG],
@@ -87,7 +87,7 @@ export default function FoodForm({
         description: '',
         recipe: [],
         fav: false,
-        id: prev && prev.length > 0 ? prev.pop().id + 1 : 1,
+        id: uuid4(),
       });
     }
   }, []);

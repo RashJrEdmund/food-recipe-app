@@ -2,7 +2,7 @@ import { LOCALSTORAGE, SESSIONSTORAGE } from './storage';
 
 export const updateFavorite = (id, setArrayFoods) => {
   const update = LOCALSTORAGE.get('foodData')?.map((food) => {
-    if (+food.id === +id) return { ...food, fav: !food.fav };
+    if (food.id === id) return { ...food, fav: !food.fav };
 
     return food;
   });
@@ -12,7 +12,7 @@ export const updateFavorite = (id, setArrayFoods) => {
   if (SESSIONSTORAGE.get('searchIdList')) {
     const localFood = LOCALSTORAGE.get('foodData');
     const results = SESSIONSTORAGE.get('searchIdList').map((foodId) =>
-      localFood.find((food) => +food.id === +foodId)
+      localFood.find((food) => food.id === foodId)
     );
 
     setArrayFoods([...results]);
