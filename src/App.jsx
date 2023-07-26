@@ -24,7 +24,7 @@ function App({ setPathName, pathName }) {
   return (
     <BrowserRouter>
       <div className="App" id="App">
-        {pathName !== '/' && <LandingNav />}
+        {pathName !== '/' && <LandingNav pathName={pathName} />}
 
         <Routes>
           <Route index element={<LandingPage setPathName={setPathName} />} />

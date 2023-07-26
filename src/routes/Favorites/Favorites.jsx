@@ -5,16 +5,16 @@ import SampleFoods from '../../components/SampleFood/SampleFoods';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
+import { SESSIONSTORAGE } from '../../services/storage';
 
 export default function Favorites({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
   const [searchFallBack, setSearchFallBack] = React.useState([]);
 
-  const { AlertComponent, displayAlert, alertMsg } = useAlert();
+  const { AlertComponent, displayAlert, alertMsg, foodData } = useAlert();
   React.useEffect(() => {
-    const data = LOCALSTORAGE.get('foodData') || [];
+    const data = foodData || [];
     const favs = data.filter((food) => food.fav === true);
     setFavorites([...favs]);
     setSearchFallBack([...favs]);
@@ -23,7 +23,7 @@ export default function Favorites({ setPathName }) {
       SESSIONSTORAGE.remove('searchIdList'); // clearing the search id array that is created when a search is made
       SESSIONSTORAGE.remove('searchValue'); // clearing the search value from storage
     };
-  }, []);
+  }, [foodData]);
 
   React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
 

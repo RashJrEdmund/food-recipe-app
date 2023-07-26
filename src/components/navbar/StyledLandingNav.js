@@ -25,6 +25,7 @@ const StyledLandingNav = styled.nav`
 
       li {
         font-size: 1.3rem;
+        white-space: nowrap;
       }
     }
   }

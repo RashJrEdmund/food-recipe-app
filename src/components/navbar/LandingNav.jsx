@@ -6,6 +6,13 @@ import StyledLandingNav from './StyledLandingNav';
 import { Header2Atom, Overlay } from '../atoms/Atoms';
 import { MenuIcon, OpenMenuIcon } from '../atoms/Icons';
 
+const NAV_LIST = [
+  { title: 'Home', route: '/' },
+  { title: 'Food List', route: '/foods' },
+  { title: 'Favorites', route: '/favorites' },
+  { title: 'Settings', route: '/settings' },
+];
+
 export default function LandingNav() {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = React.useState(false);
@@ -30,10 +37,10 @@ export default function LandingNav() {
 
           <ul>
             <OpenMenuIcon onClick={() => setOpenMenu(false)} />
-            <li onClick={() => routeToPage('/')}>Home</li>
-            <li onClick={() => routeToPage('/foods')}>Food List</li>
-            <li onClick={() => routeToPage('/favorites')}>Favorites</li>
-            <li onClick={() => routeToPage('/settings')}>Settings</li>
+
+            {NAV_LIST.map(({ title, route }) => (
+              <li onClick={() => routeToPage(route)}>{title}</li>
+            ))}
           </ul>
 
           <MenuIcon onClick={() => setOpenMenu(true)} />
