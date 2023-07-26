@@ -7,7 +7,14 @@ export const MAX_NUMBER_OF_IMAGES = 4; // the max number of images one food can 
 
 export const DEFINED_ROUTES = ['', 'foods', 'details', 'favorites', 'settings'];
 
-export const POSITION_FOR = {
+export const NAVIGATOR_POSITION_FOR = {
   FOOD_DETAIL: 'FOOD_DETAIL',
   FOOD_CARD: 'FOOD_CARD',
+};
+
+export const ICONT_TYPE = {
+  NEXT: 'NEXT',
+  EDIT: 'EDIT',
+  DELETE: 'DELETE',
+  CREATE: 'CREATE',
 };

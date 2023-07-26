@@ -1,14 +1,16 @@
 import styled from '@emotion/styled';
+import banner from '../../assets/images/barner img.png';
 
 const StyledLandingHero = styled.section`
-  /* background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
-  url(${({ url }) => url});
-background-position: center;
-background-size: cover;
-background-repeat: no-repeat; */
-  background-color: #111111;
+  background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
+    url(${'https://media.istockphoto.com/id/1370772148/photo/track-and-mountains-in-valle-del-lago-somiedo-nature-park-asturias-spain.jpg?s=612x612&w=0&k=20&c=QJn62amhOddkJSbihcjWKHXShMAfcKM0hPN65aCloco=' ||
+    banner});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: #111111; */
   width: 100%;
-  min-height: 75vh;
+  min-height: 95vh;
 
   .container {
     background: transparent;

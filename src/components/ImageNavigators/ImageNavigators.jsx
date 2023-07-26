@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { css } from '@emotion/react';
 import { NavigatorIcon } from '../atoms/Icons';
-import { POSITION_FOR } from '../../services/constants';
+import { NAVIGATOR_POSITION_FOR } from '../../services/constants';
 
 const generateVerticalAlignment = (positionFor) => {
   switch (positionFor) {
@@ -28,7 +28,7 @@ export default function ImageNavigators({
   img,
   handleChangeimg,
   imgIndx = 0,
-  positionFor = POSITION_FOR.FOOD_CARD,
+  positionFor = NAVIGATOR_POSITION_FOR.FOOD_CARD,
 }) {
   const StyledNavigators = styled.div`
     position: absolute;
@@ -55,10 +55,10 @@ export default function ImageNavigators({
     if (imgIndx === ind) return 'steelblue';
 
     switch (positionFor) {
-      case POSITION_FOR.FOOD_DETAIL: {
+      case NAVIGATOR_POSITION_FOR.FOOD_DETAIL: {
         return 'gold';
       }
-      case POSITION_FOR.FOOD_CARD: {
+      case NAVIGATOR_POSITION_FOR.FOOD_CARD: {
         return '#111111';
       }
       default: {

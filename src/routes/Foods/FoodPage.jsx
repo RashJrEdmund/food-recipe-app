@@ -9,6 +9,7 @@ import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import { SESSIONSTORAGE } from '../../services/storage';
+import { ICONT_TYPE } from '../../services/constants';
 
 export default function FoodPage({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
@@ -67,7 +68,7 @@ export default function FoodPage({ setPathName }) {
             bg="#111111"
             color="#ffc145"
             text="Create New"
-            iconType="ADD"
+            iconType={ICONT_TYPE.CREATE}
             iconcolor="#ddd"
             action={createNewFood}
           />

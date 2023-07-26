@@ -2,9 +2,15 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledLandingHero from './StyledLandingHero';
 import ButtonAtom from '../atoms/Button';
+import { ICONT_TYPE } from '../../services/constants';
 
 export default function LandingHero() {
   const navigate = useNavigate();
+
+  const gotToFoods = () => {
+    navigate('/foods');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <StyledLandingHero>
@@ -31,10 +37,11 @@ export default function LandingHero() {
           <div className="cta_btns">
             <ButtonAtom
               text="Advance"
-              action={() => navigate('/foods')}
               radius="5px"
               size="1rem"
               bg="#ffc145"
+              iconType={ICONT_TYPE.NEXT}
+              action={() => gotToFoods()}
             />
           </div>
         </div>
