@@ -1,26 +1,25 @@
 import styled from '@emotion/styled';
-import banner from '../../assets/images/barner img.png';
+import { BANNER_IMAGE } from '../../services/constants';
 
 const StyledLandingHero = styled.section`
   background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
-    url(${'https://media.istockphoto.com/id/1370772148/photo/track-and-mountains-in-valle-del-lago-somiedo-nature-park-asturias-spain.jpg?s=612x612&w=0&k=20&c=QJn62amhOddkJSbihcjWKHXShMAfcKM0hPN65aCloco=' ||
-    banner});
+    url(${BANNER_IMAGE});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-color: #111111; */
   width: 100%;
-  min-height: 95vh;
+  min-height: 100vh;
 
   .container {
     background: transparent;
+    /* background-color: green; */
     color: #f2f2f2;
     display: flex;
     align-items: flex-start;
     height: fit-content;
     width: var(--general-min-max-width);
-    margin: 0 auto 1.5rem;
-    padding: 80px var(--general-padding);
+    margin: 0 auto;
+    padding: 30px var(--general-padding);
 
     .hero_col_1 {
       display: flex;
@@ -28,6 +27,10 @@ const StyledLandingHero = styled.section`
       align-items: flex-start;
       gap: 40px;
       width: 100%;
+
+      h1 {
+        font-size: 3rem;
+      }
 
       .cta_btns {
         align-self: flex-start;

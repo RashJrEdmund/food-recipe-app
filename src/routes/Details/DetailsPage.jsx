@@ -9,7 +9,10 @@ import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
 import ImageNavigators from '../../components/ImageNavigators/ImageNavigators';
-import { ICONT_TYPE, NAVIGATOR_POSITION_FOR } from '../../services/constants';
+import {
+  BUTTON_ICON_TYPE,
+  NAVIGATOR_POSITION_FOR,
+} from '../../services/constants';
 
 export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -127,7 +130,7 @@ export default function DetailsPage({ setPathName }) {
               text="Modify"
               color="#ffc145"
               bg="#111111"
-              iconType={ICONT_TYPE.EDIT}
+              iconType={BUTTON_ICON_TYPE.EDIT}
               iconcolor="#ddd"
               action={toggleShowForm}
             />
@@ -136,7 +139,7 @@ export default function DetailsPage({ setPathName }) {
               text="Delete"
               color="brown"
               bg="transparent"
-              iconType={ICONT_TYPE.DELETE}
+              iconType={BUTTON_ICON_TYPE.DELETE}
               iconcolor="#111111"
               margin="0 0 0 3rem"
               action={handleDelete}

@@ -40,7 +40,7 @@ const PageGaurd = (Component) => {
     if (loading) return <Loading />;
 
     return validRoute ? (
-      <Component {...props} setPathName={setPathName} />
+      <Component {...props} setPathName={setPathName} pathName={pathName} />
     ) : (
       <NotFound />
     );

@@ -20,11 +20,11 @@ if (!LOCALSTORAGE.get('foodData')) {
   LOCALSTORAGE.save('foodData', FoodData);
 }
 
-function App({ setPathName }) {
+function App({ setPathName, pathName }) {
   return (
     <BrowserRouter>
       <div className="App" id="App">
-        <LandingNav />
+        {pathName !== '/' && <LandingNav />}
 
         <Routes>
           <Route index element={<LandingPage setPathName={setPathName} />} />
@@ -47,7 +47,7 @@ function App({ setPathName }) {
           />
         </Routes>
 
-        <Footer />
+        {pathName !== '/' && <Footer />}
       </div>
     </BrowserRouter>
   );
