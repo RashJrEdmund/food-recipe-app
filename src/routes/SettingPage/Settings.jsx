@@ -12,7 +12,7 @@ import {
   ResetAllIcon,
   ResetFoodIcon,
   ThemeIcon,
-} from '../../components/atoms/Icons';
+} from '../../components/atoms/icons/actions';
 
 export default function User({ setPathName }) {
   const { DialogueComponent, dialogueDetails, displayDialogue } = useDialogue();

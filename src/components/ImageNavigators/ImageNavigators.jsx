@@ -2,8 +2,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { css } from '@emotion/react';
-import { NavigatorIcon } from '../atoms/Icons';
 import { NAVIGATOR_POSITION_FOR } from '../../services/constants';
+import { NavigatorIcon } from '../atoms/icons/navigation/index';
 
 const generateVerticalAlignment = (positionFor) => {
   switch (positionFor) {

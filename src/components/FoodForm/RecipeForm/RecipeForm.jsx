@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
-import { AddIcon } from '../../atoms/Icons';
+import { AddIcon } from '../../atoms/icons/actions';
 
 const StyledRecipeForm = styled.form`
   margin: 20px 0;

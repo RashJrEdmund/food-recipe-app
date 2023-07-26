@@ -2,12 +2,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { AddIcon, RemoveIcon } from '../../atoms/Icons';
 import StyledImagePreview from './StyledImagePreview';
 import {
   DEFAULT_FOOD_BG,
   MAX_NUMBER_OF_IMAGES,
 } from '../../../services/constants';
+import { AddIcon, RemoveIcon } from '../../atoms/icons/actions';
 
 export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
   const handleChangeImg = (indx) => {

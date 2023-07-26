@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
-import { DeleteIcon } from '../../atoms/Icons';
+import { DeleteIcon } from '../../atoms/icons/actions';
 
 const StyledRecipeList = styled.ul`
   display: flex;

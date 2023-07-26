@@ -3,7 +3,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ActionsIcon, FavortieIcon } from '../atoms/Icons';
 import StyledFoodCard from './StyledFoodCard';
 import {
   updateFavorite,
@@ -11,6 +10,7 @@ import {
 } from '../../services/foodScripts';
 import ImageNavigators from '../ImageNavigators/ImageNavigators';
 import { NAVIGATOR_POSITION_FOR } from '../../services/constants';
+import { DetailsIcon, FavortieIcon } from '../atoms/icons/navigation';
 
 export default function FoodCard({
   id,
@@ -67,7 +67,7 @@ export default function FoodCard({
             </span>
 
             <span className="see_more" onClick={goToFoodDetails}>
-              <ActionsIcon title="see details" />
+              <DetailsIcon title="see details" />
             </span>
           </div>
         )}

@@ -4,10 +4,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledLandingNav from './StyledLandingNav';
 import { Header2Atom, Overlay } from '../atoms/Atoms';
-import { MenuIcon, OpenMenuIcon } from '../atoms/Icons';
+import { OpenMenuIcon } from '../atoms/icons/navigation';
+import { MenuIcon } from '../atoms/icons/actions';
 
 const NAV_LIST = [
-  { title: 'Home', route: '/' },
   { title: 'Food List', route: '/foods' },
   { title: 'Favorites', route: '/favorites' },
   { title: 'Settings', route: '/settings' },
@@ -29,7 +29,7 @@ export default function LandingNav() {
       <StyledLandingNav openMenu={openMenu}>
         <div className="nav_container">
           <Header2Atom
-            text="Logo"
+            text="Home"
             size="1.5rem"
             weight="900"
             action={() => navigate('/')}

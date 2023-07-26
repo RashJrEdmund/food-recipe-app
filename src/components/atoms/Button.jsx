@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from '@emotion/styled';
-import { DeleteIcon, EditIcon, FowardIcon } from './Icons';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
+import { FowardIcon } from './icons/navigation';
+import { DeleteIcon, EditIcon } from './icons/actions';
 
 export default function ButtonAtom({
   text,
