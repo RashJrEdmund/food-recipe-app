@@ -35,7 +35,6 @@ export default function DetailsPage({ setPathName }) {
     displayAlert(`${detailedFood.name} deleted`);
 
     navigate('/foods');
-    console.log('function ended');
   };
 
   const handleChangeDetailImg = (ind) => {
@@ -48,11 +47,11 @@ export default function DetailsPage({ setPathName }) {
   };
 
   const openFoodForm = () => {
-    navigate(`/foods/details/${detailedFood?.name}/edit`, { replace: true });
+    navigate(`/foods/details/${detailedFood?.name}/edit`);
   };
 
   const openDialogue = () => {
-    navigate(`/foods/details/${detailedFood?.name}/delete`, { replace: true });
+    navigate(`/foods/details/${detailedFood?.name}/delete`);
   };
 
   const closeOutlet = () => {
@@ -101,7 +100,7 @@ export default function DetailsPage({ setPathName }) {
       message2: `You are about to delete ${detailedFood?.name}`,
       agreeTxt: 'Delete Food',
       fxntoCall: deleteFood,
-      closeDialoue: closeOutlet,
+      closeDialogue: closeOutlet,
     }),
     [detailedFood]
   );

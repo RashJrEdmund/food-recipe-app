@@ -52,14 +52,14 @@ function DialogueBox() {
         message3: string,
         agreeTxt: string,
         disagreeTxt: string,
-        closeDialoue: () =>
+        closeDialogue: () =>
         fxntoCall: () =>,
     }
    */
 
   return (
     <>
-      <Overlay onClick={dialogueDetails?.closeDialoue} />
+      <Overlay action={dialogueDetails?.closeDialogue} />
 
       <StyledDialogueDiv>
         <p>{dialogueDetails?.message1}</p>
@@ -70,7 +70,7 @@ function DialogueBox() {
           <button
             className="cancel-btn"
             type="button"
-            onClick={dialogueDetails?.closeDialoue}
+            onClick={dialogueDetails?.closeDialogue}
           >
             {dialogueDetails?.disagreeTxt || 'Cancel'}
           </button>

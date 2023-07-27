@@ -50,7 +50,9 @@ function App({ setPathName, pathName }) {
           <Route
             path="/settings"
             element={<Settings setPathName={setPathName} />}
-          />
+          >
+            <Route path="reset" element={<DialogueBox />} />
+          </Route>
         </Routes>
 
         {pathName !== '/' && <Footer />}
