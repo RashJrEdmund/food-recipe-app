@@ -16,6 +16,7 @@ import Footer from './components/footer/Footer';
 import { LOCALSTORAGE } from './services/storage';
 import PageGaurd from './HOC/PageGaurd';
 import FoodForm from './components/FoodForm/FoodForm';
+import DialogueBox from './components/DialogueBox/DialogueBox';
 
 if (!LOCALSTORAGE.get('foodData')) {
   LOCALSTORAGE.save('foodData', FoodData);
@@ -39,6 +40,7 @@ function App({ setPathName, pathName }) {
             element={<DetailsPage setPathName={setPathName} />}
           >
             <Route path="edit" element={<FoodForm />} />
+            <Route path="delete" element={<DialogueBox />} />
           </Route>
           <Route
             path="/favorites"

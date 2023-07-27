@@ -6,20 +6,22 @@ import ButtonAtom from '../../components/atoms/Button';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import { useFoodContext } from '../../context/FoodContext';
-import useDialogue from '../../hooks/useDialogue';
 import ImageNavigators from '../../components/FoodCard/ImageNavigators/ImageNavigators';
 import {
   BUTTON_ICON_TYPE,
   NAVIGATOR_POSITION_FOR,
 } from '../../services/constants';
 
+const OUTLET_TYPE = {
+  FOOD_FORM: 'FOOD_FORM',
+  DIALOGUE: 'DIALOGUE',
+};
+
 export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
   const navigate = useNavigate();
 
   const { displayAlert, setFoodData } = useFoodContext();
-
-  const { DialogueComponent, dialogueDetails, displayDialogue } = useDialogue();
 
   const params = useParams();
 
@@ -34,17 +36,6 @@ export default function DetailsPage({ setPathName }) {
     navigate('/foods');
   };
 
-  const handleDelete = () => {
-    const options = {
-      message2: `You are about to delete ${detailedFood.name}`,
-      agreeTxt: 'Delete Food',
-      fxntoCall: deleteFood,
-      show: false,
-    };
-
-    displayDialogue(options);
-  };
-
   const handleChangeDetailImg = (ind) => {
     const currentFood = detailedFood;
     currentFood.imgIndx = ind;
@@ -54,8 +45,25 @@ export default function DetailsPage({ setPathName }) {
     setDetailedFood({ ...currentFood });
   };
 
-  const toggleShowForm = () => {
+  const openFoodForm = () => {
     navigate(`/foods/details/${detailedFood?.name}/edit`);
+  };
+
+  const openDialogue = () => {
+    navigate(`/foods/details/${detailedFood?.name}/delete`);
+  };
+
+  const toggleOutlet = (type) => {
+    switch (type) {
+      case OUTLET_TYPE.FOOD_FORM:
+        openFoodForm();
+        break;
+      case OUTLET_TYPE.DIALOGUE:
+        openDialogue();
+        break;
+      default:
+        break;
+    }
   };
 
   React.useEffect(() => {
@@ -72,17 +80,24 @@ export default function DetailsPage({ setPathName }) {
     return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params]);
 
+  // OUTLET PARAMETERS
+
+  const formContext = {
+    toggleShowForm: () => navigate(`/foods/details/${detailedFood?.name}`),
+    displayAlert,
+    setDetailedFood,
+  };
+
+  const dialogueContext = {
+    message2: `You are about to delete ${detailedFood.name}`,
+    agreeTxt: 'Delete Food',
+    fxntoCall: deleteFood,
+    closeDialoue: () => navigate(`/foods/details/${detailedFood?.name}`),
+  };
+
   return (
     <>
-      <Outlet
-        context={{
-          toggleShowForm: () => navigate(`/details/${detailedFood?.name}/edit`),
-          displayAlert,
-          setDetailedFood,
-        }}
-      />
-
-      {dialogueDetails.show && <DialogueComponent />}
+      <Outlet context={{ ...formContext, ...dialogueContext }} />
 
       <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
         <section className="food_container">
@@ -129,7 +144,7 @@ export default function DetailsPage({ setPathName }) {
               bg="#111111"
               iconType={BUTTON_ICON_TYPE.EDIT}
               iconcolor="#ddd"
-              action={toggleShowForm}
+              action={() => toggleOutlet(OUTLET_TYPE.FOOD_FORM)}
             />
 
             <ButtonAtom
@@ -139,7 +154,7 @@ export default function DetailsPage({ setPathName }) {
               iconType={BUTTON_ICON_TYPE.DELETE}
               iconcolor="#111111"
               margin="0 0 0 3rem"
-              action={handleDelete}
+              action={() => toggleOutlet(OUTLET_TYPE.DIALOGUE)}
             />
           </div>
         )}
