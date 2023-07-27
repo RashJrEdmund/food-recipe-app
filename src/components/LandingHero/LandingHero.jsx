@@ -1,13 +1,15 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledLandingHero from './StyledLandingHero';
 import ButtonAtom from '../atoms/Button';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
 
-export default function LandingHero() {
+export default function LandingHero({ setPathName }) {
   const navigate = useNavigate();
 
   const gotToFoods = () => {
+    setPathName('foods');
     navigate('/foods');
     window.scrollTo(0, 0);
   };
@@ -43,7 +45,7 @@ export default function LandingHero() {
               size="1rem"
               bg="#ffc145"
               iconType={BUTTON_ICON_TYPE.NEXT}
-              action={() => gotToFoods()}
+              action={gotToFoods}
             />
           </div>
         </div>

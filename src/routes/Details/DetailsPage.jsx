@@ -17,7 +17,7 @@ const OUTLET_TYPE = {
   DIALOGUE: 'DIALOGUE',
 };
 
-export default function DetailsPage({ setPathName }) {
+export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
   const navigate = useNavigate();
 
@@ -79,8 +79,6 @@ export default function DetailsPage({ setPathName }) {
     SESSIONSTORAGE.save('foodToEdit', currentFood);
 
     if (currentFood) setDetailedFood({ ...currentFood });
-
-    setPathName(window.location.pathname); // helps for my 404 page
 
     return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params]);

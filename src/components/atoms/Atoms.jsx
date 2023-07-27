@@ -26,14 +26,14 @@ export function Header2Atom({
   return <StyledHeaderAtom onClick={handleClick}>{text}</StyledHeaderAtom>;
 }
 
-export function Overlay({ action, index, opacity }) {
+export function Overlay({ action, index, opacity, bg }) {
   const Styledoverlay = styled.div`
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #1d243264;
+    background-color: ${bg || '#1d243264'};
     opacity: ${opacity || '0.3'};
     z-index: ${index || 2};
   `;

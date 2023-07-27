@@ -8,8 +8,11 @@ import Loading from '../components/molecules/Loading/Loading';
 
 const PageGaurd = (Component) => {
   return function Gaurd(props) {
+    const [pathName, setPathName] = React.useState(
+      window.location.pathname.split('/').pop()
+    );
+
     const [loading, setloading] = React.useState(true);
-    const [pathName, setPathName] = React.useState(window.location.pathname);
     const [validRoute, setValidRoute] = React.useState(true);
 
     const checkParam = (foodName) => {

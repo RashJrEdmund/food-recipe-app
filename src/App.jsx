@@ -1,7 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-no-constructed-context-values */
-/* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable react/jsx-pascal-case */
 import './styles/App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -18,44 +15,39 @@ import PageGaurd from './HOC/PageGaurd';
 import FoodForm from './components/FoodForm/FoodForm';
 import DialogueBox from './components/DialogueBox/DialogueBox';
 
-if (!LOCALSTORAGE.get('foodData')) {
-  LOCALSTORAGE.save('foodData', FoodData);
-}
+(() => {
+  if (!LOCALSTORAGE.get('foodData')) {
+    LOCALSTORAGE.save('foodData', FoodData);
+  }
+})();
 
-function App({ setPathName, pathName }) {
+function App({ pathName, setPathName }) {
   return (
     <BrowserRouter>
       <div className="App" id="App">
-        {pathName !== '/' && <LandingNav pathName={pathName} />}
+        {pathName !== '' && (
+          <LandingNav pathName={pathName} setPathName={setPathName} />
+        )}
 
         <Routes>
           <Route index element={<LandingPage setPathName={setPathName} />} />
 
-          <Route path="/foods" element={<FoodPage setPathName={setPathName} />}>
+          <Route path="/foods" element={<FoodPage />}>
             <Route path="createnew" element={<FoodForm />} />
           </Route>
 
-          <Route
-            path="foods/details/:name"
-            element={<DetailsPage setPathName={setPathName} />}
-          >
+          <Route path="foods/details/:name" element={<DetailsPage />}>
             <Route path="edit" element={<FoodForm />} />
             <Route path="delete" element={<DialogueBox />} />
           </Route>
-          <Route
-            path="/favorites"
-            element={<Favorites setPathName={setPathName} />}
-          />
+          <Route path="/favorites" element={<Favorites />} />
 
-          <Route
-            path="/settings"
-            element={<Settings setPathName={setPathName} />}
-          >
+          <Route path="/settings" element={<Settings />}>
             <Route path="reset" element={<DialogueBox />} />
           </Route>
         </Routes>
 
-        {pathName !== '/' && <Footer />}
+        {pathName !== '' && <Footer />}
       </div>
     </BrowserRouter>
   );

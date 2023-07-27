@@ -14,13 +14,16 @@ const NAV_LIST = [
   { title: 'Settings', route: '/settings' },
 ];
 
-export default function LandingNav({ pathName }) {
-  const navigate = useNavigate();
+export default function LandingNav({ pathName, setPathName }) {
   const [openMenu, setOpenMenu] = React.useState(false);
+
+  const navigate = useNavigate();
+
   const routeToPage = (route) => {
     navigate(route);
     // window.scrollTo(0, 55);
     setOpenMenu(false);
+    setPathName(route.split('/').pop());
   };
 
   return (
@@ -33,7 +36,10 @@ export default function LandingNav({ pathName }) {
             text="Home"
             size="1.5rem"
             weight="900"
-            action={() => navigate('/')}
+            action={() => {
+              navigate('/');
+              setPathName('');
+            }}
           />
 
           <ul>
@@ -41,8 +47,11 @@ export default function LandingNav({ pathName }) {
 
             {NAV_LIST.map(({ title, route }) => (
               <li
+                key={title}
                 onClick={() => routeToPage(route)}
-                className={pathName === route && 'current_route'}
+                className={
+                  pathName === route.split('/').pop() ? 'current_route' : ''
+                }
               >
                 {title}
               </li>

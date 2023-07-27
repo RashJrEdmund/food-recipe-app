@@ -83,7 +83,10 @@ const StyledFoodForm = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    //
+    width: 100vw;
+    height: 100vh;
+    max-height: unset;
+    border-radius: 0;
   }
 `;
 

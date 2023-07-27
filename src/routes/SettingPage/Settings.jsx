@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
@@ -14,7 +13,7 @@ import {
   ThemeIcon,
 } from '../../components/atoms/icons/actions';
 
-export default function User({ setPathName }) {
+export default function User() {
   const { displayAlert, setFoodData } = useFoodContext();
 
   const navigate = useNavigate();
@@ -41,8 +40,6 @@ export default function User({ setPathName }) {
   const handleResetAll = () => {
     displayAlert('this feature is not yet available');
   };
-
-  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
 
   const dialogueContext = React.useMemo(
     () => ({

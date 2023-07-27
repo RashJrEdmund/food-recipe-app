@@ -92,7 +92,7 @@ export default function FoodForm() {
 
   return (
     <>
-      <Overlay index="4" opacity="1" />
+      <Overlay index="4" opacity="0" bg="black" />
 
       <StyledFoodForm url={food?.img[food?.imgIndx]}>
         <div className="food_form">

@@ -12,7 +12,7 @@ const StyledRecipeForm = styled.form`
   align-items: center;
 
   input {
-    width: 100%;
+    width: max(100%, 200px);
     height: 40px;
     padding: 10px 5px;
   }

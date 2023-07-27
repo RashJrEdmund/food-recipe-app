@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
@@ -11,7 +10,7 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
 
-export default function FoodPage({ setPathName }) {
+export default function FoodPage() {
   const [foodList, setFoodList] = React.useState(null);
   const { foodData } = useFoodContext();
 
@@ -25,7 +24,6 @@ export default function FoodPage({ setPathName }) {
 
   React.useEffect(() => {
     setFoodList([...LOCALSTORAGE.get('foodData')]);
-    setPathName(window.location.pathname); // helps for my 404 page
 
     return () => {
       SESSIONSTORAGE.remove('searchIdList'); // clearing the search id array that is created when a search is made

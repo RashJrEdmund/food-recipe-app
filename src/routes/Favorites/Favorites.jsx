@@ -8,7 +8,7 @@ import SearchForm from '../../components/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 
-export default function Favorites({ setPathName }) {
+export default function Favorites() {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
   const [searchFallBack, setSearchFallBack] = React.useState([]);
@@ -27,8 +27,6 @@ export default function Favorites({ setPathName }) {
       SESSIONSTORAGE.remove('searchValue'); // clearing the search value from storage
     };
   }, [foodData]);
-
-  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
 
   return (
     <>
