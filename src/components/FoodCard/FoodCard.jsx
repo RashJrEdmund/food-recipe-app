@@ -8,9 +8,14 @@ import {
   updateFavorite,
   updateCardSlideImage,
 } from '../../services/foodScripts';
-import ImageNavigators from '../ImageNavigators/ImageNavigators';
+import ImageNavigators from './ImageNavigators/ImageNavigators';
 import { NAVIGATOR_POSITION_FOR } from '../../services/constants';
-import { DetailsIcon, FavortieIcon } from '../atoms/icons/navigation';
+import {
+  DetailsIcon,
+  FavortieIcon,
+  SwipeLeftIcon,
+  SwipeRightIcon,
+} from '../atoms/icons/navigation';
 
 export default function FoodCard({
   id,
@@ -42,9 +47,31 @@ export default function FoodCard({
     navigate(`/foods/details/${name}`);
   };
 
+  const gotoNextPhoto = () => {
+    if (imgIndx < img.length - 1) {
+      updateCardSlideImage({ indx: imgIndx + 1, setArrayFoods, id });
+    }
+  };
+
+  const gotoPrevPhoto = () => {
+    if (imgIndx > 0) {
+      updateCardSlideImage({ indx: imgIndx - 1, setArrayFoods, id });
+    }
+  };
+
   return (
     <StyledFoodCard url={img[imgIndx]}>
-      <div className="food_image" />
+      <div className="food_image">
+        <SwipeLeftIcon
+          iconcolor={imgIndx === 0 ? '#808080ae' : '#111111'}
+          onClick={gotoPrevPhoto}
+        />
+        <SwipeRightIcon
+          iconcolor={imgIndx === img.length - 1 ? '#808080ae' : '#111111'}
+          onClick={gotoNextPhoto}
+        />
+      </div>
+
       <div className="food_section_2">
         <ImageNavigators // the sliders below the images
           img={img}

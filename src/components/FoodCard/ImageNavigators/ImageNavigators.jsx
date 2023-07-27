@@ -2,8 +2,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { css } from '@emotion/react';
-import { NAVIGATOR_POSITION_FOR } from '../../services/constants';
-import { NavigatorIcon } from '../atoms/icons/navigation/index';
+import { NAVIGATOR_POSITION_FOR } from '../../../services/constants';
+import { NavigatorIcon } from '../../atoms/icons/navigation/index';
 
 const generateVerticalAlignment = (positionFor) => {
   switch (positionFor) {
@@ -40,16 +40,6 @@ export default function ImageNavigators({
     justify-content: center;
     ${() => generateVerticalAlignment(positionFor)}
   `;
-
-  // const generateIconColorVariants = (ind) => {
-  //   if (imgIndx === ind) return 'steelblue';
-
-  //   if (positionFor === 'FOOD_DETAIL') return 'gold';
-
-  //   if (positionFor === 'FOOD_CARD') return '#111111';
-
-  //   return undefined;
-  // };
 
   const generateIconColorVariants = (ind) => {
     if (imgIndx === ind) return 'steelblue';

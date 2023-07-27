@@ -8,7 +8,7 @@ import StyledDetailsPage from './StyledDetailsPage';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
-import ImageNavigators from '../../components/ImageNavigators/ImageNavigators';
+import ImageNavigators from '../../components/FoodCard/ImageNavigators/ImageNavigators';
 import {
   BUTTON_ICON_TYPE,
   NAVIGATOR_POSITION_FOR,

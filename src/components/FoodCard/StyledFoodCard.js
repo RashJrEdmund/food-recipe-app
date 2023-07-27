@@ -22,6 +22,7 @@ const StyledFoodCard = styled.div`
     width: 100%;
     min-height: 240px;
     border-radius: 10px 10px 0 0;
+    position: relative;
   }
 
   .food_section_2 {
