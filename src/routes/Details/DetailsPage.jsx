@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import ButtonAtom from '../../components/atoms/Button';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
-import FoodForm from '../../components/FoodForm/FoodForm';
 import { useFoodContext } from '../../context/FoodContext';
 import useDialogue from '../../hooks/useDialogue';
 import ImageNavigators from '../../components/FoodCard/ImageNavigators/ImageNavigators';
@@ -16,7 +15,6 @@ import {
 
 export default function DetailsPage({ setPathName }) {
   const [detailedFood, setDetailedFood] = React.useState(null);
-  const [showForm, setShowForm] = React.useState(false);
   const navigate = useNavigate();
 
   const { displayAlert, setFoodData } = useFoodContext();
@@ -57,7 +55,7 @@ export default function DetailsPage({ setPathName }) {
   };
 
   const toggleShowForm = () => {
-    setShowForm((prev) => !prev);
+    navigate(`/foods/details/${detailedFood?.name}/edit`);
   };
 
   React.useEffect(() => {
@@ -76,13 +74,13 @@ export default function DetailsPage({ setPathName }) {
 
   return (
     <>
-      {showForm && (
-        <FoodForm
-          toggleShowForm={toggleShowForm}
-          displayAlert={displayAlert}
-          setDetailedFood={setDetailedFood}
-        />
-      )}
+      <Outlet
+        context={{
+          toggleShowForm: () => navigate(`/details/${detailedFood?.name}/edit`),
+          displayAlert,
+          setDetailedFood,
+        }}
+      />
 
       {dialogueDetails.show && <DialogueComponent />}
 
@@ -108,8 +106,7 @@ export default function DetailsPage({ setPathName }) {
             />
 
             <p className="description">
-              {detailedFood?.description ||
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae laborum fuga necessitatibus harum reprehenderit?'}
+              {detailedFood?.description || 'food description'}
             </p>
           </div>
         </section>

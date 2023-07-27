@@ -37,7 +37,9 @@ function App({ setPathName, pathName }) {
           <Route
             path="foods/details/:name"
             element={<DetailsPage setPathName={setPathName} />}
-          />
+          >
+            <Route path="edit" element={<FoodForm />} />
+          </Route>
           <Route
             path="/favorites"
             element={<Favorites setPathName={setPathName} />}

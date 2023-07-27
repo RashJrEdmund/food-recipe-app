@@ -12,20 +12,30 @@ const PageGaurd = (Component) => {
     const [pathName, setPathName] = React.useState(window.location.pathname);
     const [validRoute, setValidRoute] = React.useState(true);
 
+    const checkParam = (foodName) => {
+      if (foodName) {
+        const currentFood = LOCALSTORAGE.get('foodData').find(
+          (meal) => meal.name === foodName
+        );
+
+        if (currentFood) return true;
+      }
+
+      return false;
+    };
+
     React.useEffect(() => {
       const routes = pathName.split('/');
-      let currentFood = null;
+      let currentFood = false;
 
-      if (routes.includes('details')) {
-        const param = routes.pop().replace(/%20/g, ' ').trim();
-
-        if (param) {
-          currentFood = LOCALSTORAGE.get('foodData').find(
-            (meal) => meal.name === param
-          );
-
-          if (!currentFood) setValidRoute(false);
-        }
+      if (routes.includes('details') && !routes.includes('edit')) {
+        // if details is the last guy in the array
+        const foodName = routes.pop().replace(/%20/g, ' ').trim();
+        currentFood = checkParam(foodName);
+      } else if (routes.includes('details') && routes.includes('edit')) {
+        // if edit is the last guy in the array
+        const foodName = routes.slice(0, -1).pop().replace(/%20/g, ' ').trim();
+        currentFood = checkParam(foodName);
       }
 
       routes.forEach((route) => {

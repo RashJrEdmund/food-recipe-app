@@ -15,6 +15,7 @@ export const DEFINED_ROUTES = [
   'favorites',
   'settings',
   'createnew',
+  'edit',
 ];
 
 export const NAVIGATOR_POSITION_FOR = {
