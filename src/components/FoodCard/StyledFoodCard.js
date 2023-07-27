@@ -53,51 +53,10 @@ const StyledFoodCard = styled.div`
       text-overflow: ellipsis;
       overflow: hidden;
     }
-
-    .food_cta {
-      width: min(100%, 100px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-      margin: 10px 0 0;
-      border-radius: 0 0 10px 10px;
-
-      .heart,
-      .see_more {
-        cursor: pointer;
-      }
-    }
-  }
-
-  @media only screen and (min-width: 768px) {
-    .food_cta {
-      width: min(100%, 100px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-      margin: 15px 0 0;
-      border-radius: 0 0 10px 10px;
-
-      .heart,
-      .see_more {
-        transition: 0.3s;
-
-        &:hover {
-          box-shadow: 0 0 10px #111111;
-          border-radius: 5px;
-        }
-      }
-    }
   }
 
   @media only screen and (max-width: 400px) {
     max-width: 97vw;
-
-    .food_cta {
-      max-width: 97vw;
-    }
   }
 `;
 

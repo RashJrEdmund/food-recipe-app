@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +8,8 @@ import {
 } from '../../services/foodScripts';
 import ImageNavigators from './ImageNavigators/ImageNavigators';
 import { NAVIGATOR_POSITION_FOR } from '../../services/constants';
-import {
-  DetailsIcon,
-  FavortieIcon,
-  SwipeLeftIcon,
-  SwipeRightIcon,
-} from '../atoms/icons/navigation';
+import { SwipeLeftIcon, SwipeRightIcon } from '../atoms/icons/navigation';
+import Foodcta from './food_cta/Food_cta';
 
 export default function FoodCard({
   id,
@@ -85,18 +79,11 @@ export default function FoodCard({
         <p className="food_description">{description || 'Food description'}</p>
 
         {allowInteraction && (
-          <div className="food_cta">
-            <span className="heart" onClick={addNewFavorite}>
-              <FavortieIcon
-                color={fav ? '#f00' : '#111111'}
-                title={`${fav ? 'remove from ' : 'add to '} favorites`}
-              />
-            </span>
-
-            <span className="see_more" onClick={goToFoodDetails}>
-              <DetailsIcon title="see details" />
-            </span>
-          </div>
+          <Foodcta
+            fav={fav}
+            addNewFavorite={addNewFavorite}
+            goToFoodDetails={goToFoodDetails}
+          />
         )}
       </div>
     </StyledFoodCard>

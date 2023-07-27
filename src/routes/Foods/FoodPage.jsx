@@ -8,7 +8,7 @@ import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import { SESSIONSTORAGE } from '../../services/storage';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
 
 export default function FoodPage({ setPathName }) {
@@ -23,7 +23,7 @@ export default function FoodPage({ setPathName }) {
   };
 
   React.useEffect(() => {
-    if (foodData) setFoodList([...foodData]);
+    setFoodList([...LOCALSTORAGE.get('foodData')]);
     setPathName(window.location.pathname); // helps for my 404 page
 
     return () => {

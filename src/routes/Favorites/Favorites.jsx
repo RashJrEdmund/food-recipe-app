@@ -5,16 +5,19 @@ import SampleFoods from '../../components/SampleFood/SampleFoods';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import SearchForm from '../../components/SearchForm/SearchForm';
-import { SESSIONSTORAGE } from '../../services/storage';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
+import { useFoodContext } from '../../context/FoodContext';
 
 export default function Favorites({ setPathName }) {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
   const [searchFallBack, setSearchFallBack] = React.useState([]);
 
-  const { AlertComponent, displayAlert, alertMsg, foodData } = useAlert();
+  const { AlertComponent, displayAlert, alertMsg } = useAlert();
+  const { foodData } = useFoodContext();
+
   React.useEffect(() => {
-    const data = foodData || [];
+    const data = LOCALSTORAGE.get('foodData') || [];
     const favs = data.filter((food) => food.fav === true);
     setFavorites([...favs]);
     setSearchFallBack([...favs]);

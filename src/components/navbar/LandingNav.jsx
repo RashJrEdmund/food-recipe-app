@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
@@ -13,7 +14,7 @@ const NAV_LIST = [
   { title: 'Settings', route: '/settings' },
 ];
 
-export default function LandingNav() {
+export default function LandingNav({ pathName }) {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = React.useState(false);
   const routeToPage = (route) => {
@@ -39,7 +40,12 @@ export default function LandingNav() {
             <OpenMenuIcon onClick={() => setOpenMenu(false)} />
 
             {NAV_LIST.map(({ title, route }) => (
-              <li onClick={() => routeToPage(route)}>{title}</li>
+              <li
+                onClick={() => routeToPage(route)}
+                className={pathName === route && 'current_route'}
+              >
+                {title}
+              </li>
             ))}
           </ul>
 

@@ -25,7 +25,25 @@ const StyledLandingNav = styled.nav`
 
       li {
         font-size: 1.3rem;
+        color: #111111;
         white-space: nowrap;
+
+        &.current_route {
+          color: orangered;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: orangered;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -5px;
+            border-radius: 10px;
+          }
+        }
       }
     }
   }
@@ -53,6 +71,16 @@ const StyledLandingNav = styled.nav`
           color: #fff;
           font-weight: 600;
           padding: 20px 10px;
+
+          &.current_route {
+            color: orange;
+
+            &::before {
+              width: calc(100% - 20px);
+              background-color: orange;
+              bottom: 0;
+            }
+          }
         }
       }
     }
