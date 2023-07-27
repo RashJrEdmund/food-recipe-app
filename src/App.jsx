@@ -15,6 +15,7 @@ import Settings from './routes/SettingPage/Settings';
 import Footer from './components/footer/Footer';
 import { LOCALSTORAGE } from './services/storage';
 import PageGaurd from './HOC/PageGaurd';
+import FoodForm from './components/FoodForm/FoodForm';
 
 if (!LOCALSTORAGE.get('foodData')) {
   LOCALSTORAGE.save('foodData', FoodData);
@@ -28,10 +29,11 @@ function App({ setPathName, pathName }) {
 
         <Routes>
           <Route index element={<LandingPage setPathName={setPathName} />} />
-          <Route
-            path="/foods"
-            element={<FoodPage setPathName={setPathName} />}
-          />
+
+          <Route path="/foods" element={<FoodPage setPathName={setPathName} />}>
+            <Route path="createnew" element={<FoodForm />} />
+          </Route>
+
           <Route
             path="foods/details/:name"
             element={<DetailsPage setPathName={setPathName} />}

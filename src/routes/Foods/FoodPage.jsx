@@ -1,25 +1,26 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { useFoodContext } from '../../context/FoodContext';
 import ButtonAtom from '../../components/atoms/Button';
 import useAlert from '../../hooks/UseAlert';
-import FoodForm from '../../components/FoodForm/FoodForm';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
 
 export default function FoodPage({ setPathName }) {
-  const [showForm, setShowForm] = React.useState(false);
   const [foodList, setFoodList] = React.useState(null);
   const { foodData } = useFoodContext();
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
 
+  const navigate = useNavigate();
+
   const createNewFood = () => {
-    setShowForm(true);
+    navigate('/foods/createnew');
   };
 
   React.useEffect(() => {
@@ -36,13 +37,14 @@ export default function FoodPage({ setPathName }) {
     <>
       {alertMsg.show && <AlertComponent />}
 
-      {showForm && (
-        <FoodForm
-          toggleShowForm={() => setShowForm((prev) => !prev)}
-          displayAlert={displayAlert}
-          creatingNew // to signify that it's a new item beeing created
-        />
-      )}
+      <Outlet
+        context={{
+          toggleShowForm: () => navigate('/foods'),
+          creatingNew: true,
+          displayAlert,
+        }}
+      />
+
       <div>
         <SearchForm
           setSearchItems={setFoodList}

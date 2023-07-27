@@ -19,7 +19,7 @@ export default function LandingNav({ pathName }) {
   const [openMenu, setOpenMenu] = React.useState(false);
   const routeToPage = (route) => {
     navigate(route);
-    window.scrollTo(0, 95);
+    // window.scrollTo(0, 55);
     setOpenMenu(false);
   };
 

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { v4 as uuid4 } from 'uuid';
+import { useOutletContext } from 'react-router-dom';
 import StyledFoodForm from './StyledFoodForm';
 import ImagePreview from './ImagePreview/ImagePreview';
 import RecipeForm from './RecipeForm/RecipeForm';
@@ -13,14 +13,12 @@ import { useFoodContext } from '../../context/FoodContext';
 import { DEFAULT_FOOD_BG } from '../../services/constants';
 import ImageUploadSection from './ImageUploadSection/ImageUploadSection';
 
-export default function FoodForm({
-  toggleShowForm,
-  displayAlert,
-  setDetailedFood,
-  creatingNew, // boolean attribute to decide wether creating new or not
-}) {
+export default function FoodForm() {
   const [food, setFood] = React.useState(null); // the food we editing
   const [useUrl, setUseUrl] = React.useState(false);
+
+  const { toggleShowForm, displayAlert, setDetailedFood, creatingNew } =
+    useOutletContext();
 
   const { setFoodData } = useFoodContext();
 
