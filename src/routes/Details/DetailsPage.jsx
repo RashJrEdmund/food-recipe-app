@@ -32,8 +32,10 @@ export default function DetailsPage({ setPathName }) {
 
     LOCALSTORAGE.save('foodData', newFoodlist);
     setFoodData([...newFoodlist]);
-    displayAlert(`${detailedFood?.name} deleted`);
+    displayAlert(`${detailedFood.name} deleted`);
+
     navigate('/foods');
+    console.log('function ended');
   };
 
   const handleChangeDetailImg = (ind) => {
@@ -46,11 +48,15 @@ export default function DetailsPage({ setPathName }) {
   };
 
   const openFoodForm = () => {
-    navigate(`/foods/details/${detailedFood?.name}/edit`);
+    navigate(`/foods/details/${detailedFood?.name}/edit`, { replace: true });
   };
 
   const openDialogue = () => {
-    navigate(`/foods/details/${detailedFood?.name}/delete`);
+    navigate(`/foods/details/${detailedFood?.name}/delete`, { replace: true });
+  };
+
+  const closeOutlet = () => {
+    navigate(`/foods/details/${detailedFood?.name}`, { replace: true });
   };
 
   const toggleOutlet = (type) => {
@@ -81,19 +87,24 @@ export default function DetailsPage({ setPathName }) {
   }, [params]);
 
   // OUTLET PARAMETERS
+  const formContext = React.useMemo(
+    () => ({
+      toggleShowForm: closeOutlet,
+      displayAlert,
+      setDetailedFood,
+    }),
+    [detailedFood]
+  );
 
-  const formContext = {
-    toggleShowForm: () => navigate(`/foods/details/${detailedFood?.name}`),
-    displayAlert,
-    setDetailedFood,
-  };
-
-  const dialogueContext = {
-    message2: `You are about to delete ${detailedFood.name}`,
-    agreeTxt: 'Delete Food',
-    fxntoCall: deleteFood,
-    closeDialoue: () => navigate(`/foods/details/${detailedFood?.name}`),
-  };
+  const dialogueContext = React.useMemo(
+    () => ({
+      message2: `You are about to delete ${detailedFood?.name}`,
+      agreeTxt: 'Delete Food',
+      fxntoCall: deleteFood,
+      closeDialoue: closeOutlet,
+    }),
+    [detailedFood]
+  );
 
   return (
     <>

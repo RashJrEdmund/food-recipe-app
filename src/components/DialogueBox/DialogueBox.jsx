@@ -1,58 +1,50 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
+import { useOutletContext } from 'react-router-dom';
+import { Overlay } from '../atoms/Atoms';
 
 const StyledDialogueDiv = styled.div`
-  background: linear-gradient(to bottom, #00000083, #00000083, #00000083);
+  background: linear-gradient(to bottom, #000000ce, #000000ce, #000000ce);
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: #f5f5f5;
+  width: min(95vw, 340px);
+  height: fit-content;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 6;
+  flex-direction: column;
+  gap: 20px;
+  padding: 1rem 10px;
 
-  .dialogue-div {
-    background: linear-gradient(to bottom, #000000ce, #000000ce, #000000ce);
-    color: #f5f5f5;
-    width: 95vw;
-    max-width: 340px;
+  .dialogue-btns {
+    width: min(100%, 200px);
     height: fit-content;
+    margin: 20px 0;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    padding: 1rem 10px;
+    justify-content: space-between;
 
-    .dialogue-btns {
-      width: 100%;
-      max-width: 200px;
-      height: fit-content;
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .cancel-btn {
+      background-color: #6ee374;
+      color: #000;
+      padding: 10px 15px;
+      font-weight: 700;
+    }
 
-      .cancel-btn {
-        background-color: #6ee374;
-        color: #000;
-        padding: 10px 15px;
-        font-weight: 700;
-      }
-
-      .reset {
-        background-color: #a52a2a;
-        color: #f5f5f5;
-        padding: 10px 15px;
-        font-weight: 700;
-      }
+    .reset {
+      background-color: #a52a2a;
+      color: #f5f5f5;
+      padding: 10px 15px;
+      font-weight: 700;
     }
   }
 `;
 
-function DialogueBox({ dialogueDetails }) {
+function DialogueBox() {
+  const dialogueDetails = useOutletContext();
   /* dialogueDetails dialogue looks like this 
     {
         message1: string,
@@ -65,14 +57,11 @@ function DialogueBox({ dialogueDetails }) {
     }
    */
 
-  const handleDialogueRole = () => {
-    dialogueDetails.fxntoCall();
-    dialogueDetails.closeDialoue();
-  };
-
   return (
-    <StyledDialogueDiv onClick={dialogueDetails.closeDialoue}>
-      <div className="dialogue-div">
+    <>
+      <Overlay onClick={dialogueDetails?.closeDialoue} />
+
+      <StyledDialogueDiv>
         <p>{dialogueDetails?.message1}</p>
         <p>{dialogueDetails?.message2}</p>
         <p>{dialogueDetails?.message3}</p>
@@ -81,17 +70,21 @@ function DialogueBox({ dialogueDetails }) {
           <button
             className="cancel-btn"
             type="button"
-            onClick={dialogueDetails.closeDialoue}
+            onClick={dialogueDetails?.closeDialoue}
           >
             {dialogueDetails?.disagreeTxt || 'Cancel'}
           </button>
 
-          <button className="reset" type="button" onClick={handleDialogueRole}>
+          <button
+            className="reset"
+            type="button"
+            onClick={dialogueDetails?.fxntoCall}
+          >
             {dialogueDetails?.agreeTxt || 'proceed'}
           </button>
         </div>
-      </div>
-    </StyledDialogueDiv>
+      </StyledDialogueDiv>
+    </>
   );
 }
 

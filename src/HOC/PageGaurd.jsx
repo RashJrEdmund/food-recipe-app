@@ -28,11 +28,18 @@ const PageGaurd = (Component) => {
       const routes = pathName.split('/');
       let currentFood = false;
 
-      if (routes.includes('details') && !routes.includes('edit')) {
+      if (
+        routes.includes('details') &&
+        !routes.includes('edit') &&
+        !routes.includes('delete')
+      ) {
         // if details is the last guy in the array
         const foodName = routes.pop().replace(/%20/g, ' ').trim();
         currentFood = checkParam(foodName);
-      } else if (routes.includes('details') && routes.includes('edit')) {
+      } else if (
+        routes.includes('details') &&
+        (routes.includes('edit') || routes.includes('delete'))
+      ) {
         // if edit is the last guy in the array
         const foodName = routes.slice(0, -1).pop().replace(/%20/g, ' ').trim();
         currentFood = checkParam(foodName);
