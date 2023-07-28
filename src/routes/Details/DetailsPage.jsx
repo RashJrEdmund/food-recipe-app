@@ -23,6 +23,7 @@ const OUTLET_TYPE = {
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
+  const [contextData, setContextData] = React.useState({});
   const navigate = useNavigate();
 
   const { displayAlert, setFoodData } = useFoodContext();
@@ -44,6 +45,12 @@ export default function DetailsPage() {
   const handleChangeDetailImg = (ind) => {
     const currentFood = detailedFood;
     currentFood.imgIndx = ind;
+    const localUpdate = LOCALSTORAGE.get('foodData').map((food) => {
+      if (food.id === detailedFood.id) return { ...food, ...currentFood };
+      return food;
+    });
+
+    LOCALSTORAGE.save('foodData', localUpdate);
 
     SESSIONSTORAGE.save('foodToEdit', currentFood);
 
@@ -62,7 +69,45 @@ export default function DetailsPage() {
     navigate(`/foods/details/${detailedFood?.name}`, { replace: true });
   };
 
+  // SETTING OUTLET PARAMETERS
+
+  const generatecontextData = (type) => {
+    switch (type) {
+      case OUTLET_TYPE.FOOD_FORM:
+        setContextData({
+          toggleShowForm: closeOutlet,
+          displayAlert,
+          setDetailedFood,
+        });
+        break;
+      case OUTLET_TYPE.DIALOGUE:
+        setContextData({
+          message2: `You are about to delete ${detailedFood?.name}`,
+          agreeTxt: 'Delete Food',
+          fxntoCall: deleteFood,
+          closeDialogue: closeOutlet,
+        });
+        break;
+      case OUTLET_TYPE.REDIRECT:
+        setContextData({
+          message2: `You are about to be redirected`,
+          message3: `to this image path`,
+          agreeTxt: 'rediret me',
+          fxntoCall: () =>
+            window.open(detailedFood?.img[detailedFood?.imgIndx]),
+          closeDialogue: closeOutlet,
+        });
+        break;
+      default:
+        break;
+    }
+
+    SESSIONSTORAGE.save('OUT_TYPE', type);
+  };
+
   const toggleOutlet = (type) => {
+    generatecontextData(type);
+
     switch (type) {
       case OUTLET_TYPE.FOOD_FORM:
         openFoodForm();
@@ -90,42 +135,13 @@ export default function DetailsPage() {
     return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params]);
 
-  // OUTLET PARAMETERS
-  const formContext = React.useMemo(
-    () => ({
-      toggleShowForm: closeOutlet,
-      displayAlert,
-      setDetailedFood,
-    }),
-    [detailedFood]
-  );
-
-  const dialogueContext = React.useMemo(
-    () => ({
-      message2: `You are about to delete ${detailedFood?.name}`,
-      agreeTxt: 'Delete Food',
-      fxntoCall: deleteFood,
-      closeDialogue: closeOutlet,
-    }),
-    [detailedFood]
-  );
-
-  const redirectContext = React.useMemo(
-    () => ({
-      message2: `You are about to be redirected`,
-      message3: `to this image path`,
-      agreeTxt: 'rediret me',
-      fxntoCall: () => window.open(detailedFood?.img[detailedFood?.imgIndx]),
-      closeDialogue: closeOutlet,
-    }),
-    [detailedFood]
-  );
+  React.useEffect(() => {
+    if (detailedFood) generatecontextData(SESSIONSTORAGE.get('OUT_TYPE'));
+  }, [detailedFood]);
 
   return (
     <>
-      <Outlet
-        context={{ ...formContext, ...dialogueContext, ...redirectContext }}
-      />
+      <Outlet context={{ ...contextData }} />
 
       <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
         <section className="food_container">

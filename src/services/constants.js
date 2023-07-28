@@ -42,3 +42,11 @@ export const BUTTON_ICON_TYPE = {
   DELETE: 'DELETE',
   CREATE: 'CREATE',
 };
+
+export const MEDIA_LINKS = {
+  twitter: 'https://twitter.com/orashus',
+  github: 'https://github.com/RashJrEdmund',
+  facebook: 'https://www.facebook.com/Orashus',
+  hackerrank: 'https://www.hackerrank.com/orashusedmund?hr_r=1',
+  linkedin: 'https://www.linkedin.com/in/orashus-edmund-82a040212/',
+};

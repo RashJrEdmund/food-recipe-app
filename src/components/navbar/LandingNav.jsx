@@ -18,6 +18,7 @@ export default function LandingNav({ pathName, setPathName }) {
   const [openMenu, setOpenMenu] = React.useState(false);
 
   const navigate = useNavigate();
+  const navRef = React.useRef();
 
   const routeToPage = (route) => {
     navigate(route);
@@ -26,11 +27,34 @@ export default function LandingNav({ pathName, setPathName }) {
     setPathName(route.split('/').pop());
   };
 
+  React.useEffect(() => {
+    let YscrollHolder = 0;
+    const logOut = (message) => {
+      const { log, clear } = console;
+      clear();
+      log(message, { YscrollHolder }, navRef);
+    };
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY <= YscrollHolder && window.scrollY > 150) {
+        logOut('scrolling up');
+        navRef.current?.classList.add('active_navbar');
+      } else {
+        logOut('scrolling down');
+        navRef.current?.classList.remove('active_navbar');
+      }
+
+      YscrollHolder = window.scrollY;
+    });
+
+    return () => window.removeEventListener('scroll', null);
+  }, []);
+
   return (
     <>
       {openMenu && <Overlay action={() => setOpenMenu(false)} />}
 
-      <StyledLandingNav openMenu={openMenu}>
+      <StyledLandingNav ref={navRef} openMenu={openMenu}>
         <div className="nav_container">
           <Header2Atom
             text="Home"

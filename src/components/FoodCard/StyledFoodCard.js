@@ -12,6 +12,11 @@ const StyledFoodCard = styled.div`
   justify-content: center;
   margin: 0 auto 15px;
   border-radius: 10px 10px 15px 15px;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 10px #000;
+  }
 
   .food_image {
     background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
@@ -53,6 +58,9 @@ const StyledFoodCard = styled.div`
       text-overflow: ellipsis;
       overflow: hidden;
     }
+  }
+  @media only screen and (max-width: 768px) {
+    box-shadow: 0 0 10px #000;
   }
 
   @media only screen and (max-width: 400px) {

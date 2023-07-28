@@ -6,6 +6,18 @@ const StyledLandingNav = styled.nav`
   align-items: center;
   width: 100%;
   height: fit-content;
+  transition: position 0.3s;
+  transition: 0.4s transform;
+  z-index: 5;
+
+  &.active_navbar {
+    background-color: #111111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    transition: 0.4s transform;
+  }
 
   .nav_container {
     background-color: transparent;
@@ -49,7 +61,6 @@ const StyledLandingNav = styled.nav`
   }
 
   @media only screen and (max-width: 600px) {
-    background-color: var(--main-bg);
     background-color: #111111;
 
     .nav_container {

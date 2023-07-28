@@ -22,3 +22,8 @@ export class SESSIONSTORAGE {
 
   static clear = () => sessionStorage.clear();
 }
+
+export const saveToLocalStorage = (key, update) =>
+  localStorage.setItem(key, JSON.stringify(update));
+
+export const getFromLocalStorage = (key) => JSON.parse(localStorage.geti(key));
