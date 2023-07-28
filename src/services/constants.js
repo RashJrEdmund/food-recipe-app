@@ -43,6 +43,12 @@ export const BUTTON_ICON_TYPE = {
   CREATE: 'CREATE',
 };
 
+export const OUTLET_TYPE = {
+  FOOD_FORM: 'FOOD_FORM',
+  DIALOGUE: 'DIALOGUE',
+  REDIRECT: 'REDIRECT',
+};
+
 export const MEDIA_LINKS = {
   twitter: 'https://twitter.com/orashus',
   github: 'https://github.com/RashJrEdmund',
@@ -50,3 +56,5 @@ export const MEDIA_LINKS = {
   hackerrank: 'https://www.hackerrank.com/orashusedmund?hr_r=1',
   linkedin: 'https://www.linkedin.com/in/orashus-edmund-82a040212/',
 };
+
+export const MAX_SROLL_B4_NAV_BAR_FIXES = 300;

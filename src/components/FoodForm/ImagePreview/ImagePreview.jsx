@@ -66,7 +66,9 @@ export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
         ))}
 
         <div className="max_add_div">
-          <span className="max_count">max accepted {MAX_NUMBER_OF_IMAGES}</span>
+          <span className="max_count">
+            max accepted: {MAX_NUMBER_OF_IMAGES}
+          </span>
           <AddIcon
             color="steelblue"
             title={

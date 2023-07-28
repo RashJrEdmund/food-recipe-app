@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import StyledFooter from './StyledFooter';
 import {
@@ -14,14 +16,27 @@ export default function Footer() {
 
   return (
     <StyledFooter>
-      <span className="logo">Logo</span>
-
-      <ul>
-        <TwitterIcon onClick={() => openLink(MEDIA_LINKS.twitter)} />
-        <GitHubIcon onClick={() => openLink(MEDIA_LINKS.github)} />
-        <FacebookIcon onClick={() => openLink(MEDIA_LINKS.facebook)} />
-        <HackerankIcon onClick={() => openLink(MEDIA_LINKS.hackerrank)} />
-        <LinkedInIcon onClick={() => openLink(MEDIA_LINKS.linkedin)} />
+      <ul className="media_link">
+        <li onClick={() => openLink(MEDIA_LINKS.twitter)}>
+          Twitter
+          <TwitterIcon />
+        </li>
+        <li onClick={() => openLink(MEDIA_LINKS.github)}>
+          GitHub
+          <GitHubIcon />
+        </li>
+        <li onClick={() => openLink(MEDIA_LINKS.facebook)}>
+          Facebook
+          <FacebookIcon />
+        </li>
+        <li onClick={() => openLink(MEDIA_LINKS.hackerrank)}>
+          HackerRank
+          <HackerankIcon />
+        </li>
+        <li onClick={() => openLink(MEDIA_LINKS.linkedin)}>
+          LinkedIn
+          <LinkedInIcon />
+        </li>
       </ul>
     </StyledFooter>
   );

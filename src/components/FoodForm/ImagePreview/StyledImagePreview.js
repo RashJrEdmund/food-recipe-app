@@ -14,6 +14,10 @@ const StyledImagePreview = styled.div`
     align-items: flex-start;
     justify-self: flex-end;
     margin: 0 0 0 30px;
+
+    span {
+      white-space: nowrap;
+    }
   }
 
   .image_container {

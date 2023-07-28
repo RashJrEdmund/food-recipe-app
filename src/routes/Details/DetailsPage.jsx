@@ -3,23 +3,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
-import { Header2Atom } from '../../components/atoms/Atoms';
-import ButtonAtom from '../../components/atoms/Button';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import { useFoodContext } from '../../context/FoodContext';
-import ImageNavigators from '../../components/FoodCard/ImageNavigators/ImageNavigators';
-import {
-  BUTTON_ICON_TYPE,
-  NAVIGATOR_POSITION_FOR,
-} from '../../services/constants';
-import { LinkIcon } from '../../components/atoms/icons/navigation';
-
-const OUTLET_TYPE = {
-  FOOD_FORM: 'FOOD_FORM',
-  DIALOGUE: 'DIALOGUE',
-  REDIRECT: 'REDIRECT',
-};
+import { OUTLET_TYPE } from '../../services/constants';
+import { updateFavorite } from '../../services/foodScripts';
+import DetailsCTA from './details_component/detais_cta/DetailsCTA';
+import FoodContainer from './details_component/food_container/FoodContainer';
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -40,6 +30,15 @@ export default function DetailsPage() {
     displayAlert(`${detailedFood.name} deleted`);
 
     navigate('/foods');
+  };
+
+  const addNewFavorite = () => {
+    updateFavorite(detailedFood.id, setFoodData);
+    displayAlert(
+      `${detailedFood.name.split(/[^a-zA-Z]/).shift()} ${
+        detailedFood.fav ? 'removed from ' : 'added to '
+      } favorites`
+    );
   };
 
   const handleChangeDetailImg = (ind) => {
@@ -143,41 +142,13 @@ export default function DetailsPage() {
     <>
       <Outlet context={{ ...contextData }} />
 
-      <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
-        <section className="food_container">
-          <div className="food_image">
-            <ImageNavigators
-              img={detailedFood?.img}
-              imgIndx={detailedFood?.imgIndx}
-              handleChangeimg={handleChangeDetailImg}
-              positionFor={NAVIGATOR_POSITION_FOR.FOOD_DETAIL}
-            />
-
-            <span
-              className="external_link"
-              onClick={() => toggleOutlet(OUTLET_TYPE.REDIRECT)}
-            >
-              full image
-              <LinkIcon color="#fff" />
-            </span>
-          </div>
-
-          <div className="food_col_2">
-            <Header2Atom
-              text={`${detailedFood?.name || 'Food Name'}`}
-              size="1.4rem"
-              margin="3rem 10px 2rem"
-              color="#000"
-              weight="800"
-              width="100%"
-              align="left"
-            />
-
-            <p className="description">
-              {detailedFood?.description || 'food description'}
-            </p>
-          </div>
-        </section>
+      <StyledDetailsPage>
+        <FoodContainer
+          detailedFood={detailedFood}
+          toggleOutlet={toggleOutlet}
+          handleChangeDetailImg={handleChangeDetailImg}
+          addNewFavorite={addNewFavorite}
+        />
 
         <section className="section_2_recipe">
           <ul>
@@ -189,28 +160,7 @@ export default function DetailsPage() {
           </ul>
         </section>
 
-        {detailedFood && (
-          <div className="food_details_cta">
-            <ButtonAtom
-              text="Modify"
-              color="#ffc145"
-              bg="#111111"
-              iconType={BUTTON_ICON_TYPE.EDIT}
-              iconcolor="#ddd"
-              action={() => toggleOutlet(OUTLET_TYPE.FOOD_FORM)}
-            />
-
-            <ButtonAtom
-              text="Delete"
-              color="brown"
-              bg="transparent"
-              iconType={BUTTON_ICON_TYPE.DELETE}
-              iconcolor="#111111"
-              margin="0 0 0 3rem"
-              action={() => toggleOutlet(OUTLET_TYPE.DIALOGUE)}
-            />
-          </div>
-        )}
+        {detailedFood && <DetailsCTA toggleOutlet={toggleOutlet} />}
       </StyledDetailsPage>
     </>
   );

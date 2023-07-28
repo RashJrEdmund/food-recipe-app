@@ -7,6 +7,7 @@ import StyledLandingNav from './StyledLandingNav';
 import { Header2Atom, Overlay } from '../atoms/Atoms';
 import { OpenMenuIcon } from '../atoms/icons/navigation';
 import { MenuIcon } from '../atoms/icons/actions';
+import { MAX_SROLL_B4_NAV_BAR_FIXES } from '../../services/constants';
 
 const NAV_LIST = [
   { title: 'Food List', route: '/foods' },
@@ -29,18 +30,21 @@ export default function LandingNav({ pathName, setPathName }) {
 
   React.useEffect(() => {
     let YscrollHolder = 0;
-    const logOut = (message) => {
-      const { log, clear } = console;
-      clear();
-      log(message, { YscrollHolder }, navRef);
-    };
+    // const logOut = (message) => {
+    //   const { log, clear } = console;
+    //   clear();
+    //   log(message, { YscrollHolder }, navRef);
+    // };
 
     window.addEventListener('scroll', () => {
-      if (window.scrollY <= YscrollHolder && window.scrollY > 150) {
-        logOut('scrolling up');
+      if (
+        window.scrollY <= YscrollHolder &&
+        window.scrollY > MAX_SROLL_B4_NAV_BAR_FIXES
+      ) {
+        // logOut('scrolling up');
         navRef.current?.classList.add('active_navbar');
       } else {
-        logOut('scrolling down');
+        // logOut('scrolling down');
         navRef.current?.classList.remove('active_navbar');
       }
 
