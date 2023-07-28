@@ -18,6 +18,7 @@ import { LinkIcon } from '../../components/atoms/icons/navigation';
 const OUTLET_TYPE = {
   FOOD_FORM: 'FOOD_FORM',
   DIALOGUE: 'DIALOGUE',
+  REDIRECT: 'REDIRECT',
 };
 
 export default function DetailsPage() {
@@ -53,8 +54,8 @@ export default function DetailsPage() {
     navigate(`/foods/details/${detailedFood?.name}/edit`);
   };
 
-  const openDialogue = () => {
-    navigate(`/foods/details/${detailedFood?.name}/delete`);
+  const openDialogue = (path) => {
+    navigate(`/foods/details/${detailedFood?.name}/${path}`);
   };
 
   const closeOutlet = () => {
@@ -67,14 +68,15 @@ export default function DetailsPage() {
         openFoodForm();
         break;
       case OUTLET_TYPE.DIALOGUE:
-        openDialogue();
+        openDialogue('delete');
+        break;
+      case OUTLET_TYPE.REDIRECT:
+        openDialogue('redirect');
         break;
       default:
         break;
     }
   };
-
-  const openFullImage = (link) => window.open(link);
 
   React.useEffect(() => {
     const currentFood = LOCALSTORAGE.get('foodData').find(
@@ -108,9 +110,22 @@ export default function DetailsPage() {
     [detailedFood]
   );
 
+  const redirectContext = React.useMemo(
+    () => ({
+      message2: `You are about to be redirected`,
+      message3: `to this image path`,
+      agreeTxt: 'rediret me',
+      fxntoCall: () => window.open(detailedFood?.img[detailedFood?.imgIndx]),
+      closeDialogue: closeOutlet,
+    }),
+    [detailedFood]
+  );
+
   return (
     <>
-      <Outlet context={{ ...formContext, ...dialogueContext }} />
+      <Outlet
+        context={{ ...formContext, ...dialogueContext, ...redirectContext }}
+      />
 
       <StyledDetailsPage url={detailedFood?.img[detailedFood?.imgIndx]}>
         <section className="food_container">
@@ -124,9 +139,7 @@ export default function DetailsPage() {
 
             <span
               className="external_link"
-              onClick={() =>
-                openFullImage(detailedFood?.img[detailedFood?.imgIndx])
-              }
+              onClick={() => toggleOutlet(OUTLET_TYPE.REDIRECT)}
             >
               full image
               <LinkIcon color="#fff" />

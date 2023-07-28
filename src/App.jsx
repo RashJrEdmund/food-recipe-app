@@ -39,6 +39,7 @@ function App({ pathName, setPathName }) {
           <Route path="foods/details/:name" element={<DetailsPage />}>
             <Route path="edit" element={<FoodForm />} />
             <Route path="delete" element={<DialogueBox />} />
+            <Route path="redirect" element={<DialogueBox />} />
           </Route>
           <Route path="/favorites" element={<Favorites />} />
 

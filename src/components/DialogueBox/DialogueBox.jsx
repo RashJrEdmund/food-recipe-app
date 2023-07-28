@@ -57,6 +57,12 @@ function DialogueBox() {
     }
    */
 
+  React.useEffect(() => {
+    document.body.classList.add('body-overflow');
+
+    return () => document.body.classList.remove('body-overflow');
+  }, []);
+
   return (
     <>
       <Overlay action={dialogueDetails?.closeDialogue} />

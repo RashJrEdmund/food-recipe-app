@@ -28,6 +28,7 @@ export const DEFINED_ROUTES = [
   'reset',
   'edit',
   'delete',
+  'redirect',
 ];
 
 export const NAVIGATOR_POSITION_FOR = {

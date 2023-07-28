@@ -37,7 +37,7 @@ const StyledDetailsPage = styled.main`
         position: absolute;
         bottom: 0;
         right: 0;
-        margin: 0 10px 10px;
+        margin: 10px;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
@@ -126,6 +126,10 @@ const StyledDetailsPage = styled.main`
 
       .food_image {
         min-height: 350px;
+
+        .external_link {
+          margin: 5px;
+        }
       }
 
       .food_col_2 {

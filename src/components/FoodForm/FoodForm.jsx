@@ -88,6 +88,10 @@ export default function FoodForm() {
         id: uuid4(),
       });
     }
+
+    document.body.classList.add('body-overflow');
+
+    return () => document.body.classList.remove('body-overflow');
   }, []);
 
   return (
