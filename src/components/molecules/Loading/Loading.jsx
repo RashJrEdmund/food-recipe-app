@@ -1,12 +1,17 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import { BANNER_IMAGE } from '../../../services/constants';
 
 const StyledLoading = styled.main`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #000000cf;
+  background: linear-gradient(to bottom, #11111196, #11111196, #11111196),
+    url(${BANNER_IMAGE.loading});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;

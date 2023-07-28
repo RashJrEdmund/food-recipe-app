@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
@@ -11,6 +13,7 @@ import {
   BUTTON_ICON_TYPE,
   NAVIGATOR_POSITION_FOR,
 } from '../../services/constants';
+import { LinkIcon } from '../../components/atoms/icons/navigation';
 
 const OUTLET_TYPE = {
   FOOD_FORM: 'FOOD_FORM',
@@ -71,6 +74,8 @@ export default function DetailsPage() {
     }
   };
 
+  const openFullImage = (link) => window.open(link);
+
   React.useEffect(() => {
     const currentFood = LOCALSTORAGE.get('foodData').find(
       (meal) => meal.name === params.name
@@ -116,6 +121,16 @@ export default function DetailsPage() {
               handleChangeimg={handleChangeDetailImg}
               positionFor={NAVIGATOR_POSITION_FOR.FOOD_DETAIL}
             />
+
+            <span
+              className="external_link"
+              onClick={() =>
+                openFullImage(detailedFood?.img[detailedFood?.imgIndx])
+              }
+            >
+              full image
+              <LinkIcon color="#fff" />
+            </span>
           </div>
 
           <div className="food_col_2">
@@ -123,6 +138,7 @@ export default function DetailsPage() {
               text={`${detailedFood?.name || 'Food Name'}`}
               size="1.4rem"
               margin="3rem 10px 2rem"
+              color="#000"
               weight="800"
               width="100%"
               align="left"

@@ -12,7 +12,7 @@ export function Header2Atom({
   action,
 }) {
   const StyledHeaderAtom = styled.h2`
-    color: ${color || '#111111'};
+    color: ${color || '#ddd'};
     width: ${width || 'fit-content'};
     font-size: ${size || 'unset'};
     font-weight: ${weight || 'unset'};

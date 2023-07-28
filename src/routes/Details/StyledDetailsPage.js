@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const StyledDetailsPage = styled.main`
-  background-color: #d7d7d7;
+  background-color: #d7d7d7d7;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -32,6 +32,18 @@ const StyledDetailsPage = styled.main`
       background-repeat: no-repeat;
       width: 100%;
       min-height: 600px;
+
+      .external_link {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 0 10px 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        cursor: pointer;
+        color: #fff;
+      }
     }
 
     .food_col_2 {
@@ -40,6 +52,7 @@ const StyledDetailsPage = styled.main`
 
       .description {
         word-wrap: break-word;
+        color: var(--dark-bg);
         padding: 10px;
         font-weight: 500;
         font-size: 20px;
@@ -63,7 +76,7 @@ const StyledDetailsPage = styled.main`
 
       .food_step {
         background-color: transparent;
-        box-shadow: 0 0 10px #111111;
+        box-shadow: 0 0 5px #111111;
         margin: 5px 0 10px;
         padding: 1rem 10px;
         cursor: unset;

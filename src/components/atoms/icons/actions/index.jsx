@@ -12,7 +12,7 @@ import {
 
 export const MenuIcon = styled(GiHamburgerMenu)`
   font-size: 50px;
-  color: #111111;
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
   display: none;
 
   @media only screen and (max-width: 600px) {
@@ -21,7 +21,7 @@ export const MenuIcon = styled(GiHamburgerMenu)`
 `;
 
 export const DeleteIcon = styled(MdDelete)`
-  color: ${({ iconcolor }) => iconcolor || '#111111'};
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
   font-size: 30px;
 `;
 
@@ -36,28 +36,28 @@ export const RemoveIcon = styled(MdOutlineCancel)`
 `;
 
 export const ThemeIcon = styled(VscColorMode)`
-  color: ${({ iconcolor }) => iconcolor || '#111111'};
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
   font-size: ${({ size = '24px' }) => size};
   margin: ${({ margin = '0 5px 0 0' }) => margin};
   cursor: pointer;
 `;
 
 export const ResetFoodIcon = styled(RxReset)`
-  color: ${({ iconcolor }) => iconcolor || '#111111'};
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
   font-size: ${({ size = '24px' }) => size};
   margin: ${({ margin = '0 5px 0 0' }) => margin};
   cursor: pointer;
 `;
 
 export const ResetAllIcon = styled(MdLockReset)`
-  color: ${({ iconcolor }) => iconcolor || '#111111'};
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
   font-size: ${({ size = '24px' }) => size};
   margin: ${({ margin = '0 5px 0 0' }) => margin};
   cursor: pointer;
 `;
 
 export const EditIcon = styled(FiEdit)`
-  color: ${({ iconcolor }) => iconcolor || '#111111'};
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
 `;
 
 export const AddIcon = styled(MdAddBox)`

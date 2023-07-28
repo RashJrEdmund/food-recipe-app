@@ -11,7 +11,8 @@ const StyledSearchForm = styled.section`
     background-color: transparent;
     width: min(97vw, 300px);
     height: 50px;
-    border: 1px solid #808080;
+    border: 1px solid var(--secondary-bg);
+    color: var(--text-color);
     border-radius: 10px;
     padding: 10px;
   }

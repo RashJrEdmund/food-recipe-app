@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const StyledLandingNav = styled.nav`
-  background-color: var(--main-bg);
+  background: transparent;
   display: flex;
   align-items: center;
   width: 100%;
@@ -14,7 +14,7 @@ const StyledLandingNav = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 0.6rem 0;
 
     ul {
       display: flex;
@@ -25,11 +25,11 @@ const StyledLandingNav = styled.nav`
 
       li {
         font-size: 1.3rem;
-        color: #111111;
+        color: var(--text-color);
         white-space: nowrap;
 
         &.current_route {
-          color: orangered;
+          color: var(--secondary-bg);
           position: relative;
 
           &::before {
@@ -37,7 +37,7 @@ const StyledLandingNav = styled.nav`
             position: absolute;
             width: 100%;
             height: 2px;
-            background-color: orangered;
+            background-color: var(--secondary-bg);
             left: 50%;
             transform: translateX(-50%);
             bottom: -5px;
@@ -49,6 +49,9 @@ const StyledLandingNav = styled.nav`
   }
 
   @media only screen and (max-width: 600px) {
+    background-color: var(--main-bg);
+    background-color: #111111;
+
     .nav_container {
       ul {
         position: fixed;
@@ -68,16 +71,12 @@ const StyledLandingNav = styled.nav`
           width: 100%;
           text-align: left;
           font-size: 1.3rem;
-          color: #fff;
           font-weight: 600;
           padding: 20px 10px;
 
           &.current_route {
-            color: orange;
-
             &::before {
               width: calc(100% - 20px);
-              background-color: orange;
               bottom: 0;
             }
           }

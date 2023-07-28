@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const StyledFooter = styled.footer`
   border-top: 1px solid #808080;
   background-color: transparent;
-  color: #111111;
+  color: var(--text-color);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

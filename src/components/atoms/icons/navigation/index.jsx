@@ -3,6 +3,7 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import { AiFillHeart } from 'react-icons/ai';
 import { TbListDetails } from 'react-icons/tb';
 import { RxDotFilled } from 'react-icons/rx';
+import { RiExternalLinkLine } from 'react-icons/ri';
 import {
   IoCaretForwardOutline,
   IoCaretBackOutline,
@@ -59,5 +60,11 @@ export const SwipeRightIcon = styled(IoCaretForwardOutline)`
   transform: translateY(-50%);
   color: ${({ iconcolor }) => iconcolor || '#111111'};
   font-size: ${({ size = '4rem' }) => size};
+  cursor: pointer;
+`;
+
+export const LinkIcon = styled(RiExternalLinkLine)`
+  color: ${({ iconcolor }) => iconcolor || '#111111'};
+  font-size: ${({ size = '1.5rem' }) => size};
   cursor: pointer;
 `;
