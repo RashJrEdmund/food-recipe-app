@@ -12,7 +12,7 @@ const StyledFoodForm = styled.div`
   align-items: flex-start;
   width: min(97vw, 700px);
   height: fit-content;
-  max-height: 96vh;
+  /* max-height: 96vh; */
   overflow: auto;
   border-radius: 10px;
 
@@ -83,9 +83,12 @@ const StyledFoodForm = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    width: 100vw;
-    height: 100vh;
-    max-height: unset;
+    top: 0;
+    left: 0;
+    transform: unset;
+    width: 100%;
+    height: 100%;
+    max-height: none;
     border-radius: 0;
   }
 `;

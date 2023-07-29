@@ -56,6 +56,7 @@ export default function FoodForm() {
       LOCALSTORAGE.save('foodData', [...prev, food]);
 
       setFoodData([...prev, food]);
+      displayAlert('new food created');
       toggleShowForm();
     } else {
       const foodToEdit = SESSIONSTORAGE.get('foodToEdit');
@@ -77,6 +78,7 @@ export default function FoodForm() {
     const sesSfood = SESSIONSTORAGE.get('foodToEdit');
 
     if (sesSfood) setFood(sesSfood);
+    // setFood({ ...sesSfood });
     if (creatingNew) {
       setFood({
         name: '',

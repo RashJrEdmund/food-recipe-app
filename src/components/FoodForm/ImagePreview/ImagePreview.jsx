@@ -44,9 +44,8 @@ export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
     <StyledImagePreview>
       <div className="image_container">
         {imgArr?.map((img, indx) => (
-          <div className="img_holder_div">
+          <div className="img_holder_div" key={img}>
             <span
-              key={img}
               className="image_preview_span"
               title="select this img"
               style={{
