@@ -46,6 +46,7 @@ function App() {
             <Route path="delete" element={<DialogueBox />} />
             <Route path="redirect" element={<DialogueBox />} />
           </Route>
+
           <Route path="/favorites" element={<Favorites />} />
 
           <Route path="/settings" element={<Settings />}>

@@ -23,14 +23,16 @@ export default function FoodContainer({
   return (
     <StyledDetailsFoodContainer url={detailedFood?.img[detailedFood?.imgIndx]}>
       <div className="food_image">
-        <span className="food_detail_heart" onClick={addNewFavorite}>
-          <FavortieIcon
-            color={detailedFood?.fav ? '#f00' : '#111111'}
-            title={`${
-              detailedFood?.fav ? 'remove from ' : 'add to '
-            } favorites`}
-          />
-        </span>
+        {detailedFood && (
+          <span className="food_detail_heart" onClick={addNewFavorite}>
+            <FavortieIcon
+              color={detailedFood?.fav ? '#f00' : '#111111'}
+              title={`${
+                detailedFood?.fav ? 'remove from ' : 'add to '
+              } favorites`}
+            />
+          </span>
+        )}
 
         <ImageNavigators
           img={detailedFood?.img}
@@ -39,18 +41,20 @@ export default function FoodContainer({
           positionFor={NAVIGATOR_POSITION_FOR.FOOD_DETAIL}
         />
 
-        <span
-          className="external_link"
-          onClick={() => toggleOutlet(OUTLET_TYPE.REDIRECT)}
-        >
-          full image
-          <LinkIcon color="#fff" />
-        </span>
+        {detailedFood && (
+          <span
+            className="external_link"
+            onClick={() => toggleOutlet(OUTLET_TYPE.REDIRECT)}
+          >
+            full image
+            <LinkIcon color="#fff" />
+          </span>
+        )}
       </div>
 
       <div className="food_col_2">
         <Header2Atom
-          text={`${detailedFood?.name || 'Food Name'}`}
+          text={`${detailedFood?.name || 'no Food name'}`}
           size="1.4rem"
           margin="3rem 10px 2rem"
           color="#000"
@@ -60,7 +64,7 @@ export default function FoodContainer({
         />
 
         <p className="description">
-          {detailedFood?.description || 'food description'}
+          {detailedFood?.description || 'no food description found'}
         </p>
       </div>
     </StyledDetailsFoodContainer>
