@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { BANNER_IMAGE } from '../../services/constants';
 
-const StyledLandingHero = styled.section`
+const StyledLanding = styled.main`
   background: linear-gradient(to bottom, #11111196, #11111196, #11111196),
     url(${BANNER_IMAGE.landing});
   background-position: center;
@@ -137,4 +137,4 @@ const StyledLandingHero = styled.section`
   }
 `;
 
-export default StyledLandingHero;
+export default StyledLanding;

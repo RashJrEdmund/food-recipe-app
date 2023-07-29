@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StyledSearchForm from './StyledSearchForm';
-import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
-import { createSearchIdList } from '../../services/utils';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../../../services/storage';
+import { createSearchIdList } from '../../../services/utils';
 
 export default function SearchForm({
   setSearchItems,

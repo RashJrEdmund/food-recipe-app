@@ -10,7 +10,7 @@ import {
   NAVIGATOR_POSITION_FOR,
   OUTLET_TYPE,
 } from '../../../../services/constants';
-import ImageNavigators from '../../../../components/FoodCard/ImageNavigators/ImageNavigators';
+import ImageNavigators from '../../../../components/organisms/FoodCard/ImageNavigators/ImageNavigators';
 import { Header2Atom } from '../../../../components/atoms/Atoms';
 import StyledDetailsFoodContainer from './index.style';
 
@@ -54,7 +54,7 @@ export default function FoodContainer({
 
       <div className="food_col_2">
         <Header2Atom
-          text={`${detailedFood?.name || 'no Food name'}`}
+          text={`${detailedFood?.name || '404: no food name'}`}
           size="1.4rem"
           margin="3rem 10px 2rem"
           color="#000"
@@ -64,7 +64,7 @@ export default function FoodContainer({
         />
 
         <p className="description">
-          {detailedFood?.description || 'no food description found'}
+          {detailedFood?.description || '404: no food description found'}
         </p>
       </div>
     </StyledDetailsFoodContainer>

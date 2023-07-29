@@ -6,7 +6,7 @@ import { useFoodContext } from '../../context/FoodContext';
 import ButtonAtom from '../../components/atoms/Button';
 import useAlert from '../../hooks/UseAlert';
 import StyledBtnHolder from '../../common/styledBtnHolder';
-import SearchForm from '../../components/SearchForm/SearchForm';
+import SearchForm from '../../components/organisms/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
 

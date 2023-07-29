@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StyledSampleFoods from './StyledSampleFood';
-import FoodCard from '../FoodCard/FoodCard';
+import FoodCard from '../organisms/FoodCard/FoodCard';
 import useAlert from '../../hooks/UseAlert';
 import { useFoodContext } from '../../context/FoodContext';
 
