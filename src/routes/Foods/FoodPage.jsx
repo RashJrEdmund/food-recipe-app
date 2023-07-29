@@ -53,7 +53,7 @@ export default function FoodPage() {
         <Header2Atom
           text="Food List"
           size="1.5rem"
-          margin="3rem auto 2rem"
+          margin="2rem auto"
           weight="700"
         />
 

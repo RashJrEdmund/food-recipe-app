@@ -30,21 +30,21 @@ export default function LandingNav({ pathName, setPathName }) {
 
   React.useEffect(() => {
     let YscrollHolder = 0;
-    // const logOut = (message) => {
-    //   const { log, clear } = console;
-    //   clear();
-    //   log(message, { YscrollHolder }, navRef);
-    // };
+    const logOut = (message) => {
+      const { log, clear } = console;
+      clear();
+      log(message, { YscrollHolder }, navRef);
+    };
 
     window.addEventListener('scroll', () => {
       if (
-        window.scrollY <= YscrollHolder &&
-        window.scrollY > MAX_SROLL_B4_NAV_BAR_FIXES
+        window.scrollY >= YscrollHolder &&
+        window.scrollY >= MAX_SROLL_B4_NAV_BAR_FIXES
       ) {
-        // logOut('scrolling up');
+        logOut('going down');
         navRef.current?.classList.add('active_navbar');
       } else {
-        // logOut('scrolling down');
+        logOut('going up');
         navRef.current?.classList.remove('active_navbar');
       }
 
@@ -58,12 +58,13 @@ export default function LandingNav({ pathName, setPathName }) {
     <>
       {openMenu && <Overlay action={() => setOpenMenu(false)} />}
 
+      <div className="margin_compliment_div" style={{ margin: '0 0 55px' }} />
+
       <StyledLandingNav ref={navRef} openMenu={openMenu}>
         <div className="nav_container">
           <Header2Atom
             text="Food App"
             size="2rem"
-            weight="900"
             action={() => {
               navigate('/');
               setPathName('');

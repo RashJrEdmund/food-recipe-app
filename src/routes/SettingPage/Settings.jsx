@@ -60,7 +60,7 @@ export default function User() {
         <Header2Atom
           text="Settings"
           size="1.4rem"
-          margin="3rem auto 2rem"
+          margin="5rem auto 2rem"
           weight="800"
         />
 

@@ -58,12 +58,8 @@ export default function Footer() {
           </>
         ) : (
           <div className="author_holder">
-            <Header2Atom
-              text="Food App"
-              size="2rem"
-              weight="900"
-              color="var(--text-color)"
-            />
+            <Header2Atom text="Food App" size="2rem" />
+
             <Author text="Rash" setShowLinks={setShowLinks} />
           </div>
         )}

@@ -1,22 +1,20 @@
 import styled from '@emotion/styled';
 
 const StyledLandingNav = styled.nav`
-  background: transparent;
+  background-color: #111111;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: fit-content;
+  /* min-height: 80px; */
   display: flex;
   align-items: center;
   width: 100%;
-  height: fit-content;
-  transition: position 0.3s;
-  transition: 0.4s transform;
+  transition: transform 300ms;
   z-index: 5;
 
   &.active_navbar {
-    background-color: #111111;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 4;
-    transition: 0.4s transform;
+    transform: translateY(-100%);
   }
 
   .nav_container {
@@ -61,8 +59,6 @@ const StyledLandingNav = styled.nav`
   }
 
   @media only screen and (max-width: 600px) {
-    background-color: #111111;
-
     .nav_container {
       ul {
         position: fixed;
@@ -75,7 +71,7 @@ const StyledLandingNav = styled.nav`
         flex-direction: column;
         background-color: #111111;
         gap: 0;
-        transition: 0.3s;
+        transition: 300ms;
         transform: translateY(${({ openMenu }) => (openMenu ? 0 : '-120%')});
 
         li {

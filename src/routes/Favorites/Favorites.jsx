@@ -51,7 +51,7 @@ export default function Favorites() {
         <Header2Atom
           text="Favorite List"
           size="1.5rem"
-          margin="3rem auto 2rem"
+          margin="2rem auto"
           weight="700"
         />
 

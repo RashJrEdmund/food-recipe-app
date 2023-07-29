@@ -5,7 +5,7 @@ const StyledSearchForm = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto;
+  margin: 5rem auto 2rem;
 
   input {
     background-color: transparent;
