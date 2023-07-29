@@ -23,7 +23,7 @@ export default function FoodContainer({
   return (
     <StyledDetailsFoodContainer url={detailedFood?.img[detailedFood?.imgIndx]}>
       <div className="food_image">
-        <span className="heart" onClick={addNewFavorite}>
+        <span className="food_detail_heart" onClick={addNewFavorite}>
           <FavortieIcon
             color={detailedFood?.fav ? '#f00' : '#111111'}
             title={`${

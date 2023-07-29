@@ -13,10 +13,10 @@ import FoodContainer from './details_component/food_container/FoodContainer';
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
-  const [contextData, setContextData] = React.useState({});
+  const [contextData, setContextData] = React.useState({}); // since spreading is overriding and conflicting, how about a state for context option
   const navigate = useNavigate();
 
-  const { displayAlert, setFoodData } = useFoodContext();
+  const { displayAlert, foodData, setFoodData } = useFoodContext();
 
   const params = useParams();
 
@@ -132,7 +132,7 @@ export default function DetailsPage() {
     if (currentFood) setDetailedFood({ ...currentFood });
 
     return () => SESSIONSTORAGE.remove('foodToEdit');
-  }, [params]);
+  }, [params, foodData]); // adding foodData to cause a re-render whe food is liked
 
   React.useEffect(() => {
     if (detailedFood) generatecontextData(SESSIONSTORAGE.get('OUT_TYPE'));

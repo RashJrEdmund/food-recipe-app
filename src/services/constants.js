@@ -4,7 +4,8 @@ export const DEFAULT_FOOD_BG =
 export const BANNER_IMAGE = {
   landing:
     'https://us.123rf.com/450wm/andreyeremenko/andreyeremenko2304/andreyeremenko230402283/203339677-food-frame-ingredients-for-cooking-food-cooking-background-on-black-stone-table-fresh-vegetables.jpg?ver=6',
-  404: 'https://images.unsplash.com/photo-1532980400857-e8d9d275d858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+  '404-page':
+    'https://images.unsplash.com/photo-1532980400857-e8d9d275d858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
   loading:
     'https://img.freepik.com/premium-photo/sizzling-food-photography-that-leaves-you-craving-more_853677-21157.jpg',
   landingSlides: [
@@ -17,19 +18,6 @@ export const BANNER_IMAGE = {
 export const MAX_FOOD_PER_PAGINATION = 12;
 
 export const MAX_NUMBER_OF_IMAGES = 4; // the max number of images one food can have. used it in the foodform
-
-export const DEFINED_ROUTES = [
-  '',
-  'foods',
-  'details',
-  'favorites',
-  'settings',
-  'createnew',
-  'reset',
-  'edit',
-  'delete',
-  'redirect',
-];
 
 export const NAVIGATOR_POSITION_FOR = {
   FOOD_DETAIL: 'FOOD_DETAIL',

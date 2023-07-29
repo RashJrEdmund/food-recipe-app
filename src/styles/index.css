@@ -30,6 +30,7 @@ body.body-overflow {
 
 button {
   border: none;
+  background-color: unset;
   height: fit-content;
   width: fit-content;
   cursor: pointer;

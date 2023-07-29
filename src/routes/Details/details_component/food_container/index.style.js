@@ -22,6 +22,14 @@ const StyledDetailsFoodContainer = styled.section`
     width: 100%;
     min-height: 600px;
 
+    .food_detail_heart {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      margin: 10px;
+      cursor: pointer;
+    }
+
     .external_link {
       position: absolute;
       bottom: 0;
@@ -69,6 +77,7 @@ const StyledDetailsFoodContainer = styled.section`
     .food_image {
       min-height: 350px;
 
+      .food_detail_heart,
       .external_link {
         margin: 5px;
       }
