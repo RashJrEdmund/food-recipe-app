@@ -52,7 +52,10 @@ export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
               style={{
                 backgroundImage: `url(${img})`,
                 height: '100px',
-                border: imgIndx === indx ? '2px solid gold' : '2px solid #000',
+                border:
+                  imgIndx === indx
+                    ? '2px solid var(--secondary-bg)'
+                    : '2px solid #000',
               }}
               onClick={() => handleChangeImg(indx)}
             />

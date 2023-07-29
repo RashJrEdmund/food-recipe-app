@@ -46,7 +46,7 @@ export default function ImageNavigators({
 
     switch (positionFor) {
       case NAVIGATOR_POSITION_FOR.FOOD_DETAIL: {
-        return 'gold';
+        return 'var(--secondary-bg)';
       }
       case NAVIGATOR_POSITION_FOR.FOOD_CARD: {
         return '#111111';

@@ -3,7 +3,7 @@ import { BANNER_IMAGE } from '../../services/constants';
 
 const Styled404Page = styled.main`
   background-color: transparent;
-  min-height: 70vh;
+  min-height: 75vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@ const Styled404Page = styled.main`
         }
 
         &:hover {
-          border-bottom: 2px solid gold;
+          border-bottom: 2px solid var(--secondary-bg);
         }
       }
     }

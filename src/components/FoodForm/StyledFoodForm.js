@@ -73,7 +73,7 @@ const StyledFoodForm = styled.div`
     }
 
     .submit_btn {
-      background-color: steelblue;
+      background-color: var(--secondary-bg);
       width: 100%;
       height: 45px;
       font-weight: 600;
