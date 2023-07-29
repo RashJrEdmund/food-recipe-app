@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { BANNER_IMAGE } from '../../services/constants';
 
 const StyledFooter = styled.footer`
   border-top: 1px solid #808080;
@@ -27,6 +28,13 @@ const StyledFooter = styled.footer`
       font-weight: 600;
       margin: 0 0 1.3rem;
     }
+
+    .author_holder {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   @media only screen and (min-height: 768px) {
@@ -46,7 +54,7 @@ const StyledFooter = styled.footer`
           position: absolute;
           width: 50%;
           height: 3px;
-          background-color: gold;
+          background-color: var(--secondary-bg);
           opacity: 0;
           transition: opacity 300ms;
         }
@@ -77,6 +85,28 @@ const StyledFooter = styled.footer`
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 10px;
     }
+  }
+`;
+
+export const StyledAuthor = styled.div`
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  width: fit-content;
+  font-weight: 600;
+  cursor: pointer;
+
+  .author_img {
+    background-color: grey;
+    background-image: url(${BANNER_IMAGE.authorimage});
+    background-size: cover;
+    background-position: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+    margin: 0 0 0 10px;
   }
 `;
 

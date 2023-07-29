@@ -61,8 +61,8 @@ export default function LandingNav({ pathName, setPathName }) {
       <StyledLandingNav ref={navRef} openMenu={openMenu}>
         <div className="nav_container">
           <Header2Atom
-            text="Home"
-            size="1.5rem"
+            text="Food App"
+            size="2rem"
             weight="900"
             action={() => {
               navigate('/');

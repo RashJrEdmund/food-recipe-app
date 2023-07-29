@@ -2,6 +2,7 @@ export const DEFAULT_FOOD_BG =
   'https://previews.123rf.com/images/mkistryn/mkistryn1210/mkistryn121000031/16060044-text-food-written-on-white-background,-letters-made-of-part-of-vegetables.jpg';
 
 export const BANNER_IMAGE = {
+  authorimage: 'https://avatars.githubusercontent.com/u/116172031?v=4',
   landing:
     'https://us.123rf.com/450wm/andreyeremenko/andreyeremenko2304/andreyeremenko230402283/203339677-food-frame-ingredients-for-cooking-food-cooking-background-on-black-stone-table-fresh-vegetables.jpg?ver=6',
   '404-page':

@@ -18,6 +18,7 @@ export function Header2Atom({
     font-weight: ${weight || 'unset'};
     text-align: ${align || 'unset'};
     margin: ${margin || 'unset'};
+    font-family: 'Caveat';
     cursor: ${() => (action ? 'pointer' : 'default')};
   `;
 

@@ -42,7 +42,9 @@ const StyledLanding = styled.main`
         min-height: 70vh;
 
         h1 {
-          font-size: 3rem;
+          font-size: 4rem;
+          font-family: 'Caveat';
+          color: #ffc145;
         }
       }
 
