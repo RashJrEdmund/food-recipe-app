@@ -78,7 +78,7 @@ export default function FoodForm() {
     const sesSfood = SESSIONSTORAGE.get('foodToEdit');
 
     if (sesSfood) setFood(sesSfood);
-    // setFood({ ...sesSfood });
+
     if (creatingNew) {
       setFood({
         name: '',
