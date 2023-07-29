@@ -64,9 +64,7 @@ export default function DetailsPage() {
     navigate(`/foods/details/${detailedFood?.name}/${path}`);
   };
 
-  const closeOutlet = () => {
-    navigate(`/foods/details/${detailedFood?.name}`, { replace: true });
-  };
+  const closeOutlet = () => navigate(-1, { replace: true });
 
   // SETTING OUTLET PARAMETERS
 

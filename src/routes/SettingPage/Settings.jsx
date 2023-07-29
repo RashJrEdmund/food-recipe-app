@@ -18,7 +18,9 @@ export default function User() {
 
   const navigate = useNavigate();
 
-  const closeDialogue = () => navigate('/settings', { replace: true });
+  const closeDialogue = () => navigate(-1, { replace: true });
+
+  // navigate(-1) is equivalent to hitting the back button
 
   const resetFood = () => {
     ['foodData'].forEach((key) => LOCALSTORAGE.remove(key));

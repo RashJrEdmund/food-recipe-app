@@ -30,21 +30,14 @@ export default function LandingNav({ pathName, setPathName }) {
 
   React.useEffect(() => {
     let YscrollHolder = 0;
-    const logOut = (message) => {
-      const { log, clear } = console;
-      clear();
-      log(message, { YscrollHolder }, navRef);
-    };
 
     window.addEventListener('scroll', () => {
       if (
         window.scrollY >= YscrollHolder &&
         window.scrollY >= MAX_SROLL_B4_NAV_BAR_FIXES
       ) {
-        logOut('going down');
         navRef.current?.classList.add('active_navbar');
       } else {
-        logOut('going up');
         navRef.current?.classList.remove('active_navbar');
       }
 
