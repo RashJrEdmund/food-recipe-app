@@ -4,15 +4,18 @@ import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
 import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
-import SearchForm from '../../components/SearchForm/SearchForm';
+import SearchForm from '../../components/organisms/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
+import { useFoodContext } from '../../context/FoodContext';
 
-export default function Favorites({ setPathName }) {
+export default function Favorites() {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
   const [searchFallBack, setSearchFallBack] = React.useState([]);
 
   const { AlertComponent, displayAlert, alertMsg } = useAlert();
+  const { foodData } = useFoodContext();
+
   React.useEffect(() => {
     const data = LOCALSTORAGE.get('foodData') || [];
     const favs = data.filter((food) => food.fav === true);
@@ -23,9 +26,7 @@ export default function Favorites({ setPathName }) {
       SESSIONSTORAGE.remove('searchIdList'); // clearing the search id array that is created when a search is made
       SESSIONSTORAGE.remove('searchValue'); // clearing the search value from storage
     };
-  }, []);
-
-  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
+  }, [foodData]);
 
   return (
     <>
@@ -50,7 +51,7 @@ export default function Favorites({ setPathName }) {
         <Header2Atom
           text="Favorite List"
           size="1.5rem"
-          margin="3rem auto 2rem"
+          margin="2rem auto"
           weight="700"
         />
 

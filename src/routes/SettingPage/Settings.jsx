@@ -1,23 +1,26 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import StyledSettings from './StyledSettings';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import FoodData from '../../data/Data.json';
-import useDialogue from '../../hooks/useDialogue';
 import { LOCALSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
 import {
   ResetAllIcon,
   ResetFoodIcon,
   ThemeIcon,
-} from '../../components/atoms/Icons';
+} from '../../components/atoms/icons/actions';
 
-export default function User({ setPathName }) {
-  const { DialogueComponent, dialogueDetails, displayDialogue } = useDialogue();
-
+export default function User() {
   const { displayAlert, setFoodData } = useFoodContext();
+
+  const navigate = useNavigate();
+
+  const closeDialogue = () => navigate(-1, { replace: true });
+
+  // navigate(-1) is equivalent to hitting the back button
 
   const resetFood = () => {
     ['foodData'].forEach((key) => LOCALSTORAGE.remove(key));
@@ -25,18 +28,11 @@ export default function User({ setPathName }) {
     setFoodData([...FoodData]);
 
     displayAlert('reset completed');
+    closeDialogue();
   };
 
-  const handleResetFood = () => {
-    const options = {
-      message2: 'you are about to reset all food data',
-      message3: 'this action cannot be undone',
-      agreeTxt: 'Reset All',
-      fxntoCall: resetFood,
-      show: false,
-    };
-
-    displayDialogue(options);
+  const openDialogue = () => {
+    navigate('/settings/reset');
   };
 
   const handleChangeTheme = () => {
@@ -47,17 +43,26 @@ export default function User({ setPathName }) {
     displayAlert('this feature is not yet available');
   };
 
-  React.useEffect(() => setPathName(window.location.pathname), []); // helps for my 404 page
+  const dialogueContext = React.useMemo(
+    () => ({
+      message2: 'you are about to reset all food data',
+      message3: 'this action cannot be undone',
+      agreeTxt: 'Reset All',
+      fxntoCall: resetFood,
+      closeDialogue,
+    }),
+    []
+  );
 
   return (
     <>
-      {dialogueDetails.show && <DialogueComponent />}
+      <Outlet context={dialogueContext} />
 
       <StyledSettings>
         <Header2Atom
           text="Settings"
           size="1.4rem"
-          margin="3rem auto 2rem"
+          margin="5rem auto 2rem"
           weight="800"
         />
 
@@ -66,7 +71,7 @@ export default function User({ setPathName }) {
             <ThemeIcon /> change theme
           </li>
 
-          <li title="restore all default food" onClick={handleResetFood}>
+          <li title="restore all default food" onClick={openDialogue}>
             <ResetFoodIcon /> reset food data
           </li>
 

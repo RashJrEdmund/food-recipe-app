@@ -31,6 +31,10 @@ const StyledAlertMessage = styled.div`
   align-items: flex-start;
   justify-content: center;
   border-radius: 10px;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
 
   p {
     color: #fff;

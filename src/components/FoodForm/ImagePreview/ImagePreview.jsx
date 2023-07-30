@@ -2,12 +2,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { AddIcon, RemoveIcon } from '../../atoms/Icons';
 import StyledImagePreview from './StyledImagePreview';
 import {
   DEFAULT_FOOD_BG,
   MAX_NUMBER_OF_IMAGES,
 } from '../../../services/constants';
+import { AddIcon, RemoveIcon } from '../../atoms/icons/actions';
 
 export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
   const handleChangeImg = (indx) => {
@@ -44,15 +44,17 @@ export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
     <StyledImagePreview>
       <div className="image_container">
         {imgArr?.map((img, indx) => (
-          <div className="img_holder_div">
+          <div className="img_holder_div" key={img}>
             <span
-              key={img}
               className="image_preview_span"
               title="select this img"
               style={{
                 backgroundImage: `url(${img})`,
                 height: '100px',
-                border: imgIndx === indx ? '2px solid gold' : '2px solid #000',
+                border:
+                  imgIndx === indx
+                    ? '2px solid var(--secondary-bg)'
+                    : '2px solid #000',
               }}
               onClick={() => handleChangeImg(indx)}
             />
@@ -66,7 +68,9 @@ export default function ImagePreview({ imgArr = [], imgIndx = 0, setFood }) {
         ))}
 
         <div className="max_add_div">
-          <span className="max_count">max accepted {MAX_NUMBER_OF_IMAGES}</span>
+          <span className="max_count">
+            max accepted: {MAX_NUMBER_OF_IMAGES}
+          </span>
           <AddIcon
             color="steelblue"
             title={

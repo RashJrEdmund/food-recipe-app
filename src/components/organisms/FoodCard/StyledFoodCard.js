@@ -12,6 +12,11 @@ const StyledFoodCard = styled.div`
   justify-content: center;
   margin: 0 auto 15px;
   border-radius: 10px 10px 15px 15px;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 10px #000;
+  }
 
   .food_image {
     background: linear-gradient(to bottom, #11111156, #11111156, #11111156),
@@ -22,6 +27,7 @@ const StyledFoodCard = styled.div`
     width: 100%;
     min-height: 240px;
     border-radius: 10px 10px 0 0;
+    position: relative;
   }
 
   .food_section_2 {
@@ -52,51 +58,13 @@ const StyledFoodCard = styled.div`
       text-overflow: ellipsis;
       overflow: hidden;
     }
-
-    .food_cta {
-      width: min(100%, 100px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-      margin: 10px 0 0;
-      border-radius: 0 0 10px 10px;
-
-      .heart,
-      .see_more {
-        cursor: pointer;
-      }
-    }
   }
-
-  @media only screen and (min-width: 768px) {
-    .food_cta {
-      width: min(100%, 100px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-      margin: 15px 0 0;
-      border-radius: 0 0 10px 10px;
-
-      .heart,
-      .see_more {
-        transition: 0.3s;
-
-        &:hover {
-          box-shadow: 0 0 10px #111111;
-          border-radius: 5px;
-        }
-      }
-    }
+  @media only screen and (max-width: 768px) {
+    box-shadow: 0 0 10px #000;
   }
 
   @media only screen and (max-width: 400px) {
     max-width: 97vw;
-
-    .food_cta {
-      max-width: 97vw;
-    }
   }
 `;
 

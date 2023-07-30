@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
-import { AddIcon } from '../../atoms/Icons';
+import { AddIcon } from '../../atoms/icons/actions';
 
 const StyledRecipeForm = styled.form`
   margin: 20px 0;
@@ -12,7 +12,7 @@ const StyledRecipeForm = styled.form`
   align-items: center;
 
   input {
-    width: 100%;
+    width: max(100%, 200px);
     height: 40px;
     padding: 10px 5px;
   }

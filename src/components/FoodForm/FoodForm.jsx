@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import { v4 as uuid4 } from 'uuid';
+import { useOutletContext } from 'react-router-dom';
 import StyledFoodForm from './StyledFoodForm';
 import ImagePreview from './ImagePreview/ImagePreview';
 import RecipeForm from './RecipeForm/RecipeForm';
@@ -12,14 +13,12 @@ import { useFoodContext } from '../../context/FoodContext';
 import { DEFAULT_FOOD_BG } from '../../services/constants';
 import ImageUploadSection from './ImageUploadSection/ImageUploadSection';
 
-export default function FoodForm({
-  toggleShowForm,
-  displayAlert,
-  setDetailedFood,
-  creatingNew, // boolean attribute to decide wether creating new or not
-}) {
+export default function FoodForm() {
   const [food, setFood] = React.useState(null); // the food we editing
   const [useUrl, setUseUrl] = React.useState(false);
+
+  const { toggleShowForm, displayAlert, setDetailedFood, creatingNew } =
+    useOutletContext();
 
   const { setFoodData } = useFoodContext();
 
@@ -57,6 +56,7 @@ export default function FoodForm({
       LOCALSTORAGE.save('foodData', [...prev, food]);
 
       setFoodData([...prev, food]);
+      displayAlert('new food created');
       toggleShowForm();
     } else {
       const foodToEdit = SESSIONSTORAGE.get('foodToEdit');
@@ -78,8 +78,8 @@ export default function FoodForm({
     const sesSfood = SESSIONSTORAGE.get('foodToEdit');
 
     if (sesSfood) setFood(sesSfood);
+
     if (creatingNew) {
-      const prev = LOCALSTORAGE.get('foodData');
       setFood({
         name: '',
         img: [DEFAULT_FOOD_BG],
@@ -87,14 +87,18 @@ export default function FoodForm({
         description: '',
         recipe: [],
         fav: false,
-        id: prev && prev.length > 0 ? prev.pop().id + 1 : 1,
+        id: uuid4(),
       });
     }
+
+    document.body.classList.add('body-overflow');
+
+    return () => document.body.classList.remove('body-overflow');
   }, []);
 
   return (
     <>
-      <Overlay index="4" opacity="1" />
+      <Overlay index="4" opacity="0" bg="black" />
 
       <StyledFoodForm url={food?.img[food?.imgIndx]}>
         <div className="food_form">

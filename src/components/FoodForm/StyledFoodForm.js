@@ -12,7 +12,7 @@ const StyledFoodForm = styled.div`
   align-items: flex-start;
   width: min(97vw, 700px);
   height: fit-content;
-  max-height: 96vh;
+  /* max-height: 96vh; */
   overflow: auto;
   border-radius: 10px;
 
@@ -73,7 +73,7 @@ const StyledFoodForm = styled.div`
     }
 
     .submit_btn {
-      background-color: steelblue;
+      background-color: var(--secondary-bg);
       width: 100%;
       height: 45px;
       font-weight: 600;
@@ -83,7 +83,13 @@ const StyledFoodForm = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    //
+    top: 0;
+    left: 0;
+    transform: unset;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
   }
 `;
 

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styled from '@emotion/styled';
-import { DeleteIcon, EditIcon, FowardIcon } from './Icons';
+import { BUTTON_ICON_TYPE } from '../../services/constants';
+import { FowardIcon } from './icons/navigation';
+import { DeleteIcon, EditIcon } from './icons/actions';
 
 export default function ButtonAtom({
   text,
@@ -30,11 +32,22 @@ export default function ButtonAtom({
 
   const handleClick = () => action && action();
 
+  const getIcon = () => {
+    switch (iconType) {
+      case BUTTON_ICON_TYPE.NEXT:
+        return <FowardIcon iconcolor={iconcolor} />;
+      case BUTTON_ICON_TYPE.EDIT:
+        return <EditIcon iconcolor={iconcolor} />;
+      case BUTTON_ICON_TYPE.DELETE:
+        return <DeleteIcon iconcolor={iconcolor} />;
+      default:
+        return '';
+    }
+  };
+
   return (
     <StyledAtomBtn type="button" onClick={handleClick}>
-      {text} {iconType === 'NEXT' && <FowardIcon iconcolor={iconcolor} />}
-      {iconType === 'EDIT' && <EditIcon iconcolor={iconcolor} />}
-      {iconType === 'DELETE' && <DeleteIcon iconcolor={iconcolor} />}
+      {text} {getIcon()}
     </StyledAtomBtn>
   );
 }
