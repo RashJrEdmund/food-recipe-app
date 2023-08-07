@@ -28,7 +28,7 @@ function App() {
   );
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/food_app">
       <div className="App" id="App">
         {pathName !== '' && (
           <LandingNav pathName={pathName} setPathName={setPathName} />
@@ -38,7 +38,7 @@ function App() {
           <Route index element={<LandingPage setPathName={setPathName} />} />
 
           <Route path="/foods" element={<FoodPage />}>
-            <Route path="createnew" element={<FoodForm />} />
+            <Route path="createnew" exact element={<FoodForm />} />
           </Route>
 
           <Route path="foods/details/:name" element={<DetailsPage />}>
