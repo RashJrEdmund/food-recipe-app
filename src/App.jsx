@@ -29,11 +29,11 @@ function App() {
           <Route index element={<LandingPage />} />
 
           <Route path="/home" element={<FoodApp />}>
-            <Route path="foods" element={<FoodPage />}>
+            <Route path="" element={<FoodPage />}>
               <Route path="createnew" exact element={<FoodForm />} />
             </Route>
 
-            <Route path="foods/details/:name" element={<DetailsPage />}>
+            <Route path="details/:name" element={<DetailsPage />}>
               <Route path="edit" element={<FoodForm />} />
               <Route path="delete" element={<DialogueBox />} />
               <Route path="redirect" element={<DialogueBox />} />

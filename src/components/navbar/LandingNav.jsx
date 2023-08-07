@@ -10,9 +10,9 @@ import { MenuIcon } from '../atoms/icons/actions';
 import { MAX_SROLL_B4_NAV_BAR_FIXES } from '../../services/constants';
 
 const NAV_LIST = [
-  { title: 'Food List', route: '/foods' },
-  { title: 'Favorites', route: '/favorites' },
-  { title: 'Settings', route: '/settings' },
+  { title: 'Home', route: '/home' },
+  { title: 'Favorites', route: 'favorites' },
+  { title: 'Settings', route: 'settings' },
 ];
 
 export default function LandingNav({ pathName, setPathName }) {

@@ -8,7 +8,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   const gotToFoods = () => {
-    navigate('/foods');
+    navigate('/home');
     window.scrollTo(0, 0);
   };
 

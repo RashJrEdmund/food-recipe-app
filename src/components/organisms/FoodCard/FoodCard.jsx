@@ -38,7 +38,7 @@ export default function FoodCard({
   };
 
   const goToFoodDetails = () => {
-    navigate(`/foods/details/${name}`);
+    navigate(`/home/details/${name}`);
   };
 
   const gotoNextPhoto = () => {
