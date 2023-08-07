@@ -4,12 +4,10 @@ import ButtonAtom from '../../components/atoms/Button';
 import { BUTTON_ICON_TYPE } from '../../services/constants';
 import StyledLanding from './index.style';
 
-// eslint-disable-next-line react/prop-types
-export default function LandingPage({ setPathName }) {
+export default function LandingPage() {
   const navigate = useNavigate();
 
   const gotToFoods = () => {
-    setPathName('foods');
     navigate('/foods');
     window.scrollTo(0, 0);
   };
