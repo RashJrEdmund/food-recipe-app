@@ -23,6 +23,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "keywords": [
+    "food[\\w\\W\\d]*(app|recipe)"
+  ],
   "eslintConfig": {
     "extends": [
       "react-app",
