@@ -23,10 +23,10 @@ import FoodApp from './FoodApp';
 
 function App() {
   return (
-    <BrowserRouter basename="/food_app">
+    <BrowserRouter>
       <div className="App" id="App">
         <Routes>
-          <Route index element={<LandingPage />} />
+          <Route path="" element={<LandingPage />} />
 
           <Route path="/home" element={<FoodApp />}>
             <Route path="" element={<FoodPage />}>
