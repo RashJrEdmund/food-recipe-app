@@ -13,15 +13,15 @@ function NotFoundNav() {
       <button
         className="nav_404_btn"
         type="button"
-        onClick={() => gobackto('foods')}
+        onClick={() => gobackto('home')}
       >
-        Foods
+        Home
       </button>
 
       <button
         className="nav_404_btn"
         type="button"
-        onClick={() => gobackto('favorites')}
+        onClick={() => gobackto('home/favorites')}
       >
         Favorites
       </button>

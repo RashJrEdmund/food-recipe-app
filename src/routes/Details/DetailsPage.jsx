@@ -29,7 +29,7 @@ export default function DetailsPage() {
     setFoodData([...newFoodlist]);
     displayAlert(`${detailedFood.name} deleted`);
 
-    navigate('/foods');
+    navigate('/home');
   };
 
   const addNewFavorite = () => {
@@ -57,11 +57,11 @@ export default function DetailsPage() {
   };
 
   const openFoodForm = () => {
-    navigate(`/foods/details/${detailedFood?.name}/edit`);
+    navigate(`/home/details/${detailedFood?.name}/edit`);
   };
 
   const openDialogue = (path) => {
-    navigate(`/foods/details/${detailedFood?.name}/${path}`);
+    navigate(`/home/details/${detailedFood?.name}/${path}`);
   };
 
   const closeOutlet = () => navigate(-1, { replace: true });

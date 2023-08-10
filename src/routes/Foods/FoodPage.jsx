@@ -19,7 +19,7 @@ export default function FoodPage() {
   const navigate = useNavigate();
 
   const createNewFood = () => {
-    navigate('/foods/createnew');
+    navigate('/home/createnew');
   };
 
   React.useEffect(() => {
@@ -37,7 +37,7 @@ export default function FoodPage() {
 
       <Outlet
         context={{
-          toggleShowForm: () => navigate('/foods'),
+          toggleShowForm: () => navigate('/home'),
           creatingNew: true,
           displayAlert,
         }}
