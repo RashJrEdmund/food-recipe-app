@@ -21,3 +21,12 @@ export const convertBase64 = (file) => {
     };
   });
 };
+
+export const customLogger = (data, options) => {
+  const { clear, log } = console;
+
+  if (options && options.clearConsole) clear();
+
+  if (typeof data === 'string') return log({ data });
+  return log(data);
+};
