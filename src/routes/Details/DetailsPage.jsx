@@ -10,6 +10,7 @@ import { OUTLET_TYPE } from '../../services/constants';
 import { updateFavorite } from '../../services/foodScripts';
 import DetailsCTA from './details_component/detais_cta/DetailsCTA';
 import FoodContainer from './details_component/food_container/FoodContainer';
+import { FoodModule } from '../../api';
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
@@ -120,16 +121,23 @@ export default function DetailsPage() {
     }
   };
 
+  const getCurrentFood = () => {
+    FoodModule.getFood(params.food_id)
+      .then(({ data: currentFood }) => setDetailedFood({ ...currentFood }))
+      .catch((err) => console.error('error occurred', err));
+  };
+
   React.useEffect(() => {
-    const currentFood = LOCALSTORAGE.get('foodData').find(
-      (meal) => meal.name === params.name
-    );
+    getCurrentFood();
+    // const currentFood = LOCALSTORAGE.get('foodData').find(
+    //   (meal) => meal.name === params.food_id
+    // );
 
-    SESSIONSTORAGE.save('foodToEdit', currentFood);
+    // SESSIONSTORAGE.save('foodToEdit', currentFood);
 
-    if (currentFood) setDetailedFood({ ...currentFood });
+    // if (currentFood) setDetailedFood({ ...currentFood });
 
-    return () => SESSIONSTORAGE.remove('foodToEdit');
+    // return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params, foodData]); // adding foodData to cause a re-render whe food is liked
 
   React.useEffect(() => {

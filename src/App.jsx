@@ -35,7 +35,7 @@ function App() {
               <Route path="createnew" exact element={<FoodForm />} />
             </Route>
 
-            <Route path="details/:name" element={<DetailsPage />}>
+            <Route path="details/:food_id" element={<DetailsPage />}>
               <Route path="edit" element={<FoodForm />} />
               <Route path="delete" element={<DialogueBox />} />
               <Route path="redirect" element={<DialogueBox />} />

@@ -12,7 +12,7 @@ import { SwipeLeftIcon, SwipeRightIcon } from '../../atoms/icons/navigation';
 import Foodcta from './food_cta/Food_cta';
 
 export default function FoodCard({
-  id,
+  _id,
   name,
   description,
   img, // an array
@@ -25,7 +25,7 @@ export default function FoodCard({
   const navigate = useNavigate();
 
   const addNewFavorite = () => {
-    updateFavorite(id, setArrayFoods);
+    updateFavorite(_id, setArrayFoods);
     displayAlert(
       `${name.split(/[^a-zA-Z]/).shift()} ${
         fav ? 'removed from ' : 'added to '
@@ -34,22 +34,22 @@ export default function FoodCard({
   };
 
   const handleChangeimg = (indx) => {
-    updateCardSlideImage({ indx, setArrayFoods, id });
+    updateCardSlideImage({ indx, setArrayFoods, _id });
   };
 
   const goToFoodDetails = () => {
-    navigate(`/home/details/${name}`);
+    navigate(`/home/details/${_id}`);
   };
 
   const gotoNextPhoto = () => {
     if (imgIndx < img.length - 1) {
-      updateCardSlideImage({ indx: imgIndx + 1, setArrayFoods, id });
+      updateCardSlideImage({ indx: imgIndx + 1, setArrayFoods, _id });
     }
   };
 
   const gotoPrevPhoto = () => {
     if (imgIndx > 0) {
-      updateCardSlideImage({ indx: imgIndx - 1, setArrayFoods, id });
+      updateCardSlideImage({ indx: imgIndx - 1, setArrayFoods, _id });
     }
   };
 

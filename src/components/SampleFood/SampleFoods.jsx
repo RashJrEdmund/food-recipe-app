@@ -22,10 +22,10 @@ export default function SampleFoods({
         {(arrayFoods?.length > 0 && (
           <div className="cards">
             {arrayFoods?.map(
-              ({ id, name, description, recipe, fav, img, imgIndx }) => (
+              ({ _id, name, description, recipe, fav, img, imgIndx }) => (
                 <FoodCard
-                  key={id}
-                  id={id}
+                  key={_id}
+                  _id={_id}
                   name={name}
                   description={description || recipe[0]}
                   img={img}
