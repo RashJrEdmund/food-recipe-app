@@ -1,4 +1,4 @@
-import { LOCALSTORAGE, SESSIONSTORAGE } from './storage';
+import { LOCALSTORAGE, SESSIONSTORAGE } from '../storage';
 
 export const updateFavorite = (id, setArrayFoods) => {
   const update = LOCALSTORAGE.get('foodData')?.map((food) => {

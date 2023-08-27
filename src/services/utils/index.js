@@ -1,4 +1,4 @@
-import { SESSIONSTORAGE } from './storage';
+import { SESSIONSTORAGE } from '../storage';
 
 // this stores an array of searched id's to sessionstorage, helps when i want to rerender
 export const createSearchIdList = (foodData) => {

@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
+
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import { useFoodContext } from '../../context/FoodContext';
@@ -10,14 +11,13 @@ import { OUTLET_TYPE } from '../../services/constants';
 import { updateFavorite } from '../../services/foodScripts';
 import DetailsCTA from './details_component/detais_cta/DetailsCTA';
 import FoodContainer from './details_component/food_container/FoodContainer';
-import { FoodModule } from '../../api';
 
 export default function DetailsPage() {
   const [detailedFood, setDetailedFood] = React.useState(null);
   const [contextData, setContextData] = React.useState({}); // since spreading is overriding and conflicting, how about a state for context option
   const navigate = useNavigate();
 
-  const { displayAlert, foodData, setFoodData } = useFoodContext();
+  const { toastAlert, foodData, setFoodData } = useFoodContext();
 
   const params = useParams();
 
@@ -28,18 +28,17 @@ export default function DetailsPage() {
 
     LOCALSTORAGE.save('foodData', newFoodlist);
     setFoodData([...newFoodlist]);
-    displayAlert(`${detailedFood.name} deleted`);
+    toastAlert(`${detailedFood.name} deleted 💔`, { type: 'warning' });
 
     navigate('/home');
   };
 
   const addNewFavorite = () => {
     updateFavorite(detailedFood.id, setFoodData);
-    displayAlert(
-      `${detailedFood.name.split(/[^a-zA-Z]/).shift()} ${
-        detailedFood.fav ? 'removed from ' : 'added to '
-      } favorites`
-    );
+    const message = `${detailedFood.name} ${
+      detailedFood.fav ? 'removed from favorites 💔' : 'added to favorites 🤍'
+    }`;
+    toastAlert(message);
   };
 
   const handleChangeDetailImg = (ind) => {
@@ -74,7 +73,6 @@ export default function DetailsPage() {
       case OUTLET_TYPE.FOOD_FORM:
         setContextData({
           toggleShowForm: closeOutlet,
-          displayAlert,
           setDetailedFood,
         });
         break;
@@ -121,23 +119,16 @@ export default function DetailsPage() {
     }
   };
 
-  const getCurrentFood = () => {
-    FoodModule.getFood(params.food_id)
-      .then(({ data: currentFood }) => setDetailedFood({ ...currentFood }))
-      .catch((err) => console.error('error occurred', err));
-  };
-
   React.useEffect(() => {
-    getCurrentFood();
-    // const currentFood = LOCALSTORAGE.get('foodData').find(
-    //   (meal) => meal.name === params.food_id
-    // );
+    const currentFood = LOCALSTORAGE.get('foodData').find(
+      (meal) => meal.name === params.name
+    );
 
-    // SESSIONSTORAGE.save('foodToEdit', currentFood);
+    SESSIONSTORAGE.save('foodToEdit', currentFood);
 
-    // if (currentFood) setDetailedFood({ ...currentFood });
+    if (currentFood) setDetailedFood({ ...currentFood });
 
-    // return () => SESSIONSTORAGE.remove('foodToEdit');
+    return () => SESSIONSTORAGE.remove('foodToEdit');
   }, [params, foodData]); // adding foodData to cause a re-render whe food is liked
 
   React.useEffect(() => {

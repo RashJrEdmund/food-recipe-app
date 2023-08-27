@@ -14,7 +14,7 @@ import {
 } from '../../components/atoms/icons/actions';
 
 export default function User() {
-  const { displayAlert, setFoodData } = useFoodContext();
+  const { toastAlert, setFoodData } = useFoodContext();
 
   const navigate = useNavigate();
 
@@ -27,20 +27,20 @@ export default function User() {
     LOCALSTORAGE.save('foodData', FoodData);
     setFoodData([...FoodData]);
 
-    displayAlert('reset completed');
+    toastAlert('reset completed', { type: 'success' });
     closeDialogue();
   };
 
   const openDialogue = () => {
-    navigate('/settings/reset');
+    navigate('/home/settings/reset');
   };
 
   const handleChangeTheme = () => {
-    displayAlert('this feature is not yet available');
+    toastAlert('this feature is not yet available', { type: 'warning' });
   };
 
   const handleResetAll = () => {
-    displayAlert('this feature is not yet available');
+    toastAlert('this feature is not yet available', { type: 'warning' });
   };
 
   const dialogueContext = React.useMemo(

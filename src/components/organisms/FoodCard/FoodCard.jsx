@@ -10,46 +10,44 @@ import ImageNavigators from './ImageNavigators/ImageNavigators';
 import { NAVIGATOR_POSITION_FOR } from '../../../services/constants';
 import { SwipeLeftIcon, SwipeRightIcon } from '../../atoms/icons/navigation';
 import Foodcta from './food_cta/Food_cta';
+import { useFoodContext } from '../../../context/FoodContext';
 
 export default function FoodCard({
-  _id,
+  id,
   name,
   description,
   img, // an array
   imgIndx,
   fav,
   setArrayFoods,
-  displayAlert,
   allowInteraction,
 }) {
   const navigate = useNavigate();
+  const { toastAlert } = useFoodContext();
 
   const addNewFavorite = () => {
-    updateFavorite(_id, setArrayFoods);
-    displayAlert(
-      `${name.split(/[^a-zA-Z]/).shift()} ${
-        fav ? 'removed from ' : 'added to '
-      } favorites`
-    );
+    updateFavorite(id, setArrayFoods);
+    const message = `${name.split(/[^a-zA-Z]/).shift()} ${fav ? 'removed from ' : 'added to '} favorites`
+    toastAlert(message);
   };
 
   const handleChangeimg = (indx) => {
-    updateCardSlideImage({ indx, setArrayFoods, _id });
+    updateCardSlideImage({ indx, setArrayFoods, id });
   };
 
   const goToFoodDetails = () => {
-    navigate(`/home/details/${_id}`);
+    navigate(`/home/details/${name}`);
   };
 
   const gotoNextPhoto = () => {
     if (imgIndx < img.length - 1) {
-      updateCardSlideImage({ indx: imgIndx + 1, setArrayFoods, _id });
+      updateCardSlideImage({ indx: imgIndx + 1, setArrayFoods, id });
     }
   };
 
   const gotoPrevPhoto = () => {
     if (imgIndx > 0) {
-      updateCardSlideImage({ indx: imgIndx - 1, setArrayFoods, _id });
+      updateCardSlideImage({ indx: imgIndx - 1, setArrayFoods, id });
     }
   };
 

@@ -46,4 +46,6 @@ export const MEDIA_LINKS = {
   linkedin: 'https://www.linkedin.com/in/orashus-edmund-82a040212/',
 };
 
+export const TOAST_TIME = 1500; // milli seconds
+
 export const MAX_SROLL_B4_NAV_BAR_FIXES = 300;
