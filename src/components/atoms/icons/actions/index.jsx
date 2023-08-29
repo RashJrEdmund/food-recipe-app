@@ -10,6 +10,8 @@ import {
   MdOutlineCancel,
 } from 'react-icons/md';
 
+import { CiTimer } from 'react-icons/ci';
+
 export const MenuIcon = styled(GiHamburgerMenu)`
   font-size: 50px;
   color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
@@ -43,6 +45,13 @@ export const ThemeIcon = styled(VscColorMode)`
 `;
 
 export const ResetFoodIcon = styled(RxReset)`
+  color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
+  font-size: ${({ size = '24px' }) => size};
+  margin: ${({ margin = '0 5px 0 0' }) => margin};
+  cursor: pointer;
+`;
+
+export const ToastTimeIcon = styled(CiTimer)`
   color: ${({ iconcolor }) => iconcolor || 'var(--text-color)'};
   font-size: ${({ size = '24px' }) => size};
   margin: ${({ margin = '0 5px 0 0' }) => margin};

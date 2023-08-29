@@ -11,6 +11,7 @@ import {
   ResetAllIcon,
   ResetFoodIcon,
   ThemeIcon,
+  ToastTimeIcon,
 } from '../../components/atoms/icons/actions';
 
 import { TOAST_TYPE, TOAST_CONSTANT } from '../../services/constants';
@@ -93,11 +94,8 @@ export default function User() {
             <ResetFoodIcon /> reset food data
           </li>
 
-          <li onClick={handleResetAll}>
-            <ResetAllIcon /> reset all data
-          </li>
-
           <li>
+            <ToastTimeIcon />
             Toast-message time: {(toastTime / 1000).toFixed(1)} s
             <input
               className="toast_time"
@@ -107,6 +105,10 @@ export default function User() {
               value={toastTime}
               onChange={({ target: { value } }) => setToastime(+value)}
             />
+          </li>
+
+          <li onClick={handleResetAll}>
+            <ResetAllIcon /> reset app data
           </li>
         </ul>
       </StyledSettings>
