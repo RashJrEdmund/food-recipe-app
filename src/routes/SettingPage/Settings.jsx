@@ -12,10 +12,11 @@ import {
   ResetFoodIcon,
   ThemeIcon,
 } from '../../components/atoms/icons/actions';
-import { TOAST_TYPE } from '../../services/constants';
+
+import { TOAST_TYPE, TOAST_CONSTANT } from '../../services/constants';
 
 export default function User() {
-  const { toastAlert, setFoodData } = useFoodContext();
+  const { toastAlert, setFoodData, toastTime, setToastime } = useFoodContext();
 
   const navigate = useNavigate();
 
@@ -59,6 +60,18 @@ export default function User() {
     []
   );
 
+  const updateToastTime = () => {
+    const time = (toastTime / 1000).toFixed(1);
+    toastAlert(`Toast-message time set to ${time} s`);
+    LOCALSTORAGE.save('toast_time', toastTime); // saving toastime to localstorage
+  };
+
+  React.useEffect(() => {
+    const intId = setTimeout(() => updateToastTime(), 1000);
+
+    return () => clearTimeout(intId);
+  }, [toastTime]);
+
   return (
     <>
       <Outlet context={dialogueContext} />
@@ -82,6 +95,18 @@ export default function User() {
 
           <li onClick={handleResetAll}>
             <ResetAllIcon /> reset all data
+          </li>
+
+          <li>
+            Toast-message time: {(toastTime / 1000).toFixed(1)} s
+            <input
+              className="toast_time"
+              type="range"
+              min={TOAST_CONSTANT}
+              max={2500}
+              value={toastTime}
+              onChange={({ target: { value } }) => setToastime(+value)}
+            />
           </li>
         </ul>
       </StyledSettings>

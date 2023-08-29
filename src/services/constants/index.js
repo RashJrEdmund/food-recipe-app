@@ -38,7 +38,9 @@ export const OUTLET_TYPE = {
   REDIRECT: 'REDIRECT',
 };
 
-export const TOAST_TIME = 1300; // milli seconds
+export const DEFAULT_TOAST_TIME = 1300; // milli seconds
+
+export const TOAST_CONSTANT = 500; // used as the base toastime;
 
 export const TOAST_TYPE = {
   SUCCESS: 'success',
