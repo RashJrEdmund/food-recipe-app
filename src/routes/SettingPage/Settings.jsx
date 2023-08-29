@@ -12,6 +12,7 @@ import {
   ResetFoodIcon,
   ThemeIcon,
 } from '../../components/atoms/icons/actions';
+import { TOAST_TYPE } from '../../services/constants';
 
 export default function User() {
   const { toastAlert, setFoodData } = useFoodContext();
@@ -27,7 +28,7 @@ export default function User() {
     LOCALSTORAGE.save('foodData', FoodData);
     setFoodData([...FoodData]);
 
-    toastAlert('reset completed', { type: 'success' });
+    toastAlert('reset completed', { type: TOAST_TYPE.SUCCESS });
     closeDialogue();
   };
 
@@ -36,11 +37,15 @@ export default function User() {
   };
 
   const handleChangeTheme = () => {
-    toastAlert('this feature is not yet available', { type: 'warning' });
+    toastAlert('this feature is not yet available', {
+      type: TOAST_TYPE.WARNING,
+    });
   };
 
   const handleResetAll = () => {
-    toastAlert('this feature is not yet available', { type: 'warning' });
+    toastAlert('this feature is not yet available', {
+      type: TOAST_TYPE.WARNING,
+    });
   };
 
   const dialogueContext = React.useMemo(

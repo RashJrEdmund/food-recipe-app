@@ -10,7 +10,7 @@ import RecipeList from './RecipeList/RecipeList';
 import { Overlay } from '../atoms/Atoms';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
-import { DEFAULT_FOOD_BG } from '../../services/constants';
+import { DEFAULT_FOOD_BG, TOAST_TYPE } from '../../services/constants';
 import ImageUploadSection from './ImageUploadSection/ImageUploadSection';
 
 export default function FoodForm() {
@@ -44,7 +44,7 @@ export default function FoodForm() {
     if (
       !(food.name.trim() && food.description.trim() && food.recipe.length > 0)
     ) {
-      toastAlert('Missing Form fields', { type: 'warning' });
+      toastAlert('Missing Form fields', { type: TOAST_TYPE.WARNING });
       return;
     }
 
@@ -55,7 +55,7 @@ export default function FoodForm() {
       LOCALSTORAGE.save('foodData', [...prev, food]);
 
       setFoodData([...prev, food]);
-      toastAlert('new food created', { type: 'success' });
+      toastAlert('new food created', { type: TOAST_TYPE.SUCCESS });
       toggleShowForm();
     } else {
       const foodToEdit = SESSIONSTORAGE.get('foodToEdit');
@@ -68,7 +68,7 @@ export default function FoodForm() {
       SESSIONSTORAGE.save('foodToEdit', food);
       setFoodData([...update]);
       setDetailedFood({ ...food });
-      toastAlert('Food Saved', { type: 'success' });
+      toastAlert('Food Saved', { type: TOAST_TYPE.SUCCESS });
       toggleShowForm();
     }
   };

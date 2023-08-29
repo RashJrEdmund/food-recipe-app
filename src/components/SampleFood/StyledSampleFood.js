@@ -20,7 +20,7 @@ const StyledSampleFoods = styled.section`
 
   .cards {
     height: fit-content;
-    min-height: 450px;
+    min-height: 550px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -32,10 +32,12 @@ const StyledSampleFoods = styled.section`
   }
 
   .fall_back_text {
+    color: var(--secondary-bg);
     text-align: center;
     margin: 2rem 0;
     font-weight: 600;
     width: var(--general-min-max-width);
+    min-height: 450px;
   }
 `;
 

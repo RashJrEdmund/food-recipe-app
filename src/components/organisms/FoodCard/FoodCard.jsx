@@ -27,7 +27,10 @@ export default function FoodCard({
 
   const addNewFavorite = () => {
     updateFavorite(id, setArrayFoods);
-    const message = `${name.split(/[^a-zA-Z]/).shift()} ${fav ? 'removed from ' : 'added to '} favorites`
+    const message = `${name.split(/[^a-zA-Z]/).shift()} ${
+      fav ? 'removed from ' : 'added to '
+    } favorites`;
+
     toastAlert(message);
   };
 

@@ -7,7 +7,7 @@ import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import { useFoodContext } from '../../context/FoodContext';
-import { OUTLET_TYPE } from '../../services/constants';
+import { OUTLET_TYPE, TOAST_TYPE } from '../../services/constants';
 import { updateFavorite } from '../../services/foodScripts';
 import DetailsCTA from './details_component/detais_cta/DetailsCTA';
 import FoodContainer from './details_component/food_container/FoodContainer';
@@ -28,7 +28,7 @@ export default function DetailsPage() {
 
     LOCALSTORAGE.save('foodData', newFoodlist);
     setFoodData([...newFoodlist]);
-    toastAlert(`${detailedFood.name} deleted 💔`, { type: 'warning' });
+    toastAlert(`${detailedFood.name} deleted 💔`, { type: TOAST_TYPE.ERROR });
 
     navigate('/home');
   };
