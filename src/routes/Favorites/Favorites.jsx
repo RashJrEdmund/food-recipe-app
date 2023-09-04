@@ -2,7 +2,6 @@
 import React from 'react';
 import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
-import useAlert from '../../hooks/UseAlert';
 import FoodForm from '../../components/FoodForm/FoodForm';
 import SearchForm from '../../components/organisms/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
@@ -12,8 +11,6 @@ export default function Favorites() {
   const [showForm, setShowForm] = React.useState(false);
   const [favorites, setFavorites] = React.useState(null);
   const [searchFallBack, setSearchFallBack] = React.useState([]);
-
-  const { AlertComponent, displayAlert, alertMsg } = useAlert();
   const { foodData } = useFoodContext();
 
   React.useEffect(() => {
@@ -30,12 +27,9 @@ export default function Favorites() {
 
   return (
     <>
-      {alertMsg.show && <AlertComponent />}
-
       {showForm && (
         <FoodForm
           toggleShowForm={() => setShowForm((prev) => !prev)}
-          displayAlert={displayAlert}
           creatingNew // to signify that it's a new item beeing created
         />
       )}

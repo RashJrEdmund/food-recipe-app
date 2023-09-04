@@ -10,17 +10,16 @@ import RecipeList from './RecipeList/RecipeList';
 import { Overlay } from '../atoms/Atoms';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import { useFoodContext } from '../../context/FoodContext';
-import { DEFAULT_FOOD_BG } from '../../services/constants';
+import { DEFAULT_FOOD_BG, TOAST_TYPE } from '../../services/constants';
 import ImageUploadSection from './ImageUploadSection/ImageUploadSection';
 
 export default function FoodForm() {
   const [food, setFood] = React.useState(null); // the food we editing
   const [useUrl, setUseUrl] = React.useState(false);
 
-  const { toggleShowForm, displayAlert, setDetailedFood, creatingNew } =
-    useOutletContext();
+  const { toggleShowForm, setDetailedFood, creatingNew } = useOutletContext();
 
-  const { setFoodData } = useFoodContext();
+  const { setFoodData, toastAlert } = useFoodContext();
 
   const handleChange = ({ target: { name, value, files } }) => {
     const prev = food;
@@ -45,7 +44,7 @@ export default function FoodForm() {
     if (
       !(food.name.trim() && food.description.trim() && food.recipe.length > 0)
     ) {
-      displayAlert('Missing Form fields');
+      toastAlert('Missing Form fields', { type: TOAST_TYPE.WARNING });
       return;
     }
 
@@ -56,7 +55,7 @@ export default function FoodForm() {
       LOCALSTORAGE.save('foodData', [...prev, food]);
 
       setFoodData([...prev, food]);
-      displayAlert('new food created');
+      toastAlert('new food created', { type: TOAST_TYPE.SUCCESS });
       toggleShowForm();
     } else {
       const foodToEdit = SESSIONSTORAGE.get('foodToEdit');
@@ -69,7 +68,7 @@ export default function FoodForm() {
       SESSIONSTORAGE.save('foodToEdit', food);
       setFoodData([...update]);
       setDetailedFood({ ...food });
-      displayAlert('Food Saved');
+      toastAlert('Food Saved', { type: TOAST_TYPE.SUCCESS });
       toggleShowForm();
     }
   };

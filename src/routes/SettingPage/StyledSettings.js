@@ -15,6 +15,11 @@ const StyledSettings = styled.div`
       padding: 15px 10px;
       display: flex;
       align-items: center;
+
+      .toast_time {
+        cursor: pointer;
+        margin-left: 10px;
+      }
     }
   }
 

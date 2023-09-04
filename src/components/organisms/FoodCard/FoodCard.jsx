@@ -10,6 +10,7 @@ import ImageNavigators from './ImageNavigators/ImageNavigators';
 import { NAVIGATOR_POSITION_FOR } from '../../../services/constants';
 import { SwipeLeftIcon, SwipeRightIcon } from '../../atoms/icons/navigation';
 import Foodcta from './food_cta/Food_cta';
+import { useFoodContext } from '../../../context/FoodContext';
 
 export default function FoodCard({
   id,
@@ -19,18 +20,18 @@ export default function FoodCard({
   imgIndx,
   fav,
   setArrayFoods,
-  displayAlert,
   allowInteraction,
 }) {
   const navigate = useNavigate();
+  const { toastAlert } = useFoodContext();
 
   const addNewFavorite = () => {
     updateFavorite(id, setArrayFoods);
-    displayAlert(
-      `${name.split(/[^a-zA-Z]/).shift()} ${
-        fav ? 'removed from ' : 'added to '
-      } favorites`
-    );
+    const message = `${name.split(/[^a-zA-Z]/).shift()} ${
+      fav ? 'removed from ' : 'added to '
+    } favorites`;
+
+    toastAlert(message);
   };
 
   const handleChangeimg = (indx) => {

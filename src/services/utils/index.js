@@ -1,4 +1,4 @@
-import { SESSIONSTORAGE } from './storage';
+import { SESSIONSTORAGE } from '../storage';
 
 // this stores an array of searched id's to sessionstorage, helps when i want to rerender
 export const createSearchIdList = (foodData) => {
@@ -20,4 +20,13 @@ export const convertBase64 = (file) => {
       reject(error);
     };
   });
+};
+
+export const customLogger = (data, options) => {
+  const { clear, log } = console;
+
+  if (options && options.clearConsole) clear();
+
+  if (typeof data === 'string') return log({ data });
+  return log(data);
 };

@@ -3,17 +3,19 @@ import './styles/App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FoodData from './data/Data.json';
-import LandingPage from './routes/Landing/Landing';
-import FoodPage from './routes/Foods/FoodPage';
-import DetailsPage from './routes/Details/DetailsPage';
-import Favorites from './routes/Favorites/Favorites';
-import Settings from './routes/SettingPage/Settings';
-import NotFound from './routes/NotFound/NotFound';
 import { LOCALSTORAGE } from './services/storage';
 import PageGaurd from './HOC/PageGaurd';
 import FoodForm from './components/FoodForm/FoodForm';
 import DialogueBox from './components/DialogueBox/DialogueBox';
 import FoodApp from './FoodApp';
+import {
+  DetailsPage,
+  Favorites,
+  FoodPage,
+  LandingPage,
+  NotFound,
+  Settings,
+} from './routes';
 
 (() => {
   if (!LOCALSTORAGE.get('foodData')) {

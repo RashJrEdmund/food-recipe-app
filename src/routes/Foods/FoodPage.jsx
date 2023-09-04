@@ -4,7 +4,6 @@ import { Header2Atom } from '../../components/atoms/Atoms';
 import SampleFoods from '../../components/SampleFood/SampleFoods';
 import { useFoodContext } from '../../context/FoodContext';
 import ButtonAtom from '../../components/atoms/Button';
-import useAlert from '../../hooks/UseAlert';
 import StyledBtnHolder from '../../common/styledBtnHolder';
 import SearchForm from '../../components/organisms/SearchForm/SearchForm';
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
@@ -13,8 +12,6 @@ import { BUTTON_ICON_TYPE } from '../../services/constants';
 export default function FoodPage() {
   const [foodList, setFoodList] = React.useState(null);
   const { foodData } = useFoodContext();
-
-  const { AlertComponent, displayAlert, alertMsg } = useAlert();
 
   const navigate = useNavigate();
 
@@ -33,13 +30,10 @@ export default function FoodPage() {
 
   return (
     <>
-      {alertMsg.show && <AlertComponent />}
-
       <Outlet
         context={{
           toggleShowForm: () => navigate('/home'),
           creatingNew: true,
-          displayAlert,
         }}
       />
 

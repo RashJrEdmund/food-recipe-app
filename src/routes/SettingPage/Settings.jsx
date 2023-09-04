@@ -11,10 +11,13 @@ import {
   ResetAllIcon,
   ResetFoodIcon,
   ThemeIcon,
+  ToastTimeIcon,
 } from '../../components/atoms/icons/actions';
 
+import { TOAST_TYPE, TOAST_CONSTANT } from '../../services/constants';
+
 export default function User() {
-  const { displayAlert, setFoodData } = useFoodContext();
+  const { toastAlert, setFoodData, toastTime, setToastime } = useFoodContext();
 
   const navigate = useNavigate();
 
@@ -27,20 +30,24 @@ export default function User() {
     LOCALSTORAGE.save('foodData', FoodData);
     setFoodData([...FoodData]);
 
-    displayAlert('reset completed');
+    toastAlert('reset completed', { type: TOAST_TYPE.SUCCESS });
     closeDialogue();
   };
 
   const openDialogue = () => {
-    navigate('/settings/reset');
+    navigate('/home/settings/reset');
   };
 
   const handleChangeTheme = () => {
-    displayAlert('this feature is not yet available');
+    toastAlert('this feature is not yet available', {
+      type: TOAST_TYPE.WARNING,
+    });
   };
 
   const handleResetAll = () => {
-    displayAlert('this feature is not yet available');
+    toastAlert('this feature is not yet available', {
+      type: TOAST_TYPE.WARNING,
+    });
   };
 
   const dialogueContext = React.useMemo(
@@ -53,6 +60,18 @@ export default function User() {
     }),
     []
   );
+
+  const updateToastTime = () => {
+    const time = (toastTime / 1000).toFixed(1);
+    toastAlert(`Toast-message time set to ${time} s`);
+    LOCALSTORAGE.save('toast_time', toastTime); // saving toastime to localstorage
+  };
+
+  React.useEffect(() => {
+    const intId = setTimeout(() => updateToastTime(), 1000);
+
+    return () => clearTimeout(intId);
+  }, [toastTime]);
 
   return (
     <>
@@ -75,8 +94,21 @@ export default function User() {
             <ResetFoodIcon /> reset food data
           </li>
 
+          <li>
+            <ToastTimeIcon />
+            Toast-message time: {(toastTime / 1000).toFixed(1)} s
+            <input
+              className="toast_time"
+              type="range"
+              min={TOAST_CONSTANT}
+              max={2500}
+              value={toastTime}
+              onChange={({ target: { value } }) => setToastime(+value)}
+            />
+          </li>
+
           <li onClick={handleResetAll}>
-            <ResetAllIcon /> reset all data
+            <ResetAllIcon /> reset app data
           </li>
         </ul>
       </StyledSettings>

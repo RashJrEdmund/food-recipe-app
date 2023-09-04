@@ -3,10 +3,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
+
 import { LOCALSTORAGE, SESSIONSTORAGE } from '../../services/storage';
 import StyledDetailsPage from './StyledDetailsPage';
 import { useFoodContext } from '../../context/FoodContext';
-import { OUTLET_TYPE } from '../../services/constants';
+import { OUTLET_TYPE, TOAST_TYPE } from '../../services/constants';
 import { updateFavorite } from '../../services/foodScripts';
 import DetailsCTA from './details_component/detais_cta/DetailsCTA';
 import FoodContainer from './details_component/food_container/FoodContainer';
@@ -16,7 +17,7 @@ export default function DetailsPage() {
   const [contextData, setContextData] = React.useState({}); // since spreading is overriding and conflicting, how about a state for context option
   const navigate = useNavigate();
 
-  const { displayAlert, foodData, setFoodData } = useFoodContext();
+  const { toastAlert, foodData, setFoodData } = useFoodContext();
 
   const params = useParams();
 
@@ -27,18 +28,17 @@ export default function DetailsPage() {
 
     LOCALSTORAGE.save('foodData', newFoodlist);
     setFoodData([...newFoodlist]);
-    displayAlert(`${detailedFood.name} deleted`);
+    toastAlert(`${detailedFood.name} deleted 💔`, { type: TOAST_TYPE.ERROR });
 
     navigate('/home');
   };
 
   const addNewFavorite = () => {
     updateFavorite(detailedFood.id, setFoodData);
-    displayAlert(
-      `${detailedFood.name.split(/[^a-zA-Z]/).shift()} ${
-        detailedFood.fav ? 'removed from ' : 'added to '
-      } favorites`
-    );
+    const message = `${detailedFood.name} ${
+      detailedFood.fav ? 'removed from favorites 💔' : 'added to favorites 🤍'
+    }`;
+    toastAlert(message);
   };
 
   const handleChangeDetailImg = (ind) => {
@@ -73,7 +73,6 @@ export default function DetailsPage() {
       case OUTLET_TYPE.FOOD_FORM:
         setContextData({
           toggleShowForm: closeOutlet,
-          displayAlert,
           setDetailedFood,
         });
         break;

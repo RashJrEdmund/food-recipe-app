@@ -38,12 +38,15 @@ export const OUTLET_TYPE = {
   REDIRECT: 'REDIRECT',
 };
 
-export const MEDIA_LINKS = {
-  twitter: 'https://twitter.com/orashus',
-  github: 'https://github.com/RashJrEdmund',
-  facebook: 'https://www.facebook.com/Orashus',
-  hackerrank: 'https://www.hackerrank.com/orashusedmund?hr_r=1',
-  linkedin: 'https://www.linkedin.com/in/orashus-edmund-82a040212/',
+export const DEFAULT_TOAST_TIME = 1300; // milli seconds
+
+export const TOAST_CONSTANT = 500; // used as the base toastime;
+
+export const TOAST_TYPE = {
+  SUCCESS: 'success',
+  INFO: 'info',
+  WARNING: 'warning',
+  ERROR: 'error',
 };
 
 export const MAX_SROLL_B4_NAV_BAR_FIXES = 300;
