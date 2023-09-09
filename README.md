@@ -19,4 +19,4 @@ edit form
 404 page
 ![404](./src/assets/readme/404.png)
 
-see [deployment](foodrecipe-dev.vercel.app)
+see [deployment](https://foodrecipe-dev.vercel.app/)
